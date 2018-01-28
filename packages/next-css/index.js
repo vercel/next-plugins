@@ -1,6 +1,6 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const cssLoaderConfigFactory = require('./css-loader-config')
+const cssLoaderConfig = require('./css-loader-config')
 
 module.exports = function withCSS (nextConfig = {}) {
   return Object.assign({}, nextConfig, {
@@ -24,9 +24,7 @@ module.exports = function withCSS (nextConfig = {}) {
         extractCSSPlugin.options.disable = dev
       }
 
-      const cssLoaderConfig = cssLoaderConfigFactory(config, extractCSSPlugin, {cssModules, dev, isServer})
-
-      options.defaultLoaders.css = cssLoaderConfig()
+      options.defaultLoaders.css = cssLoaderConfig(config, extractCSSPlugin, {cssModules, dev, isServer})
 
       config.module.rules.push({
         test: /\.css$/,

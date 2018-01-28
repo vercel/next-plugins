@@ -1,6 +1,6 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const cssLoaderConfigFactory = require('@zeit/next-css/css-loader-config')
+const cssLoaderConfig = require('@zeit/next-css/css-loader-config')
 
 module.exports = function withSass (nextConfig = {}) {
   return Object.assign({}, nextConfig, {
@@ -24,9 +24,8 @@ module.exports = function withSass (nextConfig = {}) {
         extractCSSPlugin.options.disable = dev
       }
 
-      const cssLoaderConfig = cssLoaderConfigFactory(config, extractCSSPlugin, {cssModules, dev, isServer})
+      options.defaultLoaders.sass = cssLoaderConfig(config, extractCSSPlugin, {cssModules, dev, isServer, loaders: ['sass-loader']})
 
-      options.defaultLoaders.sass = cssLoaderConfig('sass-loader')
 
       config.module.rules.push({
         test: /\.scss$/,

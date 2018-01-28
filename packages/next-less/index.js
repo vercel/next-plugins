@@ -1,6 +1,6 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const cssLoaderConfigFactory = require('@zeit/next-css/css-loader-config')
+const cssLoaderConfig = require('@zeit/next-css/css-loader-config')
 
 module.exports = function withLess (nextConfig = {}) {
   return Object.assign({}, nextConfig, {
@@ -24,9 +24,7 @@ module.exports = function withLess (nextConfig = {}) {
         extractCSSPlugin.options.disable = dev
       }
 
-      const cssLoaderConfig = cssLoaderConfigFactory(config, extractCSSPlugin, {cssModules, dev, isServer})
-
-      options.defaultLoaders.less = cssLoaderConfig('less-loader')
+      options.defaultLoaders.less = cssLoaderConfig(config, extractCSSPlugin, {cssModules, dev, isServer, loaders: ['less-loader']})
 
       config.module.rules.push({
         test: /\.less$/,
