@@ -1,0 +1,14 @@
+{
+  "name": "@zeit/next-preact",
+  "version": "0.0.4",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "zeit/next-plugins",
+  "peerDependencies": {
+    "preact": "^8.2.0",
+    "preact-compat": "^3.17.0"
+  },
+  "dependencies": {
+    "module-alias": "^2.0.3"
+  }
+}
