@@ -1,6 +1,6 @@
 # Next.js + Typescript
 
-Use [preact](https://preactjs.com/) with [Next.js](https://github.com/zeit/next.js)
+Use [Typescript](https://www.typescriptlang.org/) with [Next.js](https://github.com/zeit/next.js)
 
 ## Installation
 

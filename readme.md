@@ -8,7 +8,7 @@ Community maintained Next.js plugins
 2. Add `package.json` to the directory with these contents:
 ```
 {
-  "name": "next-<NAME>",
+  "name": "@zeit/next-<NAME>",
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
