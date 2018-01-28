@@ -1,6 +1,6 @@
 {
   "name": "@zeit/next-sass",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
