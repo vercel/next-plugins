@@ -1,18 +1,18 @@
-const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const cssLoaderConfig = require('@zeit/next-css/css-loader-config')
 
-module.exports = function withLess (nextConfig = {}) {
+module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
-      const {dev, isServer} = options
-      const {cssModules} = nextConfig
+      const { dev, isServer } = options
+      const { cssModules } = nextConfig
       // Support the user providing their own instance of ExtractTextPlugin.
       // If extractCSSPlugin is not defined we pass the same instance of ExtractTextPlugin to all css related modules
       // So that they compile to the same file in production
-      let extractCSSPlugin = nextConfig.extractCSSPlugin || options.extractCSSPlugin
+      let extractCSSPlugin =
+        nextConfig.extractCSSPlugin || options.extractCSSPlugin
 
-      if(!extractCSSPlugin) {
+      if (!extractCSSPlugin) {
         extractCSSPlugin = new ExtractTextPlugin({
           filename: 'static/style.css'
         })
@@ -20,18 +20,23 @@ module.exports = function withLess (nextConfig = {}) {
         options.extractCSSPlugin = extractCSSPlugin
       }
 
-      if(!extractCSSPlugin.options.disable) {
+      if (!extractCSSPlugin.options.disable) {
         extractCSSPlugin.options.disable = dev
       }
 
-      options.defaultLoaders.less = cssLoaderConfig(config, extractCSSPlugin, {cssModules, dev, isServer, loaders: ['less-loader']})
+      options.defaultLoaders.less = cssLoaderConfig(config, extractCSSPlugin, {
+        cssModules,
+        dev,
+        isServer,
+        loaders: ['less-loader']
+      })
 
       config.module.rules.push({
         test: /\.less$/,
         use: options.defaultLoaders.less
       })
-      
-      if(typeof nextConfig.webpack === 'function') {
+
+      if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)
       }
 

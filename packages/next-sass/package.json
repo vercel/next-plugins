@@ -5,6 +5,7 @@
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
+    "@zeit/next-css": "^0.0.5",
     "extract-text-webpack-plugin": "^3.0.2",
     "sass-loader": "^6.0.6"
   },

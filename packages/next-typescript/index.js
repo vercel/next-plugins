@@ -1,7 +1,7 @@
-module.exports = function withPreact(nextConfig = {}) {
+module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
-      const {dir, defaultLoaders} = options
+      const { dir, defaultLoaders } = options
 
       config.resolve.extensions.push('.ts', '.tsx')
       config.module.rules.push({
@@ -18,8 +18,8 @@ module.exports = function withPreact(nextConfig = {}) {
           }
         ]
       })
-  
-      if(typeof nextConfig.webpack === 'function') {
+
+      if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)
       }
 

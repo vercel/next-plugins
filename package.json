@@ -2,5 +2,27 @@
   "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "eslint-config-prettier": "^2.9.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "prettier": "^1.10.2",
+    "xo": "^0.18.2"
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "lint": "xo",
+    "test": "npm run lint && NODE_ENV=test nyc ava"
+  },
+  "xo": {
+    "extends": "prettier"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint",
+      "prettier --single-quote --no-semi --write",
+      "git add"
+    ]
+  }
 }
