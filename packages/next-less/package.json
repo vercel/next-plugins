@@ -1,11 +1,11 @@
 {
   "name": "@zeit/next-less",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "@zeit/next-css": "^0.0.5",
+    "@zeit/next-css": "^0.0.6",
     "extract-text-webpack-plugin": "^3.0.2",
     "less-loader": "^4.0.5"
   },
