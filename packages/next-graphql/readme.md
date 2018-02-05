@@ -1,4 +1,4 @@
-# Next.js + Typescript
+# Next.js + Graphql
 
 Use [Graphql](http://graphql.org/) files with [Next.js](https://github.com/zeit/next.js)
 
