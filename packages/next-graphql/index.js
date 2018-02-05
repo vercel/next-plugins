@@ -9,7 +9,6 @@ module.exports = (nextConfig = {}) => {
 
       const { dir } = options
 
-      config.resolve.extensions.push('.ts', '.tsx')
       config.module.rules.push({
         test: /\.(graphql|gql)$/,
         include: [dir],
