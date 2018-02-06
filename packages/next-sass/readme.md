@@ -40,7 +40,7 @@ Create a page file `pages/index.js`
 ```js
 import "../styles.scss"
 
-export default () => <div className="test">Hello World!</div>
+export default () => <div className="example">Hello World!</div>
 ```
 
 ### With CSS modules
