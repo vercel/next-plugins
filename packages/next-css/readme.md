@@ -89,7 +89,7 @@ Create a CSS file `styles.css`
 
 Create a page file `pages/index.js`
 
-```
+```js
 import Head from 'next/head'
 import css from '../style.css'
 
