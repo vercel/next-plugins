@@ -150,8 +150,8 @@ Optionally you can add your custom Next.js configuration as parameter
 
 ```js
 // next.config.js
-const withCSS = require('@zeit/next-sass')
-module.exports = withCSS({
+const withSass = require('@zeit/next-sass')
+module.exports = withSass({
   webpack(config, options) {
     return config
   }
