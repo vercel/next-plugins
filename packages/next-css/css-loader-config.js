@@ -1,7 +1,6 @@
-const findUp = require('find-up')
-
 function getPostCssLoader(cwd) {
-  const postcssConfig = findUp.sync('postcss.config.js', {
+  // We require inside the function to not load at startup
+  const postcssConfig = require('find-up').sync('postcss.config.js', {
     cwd
   })
 

@@ -1,6 +1,3 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const cssLoaderConfig = require('./css-loader-config')
-
 module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
@@ -11,7 +8,7 @@ module.exports = (nextConfig = {}) => {
       }
 
       const { dev, isServer } = options
-      const { cssModules } = nextConfig
+      const { cssModules, cssToString } = nextConfig
       // Support the user providing their own instance of ExtractTextPlugin.
       // If extractCSSPlugin is not defined we pass the same instance of ExtractTextPlugin to all css related modules
       // So that they compile to the same file in production
@@ -19,6 +16,7 @@ module.exports = (nextConfig = {}) => {
         nextConfig.extractCSSPlugin || options.extractCSSPlugin
 
       if (!extractCSSPlugin) {
+        const ExtractTextPlugin = require('extract-text-webpack-plugin')
         extractCSSPlugin = new ExtractTextPlugin({
           filename: 'static/style.css'
         })
@@ -30,7 +28,9 @@ module.exports = (nextConfig = {}) => {
         extractCSSPlugin.options.disable = dev
       }
 
+      const cssLoaderConfig = require('./css-loader-config')
       options.defaultLoaders.css = cssLoaderConfig(config, extractCSSPlugin, {
+        cssToString,
         cssModules,
         dev,
         isServer
