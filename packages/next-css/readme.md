@@ -68,6 +68,36 @@ import css from "../styles.css"
 export default () => <div className={css.example}>Hello World!</div>
 ```
 
+### With CSS modules and options
+
+```js
+// next.config.js
+const withCSS = require('@zeit/next-css')
+module.exports = withCSS({
+  cssModules: {
+    modules: 1,
+    importLoaders: 1,
+    localIdentName: "[local]___[hash:base64:5]",
+  }
+})
+```
+
+Create a CSS file `styles.css`
+
+```css
+.example {
+  font-size: 50px;
+}
+```
+
+Create a page file `pages/index.js`
+
+```js
+import css from "../styles.css"
+
+export default () => <div className={css.example}>Hello World!</div>
+```
+
 ### Production usage
 
 In production the stylesheet is compiled to `.next/static/style.css`. You have to include it into the page using either [`next/head`](https://github.com/zeit/next.js#populating-head) or a custom [`_document.js`](https://github.com/zeit/next.js#custom-document). The file will be served from `/_next/static/style.css`
