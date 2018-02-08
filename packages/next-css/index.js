@@ -8,7 +8,7 @@ module.exports = (nextConfig = {}) => {
       }
 
       const { dev, isServer } = options
-      const { cssModules, cssToString } = nextConfig
+      const { cssModules, cssToString, cssAutomaticInjection } = nextConfig
       // Support the user providing their own instance of ExtractTextPlugin.
       // If extractCSSPlugin is not defined we pass the same instance of ExtractTextPlugin to all css related modules
       // So that they compile to the same file in production
@@ -26,6 +26,39 @@ module.exports = (nextConfig = {}) => {
 
       if (!extractCSSPlugin.options.disable) {
         extractCSSPlugin.options.disable = dev
+      }
+
+      if (cssAutomaticInjection) {
+        config.externals = config.externals.map(external => {
+          if (typeof external === 'function') {
+            return (context, request, callback) => {
+              if (request === '@zeit/next-css/inline-style') {
+                return callback()
+              }
+
+              return external(context, request, callback)
+            }
+          }
+          return external
+        })
+
+        const path = require('path')
+        config.module.rules.push({
+          test: /\.js/,
+          include: [path.join(__dirname, 'inline-style')],
+          use: options.defaultLoaders.babel
+        })
+
+        config.module.rules = config.module.rules.map(rule => {
+          if (
+            typeof rule.use === 'object' &&
+            rule.use.loader === 'babel-loader'
+          ) {
+            rule.use.options.plugins.push(path.join(__dirname, 'babel'))
+          }
+
+          return rule
+        })
       }
 
       const cssLoaderConfig = require('./css-loader-config')
