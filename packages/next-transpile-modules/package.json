@@ -1,0 +1,11 @@
+{
+  "name": "@zeit/next-transpile-modules",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "zeit/next-plugins",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  }
+}
