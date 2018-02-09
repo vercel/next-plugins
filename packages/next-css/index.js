@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MergeFilesPlugin = require('merge-files-webpack-plugin')
 const cssLoaderConfig = require('./css-loader-config')
 
 module.exports = (nextConfig = {}) => {
@@ -20,9 +21,19 @@ module.exports = (nextConfig = {}) => {
 
       if (!extractCSSPlugin) {
         extractCSSPlugin = new ExtractTextPlugin({
-          filename: 'static/style.css'
+          filename: 'static/styles/[name].css'
         })
         config.plugins.push(extractCSSPlugin)
+
+        if (!isServer) {
+          config.plugins.push(
+            new MergeFilesPlugin({
+              filename: 'static/style.css',
+              test: /static\/styles\/(.+)\.css$/
+            })
+          )
+        }
+
         options.extractCSSPlugin = extractCSSPlugin
       }
 
