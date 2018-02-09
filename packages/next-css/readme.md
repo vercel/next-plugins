@@ -70,6 +70,10 @@ export default () => <div className={css.example}>Hello World!</div>
 
 ### With CSS modules and options
 
+You can also pass a list of options to the `css-loader` by passing an object as your `cssModules` argument.
+
+For instance, [to enable locally scoped CSS modules](https://github.com/css-modules/css-modules/blob/master/docs/local-scope.md#css-modules--local-scope), you can write:
+
 ```js
 // next.config.js
 const withCSS = require('@zeit/next-css')
@@ -93,10 +97,22 @@ Create a CSS file `styles.css`
 Create a page file `pages/index.js`
 
 ```js
-import css from "../styles.css"
+import css from "../style.css"
 
-export default () => <div className={css.example}>Hello World!</div>
+const Component = props => {
+  return (
+    <div className={css.backdrop}>
+      ...
+    </div>
+  )
+}
+
+export default Component
 ```
+
+Your exported HTML will then reflect locally scoped CSS class names.
+
+For a list of supported options, [refer to the webpack `css-loader` README](https://github.com/webpack-contrib/css-loader#options).
 
 ### Production usage
 
