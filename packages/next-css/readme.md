@@ -26,7 +26,7 @@ const withCSS = require('@zeit/next-css')
 module.exports = withCSS()
 ```
 
-Create a CSS file `styles.css`
+Create a CSS file `style.css`
 
 ```css
 .example {
@@ -37,7 +37,7 @@ Create a CSS file `styles.css`
 Create a page file `pages/index.js`
 
 ```js
-import "../styles.css"
+import "../style.css"
 
 export default () => <div className="example">Hello World!</div>
 ```
@@ -52,7 +52,7 @@ module.exports = withCSS({
 })
 ```
 
-Create a CSS file `styles.css`
+Create a CSS file `style.css`
 
 ```css
 .example {
@@ -63,7 +63,7 @@ Create a CSS file `styles.css`
 Create a page file `pages/index.js`
 
 ```js
-import css from "../styles.css"
+import css from "../style.css"
 
 export default () => <div className={css.example}>Hello World!</div>
 ```
@@ -128,7 +128,7 @@ module.exports = {
 }
 ```
 
-Create a CSS file `styles.css` the CSS here is using the css-variables postcss plugin.
+Create a CSS file `style.css` the CSS here is using the css-variables postcss plugin.
 
 ```css
 :root {
