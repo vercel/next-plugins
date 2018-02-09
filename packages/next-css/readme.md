@@ -94,7 +94,7 @@ Create a CSS file `styles.css`
 }
 ```
 
-Create a page file `pages/index.js`
+Create a page file `pages/index.js` that imports your stylesheet and uses the hashed class name from the stylesheet
 
 ```js
 import css from "../style.css"
