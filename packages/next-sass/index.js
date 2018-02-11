@@ -22,9 +22,10 @@ module.exports = (nextConfig = {}) => {
         extractCSSPlugin = new ExtractTextPlugin({
           filename: 'static/style.css'
         })
-        config.plugins.push(extractCSSPlugin)
-        options.extractCSSPlugin = extractCSSPlugin
       }
+
+      config.plugins.push(extractCSSPlugin)
+      options.extractCSSPlugin = extractCSSPlugin
 
       if (!extractCSSPlugin.options.disable) {
         extractCSSPlugin.options.disable = dev
