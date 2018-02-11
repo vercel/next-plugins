@@ -1,0 +1,13 @@
+{
+  "name": "@zeit/next-awesome-typescript",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "zeit/next-plugins",
+  "dependencies": {
+    "awesome-typescript-loader": "^3.4.1"
+  },
+  "peerDependencies": {
+    "typescript": "^2.6.2"
+  }
+}
