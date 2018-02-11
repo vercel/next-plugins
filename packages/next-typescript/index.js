@@ -1,4 +1,5 @@
 module.exports = (nextConfig = {}) => {
+
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
       if (!options.defaultLoaders) {
@@ -18,9 +19,9 @@ module.exports = (nextConfig = {}) => {
           defaultLoaders.babel,
           {
             loader: 'ts-loader',
-            options: {
+            options: Object.assign({}, {
               transpileOnly: true
-            }
+            }, nextConfig.typescriptLoaderOptions)
           }
         ]
       })
