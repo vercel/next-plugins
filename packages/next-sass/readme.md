@@ -70,6 +70,20 @@ import css from "../styles.scss"
 export default () => <div className={css.example}>Hello World!</div>
 ```
 
+### With SASS loader options
+
+You can pass options from [node-sass](https://github.com/sass/node-sass#options)
+
+```js
+// next.config.js
+const withSass = require('@zeit/next-sass')
+module.exports = withSass({
+  sassLoaderOptions: {
+    includePaths: ["absolute/path/a", "absolute/path/b"]
+  }
+})
+```
+
 ### Production usage
 
 In production the stylesheet is compiled to `.next/static/style.css`. You have to include it into the page using either [`next/head`](https://github.com/zeit/next.js#populating-head) or a custom [`_document.js`](https://github.com/zeit/next.js#custom-document). The file will be served from `/_next/static/style.css`
