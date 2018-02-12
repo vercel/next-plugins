@@ -11,7 +11,7 @@ module.exports = (nextConfig = {}) => {
       }
 
       const { dev, isServer } = options
-      const { cssModules } = nextConfig
+      const { cssModules, sassLoaderOptions = {} } = nextConfig
       // Support the user providing their own instance of ExtractTextPlugin.
       // If extractCSSPlugin is not defined we pass the same instance of ExtractTextPlugin to all css related modules
       // So that they compile to the same file in production
@@ -34,7 +34,10 @@ module.exports = (nextConfig = {}) => {
         cssModules,
         dev,
         isServer,
-        loaders: ['sass-loader']
+        loaders: [{
+          loader: 'sass-loader',
+          options: sassLoaderOptions
+        }]
       })
 
       config.module.rules.push(
