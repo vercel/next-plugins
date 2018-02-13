@@ -11,10 +11,12 @@ module.exports = (nextConfig = {}) => {
         config.externals = ['react', 'react-dom', ...config.externals]
       }
 
-      config.resolve.alias = Object.assign({}, config.resolve.alias, {
-        react: 'preact-compat',
-        'react-dom': 'preact-compat'
-      })
+      if (!options.dev) {
+        config.resolve.alias = Object.assign({}, config.resolve.alias, {
+          react: 'preact-compat',
+          'react-dom': 'preact-compat'
+        })
+      }
 
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)
