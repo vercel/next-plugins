@@ -9,7 +9,6 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "find-up": "^2.1.0",
     "ignore-loader": "^0.1.2",
-    "merge-files-webpack-plugin": "^1.1.2",
     "postcss-loader": "^2.0.10",
     "style-loader": "^0.19.1"
   },
