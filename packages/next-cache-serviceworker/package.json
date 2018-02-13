@@ -1,0 +1,10 @@
+{
+  "name": "@zeit/next-cache-serviceworker",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "zeit/next-plugins",
+  "dependencies": {
+    "sw-precache-webpack-plugin": "^0.11.4"
+  }
+}
