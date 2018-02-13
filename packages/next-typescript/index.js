@@ -1,4 +1,5 @@
 module.exports = (nextConfig = {}) => {
+
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
       const path = require('path')
@@ -28,9 +29,9 @@ module.exports = (nextConfig = {}) => {
           defaultLoaders.babel,
           {
             loader: 'ts-loader',
-            options: {
+            options: Object.assign({}, {
               transpileOnly: true
-            }
+            }, nextConfig.typescriptLoaderOptions)
           }
         ]
       })
