@@ -127,7 +127,7 @@ import Head from 'next/head'
 export default () => {
   return <div>
     <Head>
-      <link rel="stylesheet" href="/_next/static/style.css">
+      <link rel="stylesheet" href="/_next/static/style.css" />
     </Head>
   </div>
 }
@@ -142,7 +142,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <link rel="stylesheet" href="/_next/static/style.css">
+          <link rel="stylesheet" href="/_next/static/style.css" />
         </Head>
         <body>
           <Main />

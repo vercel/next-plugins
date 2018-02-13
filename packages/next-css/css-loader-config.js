@@ -48,8 +48,7 @@ module.exports = (
     fallback: {
       loader: 'style-loader',
       options: {
-        sourceMap: dev,
-        importLoaders: 1
+        sourceMap: dev
       }
     }
   })
