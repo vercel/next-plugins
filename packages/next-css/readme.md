@@ -70,7 +70,7 @@ export default () => <div className={css.example}>Hello World!</div>
 
 ### With CSS modules and options
 
-You can also pass a list of options to the `css-loader` by passing an object as your `cssModules` argument.
+You can also pass a list of options to the `css-loader` by passing an object called `cssLoaderOptions`.
 
 For instance, [to enable locally scoped CSS modules](https://github.com/css-modules/css-modules/blob/master/docs/local-scope.md#css-modules--local-scope), you can write:
 
@@ -78,8 +78,8 @@ For instance, [to enable locally scoped CSS modules](https://github.com/css-modu
 // next.config.js
 const withCSS = require('@zeit/next-css')
 module.exports = withCSS({
-  cssModules: {
-    modules: 1,
+  cssModules: true,
+  cssLoaderOptions: {
     importLoaders: 1,
     localIdentName: "[local]___[hash:base64:5]",
   }
