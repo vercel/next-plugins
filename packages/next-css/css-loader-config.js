@@ -8,10 +8,10 @@ module.exports = (
   const cssLoader = {
     loader: isServer ? 'css-loader/locals' : 'css-loader',
     options: {
+      modules: cssModules,
       minimize: !dev,
       sourceMap: dev,
       importLoaders: 1,
-      modules: cssModules,
       ...cssLoaderOptions,
     },
   };
