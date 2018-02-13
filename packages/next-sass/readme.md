@@ -1,17 +1,17 @@
-# Next.js + Less
+# Next.js + Sass
 
-Import `.less` files in your Next.js project
+Import `.sass` or `.scss` files in your Next.js project
 
 ## Installation
 
 ```
-npm install --save @zeit/next-less less
+npm install --save @zeit/next-sass node-sass
 ```
 
 or
 
 ```
-yarn add @zeit/next-less less
+yarn add @zeit/next-sass node-sass
 ```
 
 ## Usage
@@ -22,23 +22,23 @@ Create a `next.config.js` in your project
 
 ```js
 // next.config.js
-const withLess = require('@zeit/next-less')
-module.exports = withLess()
+const withSass = require('@zeit/next-sass')
+module.exports = withSass()
 ```
 
-Create a Less file `styles.less`
+Create a Sass file `styles.scss`
 
-```less
-@font-size: 50px;
+```scss
+$font-size: 50px;
 .example {
-  font-size: @font-size;
+  font-size: $font-size;
 }
 ```
 
 Create a page file `pages/index.js`
 
 ```js
-import "../styles.less"
+import "../styles.scss"
 
 export default () => <div className="example">Hello World!</div>
 ```
@@ -47,25 +47,25 @@ export default () => <div className="example">Hello World!</div>
 
 ```js
 // next.config.js
-const withLess = require('@zeit/next-less')
-module.exports = withLess({
+const withSass = require('@zeit/next-sass')
+module.exports = withSass({
   cssModules: true
 })
 ```
 
-Create a Less file `styles.less`
+Create a Sass file  `styles.scss`
 
-```less
-@font-size: 50px;
+```scss
+$font-size: 50px;
 .example {
-  font-size: @font-size;
+  font-size: $font-size;
 }
 ```
 
 Create a page file `pages/index.js`
 
 ```js
-import css from "../styles.less"
+import css from "../styles.scss"
 
 export default () => <div className={css.example}>Hello World!</div>
 ```
@@ -78,8 +78,8 @@ For instance, [to enable locally scoped CSS modules](https://github.com/css-modu
 
 ```js
 // next.config.js
-const withLess = require('@zeit/next-less')
-module.exports = withLess({
+const withSass = require('@zeit/next-sass')
+module.exports = withSass({
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
@@ -174,8 +174,8 @@ Create a `next.config.js` in your project
 
 ```js
 // next.config.js
-const withLess = require('@zeit/next-less')
-module.exports = withLess()
+const withSass = require('@zeit/next-sass')
+module.exports = withSass()
 ```
 
 Create a `postcss.config.js`
@@ -210,8 +210,8 @@ Optionally you can add your custom Next.js configuration as parameter
 
 ```js
 // next.config.js
-const withLess = require('@zeit/next-less')
-module.exports = withLess({
+const withSass = require('@zeit/next-sass')
+module.exports = withSass({
   webpack(config, options) {
     return config
   }
