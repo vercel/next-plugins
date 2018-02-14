@@ -14,33 +14,17 @@ or
 yarn add @zeit/next-bundle-analyzer
 ```
 
-### Usage with @zeit/next-css and environment variables
+### Usage with environment variables
 
 Create a next.config.js (and make sure you have next-css set up)
 
 ```js
-const withCSS = require("@zeit/next-css");
 const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = withBundleAnalyzer({
-  ...withCSS({
-    cssModules: true
-  }),
-  serverBundleAnalyzerPlugin:
-    ["server", "both"].includes(process.env.BUNDLE_ANALYZE) &&
-    new BundleAnalyzerPlugin({
-      analyzerMode: "server",
-      analyzerPort: 8888,
-      openAnalyzer: true
-    }),
-  browserBundleAnalyzerPlugin:
-    ["browser", "both"].includes(process.env.BUNDLE_ANALYZE) &&
-    new BundleAnalyzerPlugin({
-      analyzerMode: "server",
-      analyzerPort: 8889,
-      openAnalyzer: true
-    })
+  analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
+  analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE)
 });
 ```
 
