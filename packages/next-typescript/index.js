@@ -1,4 +1,15 @@
 module.exports = (nextConfig = {}) => {
+  if (!nextConfig.pageExtensions) {
+    nextConfig.pageExtensions = ['jsx', 'js']
+  }
+
+  if (nextConfig.pageExtensions.indexOf('ts') === -1) {
+    nextConfig.pageExtensions.unshift('ts')
+  }
+
+  if (nextConfig.pageExtensions.indexOf('tsx') === -1) {
+    nextConfig.pageExtensions.unshift('tsx')
+  }
 
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
@@ -29,9 +40,13 @@ module.exports = (nextConfig = {}) => {
           defaultLoaders.babel,
           {
             loader: 'ts-loader',
-            options: Object.assign({}, {
-              transpileOnly: true
-            }, nextConfig.typescriptLoaderOptions)
+            options: Object.assign(
+              {},
+              {
+                transpileOnly: true
+              },
+              nextConfig.typescriptLoaderOptions
+            )
           }
         ]
       })
