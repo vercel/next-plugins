@@ -12,9 +12,9 @@ module.exports = (
       minimize: !dev,
       sourceMap: dev,
       importLoaders: 1,
-      ...cssLoaderOptions,
-    },
-  };
+      ...cssLoaderOptions
+    }
+  }
 
   const postcssConfig = findUp.sync('postcss.config.js', {
     cwd: config.context
@@ -42,14 +42,10 @@ module.exports = (
     return [cssLoader, postcssLoader, ...loaders].filter(Boolean)
   }
 
-  return extractPlugin.extract({
-    use: [cssLoader, postcssLoader, ...loaders].filter(Boolean),
-    // Use style-loader in development
-    fallback: {
-      loader: 'style-loader',
-      options: {
-        sourceMap: dev
-      }
-    }
-  })
+  return [
+    dev && 'extracted-loader',
+    ...extractPlugin.extract({
+      use: [cssLoader, postcssLoader, ...loaders].filter(Boolean)
+    })
+  ].filter(Boolean)
 }
