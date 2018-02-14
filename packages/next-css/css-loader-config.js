@@ -5,17 +5,6 @@ module.exports = (
   extractPlugin,
   { cssModules = false, cssLoaderOptions = {}, dev, isServer, loaders = [] }
 ) => {
-  const cssLoader = {
-    loader: isServer ? 'css-loader/locals' : 'css-loader',
-    options: {
-      modules: cssModules,
-      minimize: !dev,
-      sourceMap: dev,
-      importLoaders: 1,
-      ...cssLoaderOptions
-    }
-  }
-
   const postcssConfig = findUp.sync('postcss.config.js', {
     cwd: config.context
   })
@@ -29,6 +18,17 @@ module.exports = (
           path: postcssConfig
         }
       }
+    }
+  }
+
+  const cssLoader = {
+    loader: isServer ? 'css-loader/locals' : 'css-loader',
+    options: {
+      modules: cssModules,
+      minimize: !dev,
+      sourceMap: dev,
+      importLoaders: loaders.length + (postcssLoader ? 1 : 0),
+      ...cssLoaderOptions
     }
   }
 
