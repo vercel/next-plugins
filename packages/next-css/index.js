@@ -1,6 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const MergeFilesPlugin = require('merge-files-webpack-plugin')
 const cssLoaderConfig = require('./css-loader-config')
+const commonsChunkConfig = require('./commons-chunk-config')
 
 module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
@@ -21,20 +21,13 @@ module.exports = (nextConfig = {}) => {
 
       if (!extractCSSPlugin) {
         extractCSSPlugin = new ExtractTextPlugin({
-          filename: 'static/styles/[name].css'
+          filename: 'static/style.css'
         })
         config.plugins.push(extractCSSPlugin)
-
-        if (!isServer) {
-          config.plugins.push(
-            new MergeFilesPlugin({
-              filename: 'static/style.css',
-              test: /static\/styles\/(.+)\.css$/
-            })
-          )
-        }
-
         options.extractCSSPlugin = extractCSSPlugin
+        if (!dev && !isServer) {
+          config = commonsChunkConfig(config)
+        }
       }
 
       if (!extractCSSPlugin.options.disable) {

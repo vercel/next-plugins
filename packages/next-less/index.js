@@ -1,5 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const cssLoaderConfig = require('@zeit/next-css/css-loader-config')
+const commonsChunkConfig = require('@zeit/next-css/commons-chunk-config')
 
 module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
@@ -24,6 +25,9 @@ module.exports = (nextConfig = {}) => {
         })
         config.plugins.push(extractCSSPlugin)
         options.extractCSSPlugin = extractCSSPlugin
+        if (!dev && !isServer) {
+          config = commonsChunkConfig(config, /\.less$/)
+        }
       }
 
       if (!extractCSSPlugin.options.disable) {
