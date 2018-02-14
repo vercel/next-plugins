@@ -30,10 +30,6 @@ module.exports = (nextConfig = {}) => {
         }
       }
 
-      if (!extractCSSPlugin.options.disable) {
-        extractCSSPlugin.options.disable = dev
-      }
-
       options.defaultLoaders.css = cssLoaderConfig(config, extractCSSPlugin, {
         cssModules,
         dev,
