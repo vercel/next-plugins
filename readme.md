@@ -11,6 +11,7 @@
 ## Community made plugins
 
 - [next-offline](https://github.com/hanford/next-offline)
+- [next-plugin-graphql](https://github.com/lfades/next-plugin-graphql)
 
 ## Adding a plugin
 
