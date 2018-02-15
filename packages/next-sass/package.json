@@ -1,11 +1,11 @@
 {
   "name": "@zeit/next-sass",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "@zeit/next-css": "^0.1.0",
+    "@zeit/next-css": "^0.1.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "sass-loader": "^6.0.6"
   },
