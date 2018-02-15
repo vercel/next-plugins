@@ -17,23 +17,37 @@ module.exports = (
   }
 
   let postcssLoader
-  if (postcssLoaderOptions !== null) {
-    const postcssConfigPath = findUp.sync('postcss.config.js', {
-      cwd: config.context
-    })
+  const postcssConfigPath = findUp.sync('postcss.config.js', {
+    cwd: config.context
+  })
 
+  if (postcssLoaderOptions !== null) {
     if (postcssLoaderOptions instanceof Function) {
-      postcssLoaderOptions =
-        postcssLoaderOptions({ dev, isServer, path: postcssConfigPath }) || {}
+      postcssLoaderOptions = postcssLoaderOptions({ dev, isServer }) || {}
     }
-    if (!postcssLoaderOptions.config || !postcssLoaderOptions.config.path) {
-      postcssLoaderOptions.config = Object.assign(postcssLoaderOptions.config, {
-        path: postcssConfigPath
-      })
+    if (postcssConfigPath) {
+      if (!postcssLoaderOptions.config || !postcssLoaderOptions.config.path) {
+        postcssLoaderOptions.config = Object.assign(
+          {},
+          postcssLoaderOptions.config,
+          {
+            path: postcssConfigPath
+          }
+        )
+      }
     }
     postcssLoader = {
       loader: 'postcss-loader',
       options: postcssLoaderOptions
+    }
+  } else if (postcssConfigPath) {
+    postcssLoader = {
+      loader: 'postcss-loader',
+      options: {
+        config: {
+          path: postcssConfigPath
+        }
+      }
     }
   }
 
