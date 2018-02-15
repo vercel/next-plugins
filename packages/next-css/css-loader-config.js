@@ -3,24 +3,32 @@ const findUp = require('find-up')
 module.exports = (
   config,
   extractPlugin,
-  { cssLoaderOptions = {}, postcssLoaderOptions = null, dev, isServer, loaders = [] }
-) => {
-  
-  if (postcssLoaderOptions instanceof Function) {
-    cssLoaderOptions = postcssLoaderOptions({dev, isServer})
+  {
+    cssLoaderOptions = {},
+    postcssLoaderOptions = null,
+    dev,
+    isServer,
+    loaders = []
   }
-  
+) => {
+  if (cssLoaderOptions instanceof Function) {
+    cssLoaderOptions = cssLoaderOptions({ dev, isServer })
+  }
+
   let postcssLoader
   if (postcssLoaderOptions !== null) {
     const postcssConfigPath = findUp.sync('postcss.config.js', {
       cwd: config.context
     })
-  
+
     if (postcssLoaderOptions instanceof Function) {
-      postcssLoaderOptions = postcssLoaderOptions({dev, isServer, path: postcssConfigPath}) || {}
+      postcssLoaderOptions =
+        postcssLoaderOptions({ dev, isServer, path: postcssConfigPath }) || {}
     }
     if (!postcssLoaderOptions.config || !postcssLoaderOptions.config.path) {
-      postcssLoaderOptions.config = Object.assign(postcssLoaderOptions.config, { path: postcssConfigPath })
+      postcssLoaderOptions.config = Object.assign(postcssLoaderOptions.config, {
+        path: postcssConfigPath
+      })
     }
     postcssLoader = {
       loader: 'postcss-loader',
