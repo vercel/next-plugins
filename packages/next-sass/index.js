@@ -13,10 +13,11 @@ module.exports = (nextConfig = {}) => {
 
       const { dev, isServer } = options
       const {
-        cssModules,
         cssLoaderOptions,
-        sassLoaderOptions = {}
+        postcssLoaderOptions
       } = nextConfig
+      
+      let { sassLoaderOptions= {} } = nextConfig
       // Support the user providing their own instance of ExtractTextPlugin.
       // If extractCSSPlugin is not defined we pass the same instance of ExtractTextPlugin to all css related modules
       // So that they compile to the same file in production
@@ -33,10 +34,14 @@ module.exports = (nextConfig = {}) => {
           config = commonsChunkConfig(config, /\.(scss|sass)$/)
         }
       }
-
+  
+      if (sassLoaderOptions instanceof Function) {
+        sassLoaderOptions = sassLoaderOptions({dev, isServer})
+      }
+      
       options.defaultLoaders.sass = cssLoaderConfig(config, extractCSSPlugin, {
-        cssModules,
         cssLoaderOptions,
+        postcssLoaderOptions,
         dev,
         isServer,
         loaders: [
@@ -49,11 +54,7 @@ module.exports = (nextConfig = {}) => {
 
       config.module.rules.push(
         {
-          test: /\.scss$/,
-          use: options.defaultLoaders.sass
-        },
-        {
-          test: /\.sass$/,
+          test: /\.(scss|sass)$/,
           use: options.defaultLoaders.sass
         }
       )

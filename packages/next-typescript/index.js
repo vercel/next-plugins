@@ -21,6 +21,7 @@ module.exports = (nextConfig = {}) => {
       }
 
       const { dir, defaultLoaders, dev, isServer } = options
+      let { typescriptLoaderOptions } = options
 
       config.resolve.extensions.push('.ts', '.tsx')
 
@@ -32,6 +33,10 @@ module.exports = (nextConfig = {}) => {
         })
       }
 
+      if (typescriptLoaderOptions instanceof Function) {
+        typescriptLoaderOptions = typescriptLoaderOptions({ dev, isServer })
+      }
+      
       config.module.rules.push({
         test: /\.+(ts|tsx)$/,
         include: [dir],
@@ -45,7 +50,7 @@ module.exports = (nextConfig = {}) => {
               {
                 transpileOnly: true
               },
-              nextConfig.typescriptLoaderOptions
+              typescriptLoaderOptions
             )
           }
         ]

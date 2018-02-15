@@ -12,7 +12,8 @@ module.exports = (nextConfig = {}) => {
       }
 
       const { dev, isServer } = options
-      const { cssModules, cssLoaderOptions } = nextConfig
+      const { cssLoaderOptions, postcssLoaderOptions } = nextConfig
+      let { lessLoaderOptions } = nextConfig
       // Support the user providing their own instance of ExtractTextPlugin.
       // If extractCSSPlugin is not defined we pass the same instance of ExtractTextPlugin to all css related modules
       // So that they compile to the same file in production
@@ -29,13 +30,20 @@ module.exports = (nextConfig = {}) => {
           config = commonsChunkConfig(config, /\.less$/)
         }
       }
+      
+      if (lessLoaderOptions instanceof Function) {
+        lessLoaderOptions = lessLoaderOptions({ dev, isServer })
+      }
 
       options.defaultLoaders.less = cssLoaderConfig(config, extractCSSPlugin, {
-        cssModules,
         cssLoaderOptions,
+        postcssLoaderOptions,
         dev,
         isServer,
-        loaders: ['less-loader']
+        loaders: [{
+          loader: 'less-loader',
+          options: lessLoaderOptions
+        }]
       })
 
       config.module.rules.push({

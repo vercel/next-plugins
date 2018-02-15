@@ -12,7 +12,7 @@ module.exports = (nextConfig = {}) => {
       }
 
       const { dev, isServer } = options
-      const { cssModules } = nextConfig
+      const { cssLoaderOptions, postcssLoaderOptions } = nextConfig
       // Support the user providing their own instance of ExtractTextPlugin.
       // If extractCSSPlugin is not defined we pass the same instance of ExtractTextPlugin to all css related modules
       // So that they compile to the same file in production
@@ -31,11 +31,12 @@ module.exports = (nextConfig = {}) => {
       }
 
       options.defaultLoaders.css = cssLoaderConfig(config, extractCSSPlugin, {
-        cssModules,
+        cssLoaderOptions,
+        postcssLoaderOptions,
         dev,
         isServer
       })
-
+      
       config.module.rules.push({
         test: /\.css$/,
         use: options.defaultLoaders.css
