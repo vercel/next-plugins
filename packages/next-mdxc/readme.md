@@ -1,17 +1,17 @@
-# Next.js + mdx
+# Next.js + mdxc
 
-Use [mdx](https://github.com/jamesknelson/mdxc) with [Next.js](https://github.com/zeit/next.js)
+Use [mdxc](https://github.com/jamesknelson/mdxc) with [Next.js](https://github.com/zeit/next.js)
 
 ## Installation
 
 ```
-npm install --save @zeit/next-mdx
+npm install --save @zeit/next-mdxc
 ```
 
 or
 
 ```
-yarn add @zeit/next-mdx
+yarn add @zeit/next-mdxc
 ```
 
 ## Usage
@@ -20,16 +20,16 @@ Create a `next.config.js` in your project
 
 ```js
 // next.config.js
-const withMdx = require('@zeit/next-mdx')
-module.exports = withMdx()
+const withMdxc = require('@zeit/next-mdxc')
+module.exports = withMdxc()
 ```
 
 Optionally you can add your custom Next.js configuration as parameter
 
 ```js
 // next.config.js
-const withMdx = require('@zeit/next-mdx')
-module.exports = withMdx({
+const withMdxc = require('@zeit/next-mdxc')
+module.exports = withMdxc({
   webpack(config, options) {
     return config
   }
