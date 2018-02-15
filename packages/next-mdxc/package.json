@@ -1,6 +1,6 @@
 {
-  "name": "@zeit/next-mdx",
-  "version": "0.0.2",
+  "name": "@zeit/next-mdxc",
+  "version": "0.0.3",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
