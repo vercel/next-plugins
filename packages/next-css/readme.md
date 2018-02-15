@@ -16,8 +16,7 @@ yarn add @zeit/next-css
 
 ## Usage
 
-
-The stylesheet is compiled to `.next/static/style.css`. You have to include it into the page a custom [`_document.js`](https://github.com/zeit/next.js#custom-document). The file will be served from `/_next/static/style.css`
+The stylesheet is compiled to `.next/static/style.css`. You have to include it into the page using a custom [`_document.js`](https://github.com/zeit/next.js#custom-document). The file will be served from `/_next/static/style.css`
 
 ```js
 // ./pages/_document.js
