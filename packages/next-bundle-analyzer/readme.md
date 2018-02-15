@@ -45,5 +45,3 @@ yarn build
 ```
 
 If you choose both then two different browser windows will open. One will be for the server bundle, one for the browser bundle.
-
-The plugin itself is zero config so it does not look at environment variables and will always run unless you set either browserBundleAnalyzerPlugin or serverBundleAnalyzerPlugin to false in the config. The above example shows you how to do this using environment variables.
