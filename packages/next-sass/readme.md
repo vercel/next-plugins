@@ -72,7 +72,9 @@ export default () => <div className="example">Hello World!</div>
 // next.config.js
 const withSass = require('@zeit/next-sass')
 module.exports = withSass({
-  cssModules: true
+  cssLoaderOptions: {
+    modules: true
+  }
 })
 ```
 
@@ -95,7 +97,8 @@ export default () => <div className={css.example}>Hello World!</div>
 
 ### With CSS modules and options
 
-You can also pass a list of options to the `css-loader` by passing an object called `cssLoaderOptions`.
+You can also pass a list of options to the `css-loader` by passing an object or a function called `cssLoaderOptions`.
+If you pass a function, it will receive an object with `dev` and `isServer` fields.
 
 For instance, [to enable locally scoped CSS modules](https://github.com/css-modules/css-modules/blob/master/docs/local-scope.md#css-modules--local-scope), you can write:
 
@@ -103,11 +106,11 @@ For instance, [to enable locally scoped CSS modules](https://github.com/css-modu
 // next.config.js
 const withSass = require('@zeit/next-sass')
 module.exports = withSass({
-  cssModules: true,
-  cssLoaderOptions: {
-    importLoaders: 1,
-    localIdentName: "[local]___[hash:base64:5]",
-  }
+  cssLoaderOptions: ({ dev }) => ({
+      modules: true,
+      importLoaders: 1,
+      localIdentName: dev ? "[local]___[hash:base64:5]" : "[hash:base64:5]"
+    })
 })
 ```
 
@@ -141,8 +144,9 @@ For a list of supported options, [refer to the webpack `css-loader` README](http
 
 ### With SASS loader options
 
-You can pass options from [node-sass](https://github.com/sass/node-sass#options)
+You can pass options from [node-sass](https://github.com/sass/node-sass#options).  
 
+If you need to use `dev` or `isServer` pass a function instead of object, which will receive `{ dev, isServer }`.
 ```js
 // next.config.js
 const withSass = require('@zeit/next-sass')

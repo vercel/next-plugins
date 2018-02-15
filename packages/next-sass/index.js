@@ -12,12 +12,9 @@ module.exports = (nextConfig = {}) => {
       }
 
       const { dev, isServer } = options
-      const {
-        cssLoaderOptions,
-        postcssLoaderOptions
-      } = nextConfig
-      
-      let { sassLoaderOptions= {} } = nextConfig
+      const { cssLoaderOptions, postcssLoaderOptions, cssModules } = nextConfig
+
+      let { sassLoaderOptions = {} } = nextConfig
       // Support the user providing their own instance of ExtractTextPlugin.
       // If extractCSSPlugin is not defined we pass the same instance of ExtractTextPlugin to all css related modules
       // So that they compile to the same file in production
@@ -34,12 +31,13 @@ module.exports = (nextConfig = {}) => {
           config = commonsChunkConfig(config, /\.(scss|sass)$/)
         }
       }
-  
+
       if (sassLoaderOptions instanceof Function) {
-        sassLoaderOptions = sassLoaderOptions({dev, isServer})
+        sassLoaderOptions = sassLoaderOptions({ dev, isServer })
       }
-      
+
       options.defaultLoaders.sass = cssLoaderConfig(config, extractCSSPlugin, {
+        cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
         dev,
@@ -52,12 +50,10 @@ module.exports = (nextConfig = {}) => {
         ]
       })
 
-      config.module.rules.push(
-        {
-          test: /\.(scss|sass)$/,
-          use: options.defaultLoaders.sass
-        }
-      )
+      config.module.rules.push({
+        test: /\.(scss|sass)$/,
+        use: options.defaultLoaders.sass
+      })
 
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)

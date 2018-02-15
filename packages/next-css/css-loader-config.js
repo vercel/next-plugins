@@ -4,6 +4,7 @@ module.exports = (
   config,
   extractPlugin,
   {
+    cssModules = false,
     cssLoaderOptions = {},
     postcssLoaderOptions = null,
     dev,
@@ -39,6 +40,7 @@ module.exports = (
   const cssLoader = {
     loader: isServer ? 'css-loader/locals' : 'css-loader',
     options: {
+      modules: cssModules,
       minimize: !dev,
       sourceMap: dev,
       importLoaders: loaders.length + (postcssLoader ? 1 : 0),
