@@ -5,17 +5,6 @@ module.exports = (
   extractPlugin,
   { cssModules = false, cssLoaderOptions = {}, dev, isServer, loaders = [] }
 ) => {
-  const cssLoader = {
-    loader: isServer ? 'css-loader/locals' : 'css-loader',
-    options: {
-      modules: cssModules,
-      minimize: !dev,
-      sourceMap: dev,
-      importLoaders: 1,
-      ...cssLoaderOptions,
-    },
-  };
-
   const postcssConfig = findUp.sync('postcss.config.js', {
     cwd: config.context
   })
@@ -32,6 +21,17 @@ module.exports = (
     }
   }
 
+  const cssLoader = {
+    loader: isServer ? 'css-loader/locals' : 'css-loader',
+    options: {
+      modules: cssModules,
+      minimize: !dev,
+      sourceMap: dev,
+      importLoaders: loaders.length + (postcssLoader ? 1 : 0),
+      ...cssLoaderOptions
+    }
+  }
+
   // When not using css modules we don't transpile on the server
   if (isServer && !cssLoader.options.modules) {
     return ['ignore-loader']
@@ -42,14 +42,10 @@ module.exports = (
     return [cssLoader, postcssLoader, ...loaders].filter(Boolean)
   }
 
-  return extractPlugin.extract({
-    use: [cssLoader, postcssLoader, ...loaders].filter(Boolean),
-    // Use style-loader in development
-    fallback: {
-      loader: 'style-loader',
-      options: {
-        sourceMap: dev
-      }
-    }
-  })
+  return [
+    dev && 'extracted-loader',
+    ...extractPlugin.extract({
+      use: [cssLoader, postcssLoader, ...loaders].filter(Boolean)
+    })
+  ].filter(Boolean)
 }

@@ -1,8 +1,20 @@
 # Next.js Plugins
 
-Community maintained Next.js plugins
+## Official Next.js plugins
+
+- [@zeit/next-css](./packages/next-css)
+- [@zeit/next-sass](./packages/next-sass)
+- [@zeit/next-less](./packages/next-less)
+- [@zeit/next-preact](./packages/next-preact)
+- [@zeit/next-typescript](./packages/next-typescript)
+
+## Community made plugins
+
+- [next-offline](https://github.com/hanford/next-offline)
 
 ## Adding a plugin
+
+> :warning: Before adding a plugin in this repository please create an issue to establish if it should be an official plugin or not.
 
 1. Create a directory under the `packages` folder
 2. Add `package.json` to the directory with these contents:
