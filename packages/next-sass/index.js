@@ -29,7 +29,7 @@ module.exports = (nextConfig = {}) => {
         })
         config.plugins.push(extractCSSPlugin)
         options.extractCSSPlugin = extractCSSPlugin
-        if (!dev && !isServer) {
+        if (!isServer) {
           config = commonsChunkConfig(config, /\.(scss|sass)$/)
         }
       }
