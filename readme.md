@@ -7,6 +7,7 @@
 - [@zeit/next-less](./packages/next-less)
 - [@zeit/next-preact](./packages/next-preact)
 - [@zeit/next-typescript](./packages/next-typescript)
+- [@zeit/next-bundle-analyzer](./packages/next-bundle-analyzer)
 
 ## Community made plugins
 
