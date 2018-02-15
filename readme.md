@@ -1,8 +1,10 @@
 # Next.js Plugins
 
-Community maintained Next.js plugins
+Official Next.js plugins
 
 ## Adding a plugin
+
+Before adding a plugin in this repository please create an issue to establish if it should be an official plugin or not.
 
 1. Create a directory under the `packages` folder
 2. Add `package.json` to the directory with these contents:
