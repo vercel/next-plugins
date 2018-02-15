@@ -1,6 +1,16 @@
 # Next.js Plugins
 
-Official Next.js plugins
+## Official Next.js plugins
+
+[@zeit/next-css](./packages/next-css)
+[@zeit/next-sass](./packages/next-sass)
+[@zeit/next-less](./packages/next-less)
+[@zeit/next-preact](./packages/next-preact)
+[@zeit/next-typescript](./packages/next-typescript)
+
+## Community made plugins
+
+[next-offline](https://github.com/hanford/next-offline)
 
 ## Adding a plugin
 
