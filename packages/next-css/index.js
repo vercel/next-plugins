@@ -13,6 +13,7 @@ module.exports = (nextConfig = {}) => {
 
       const { dev, isServer } = options
       const { cssLoaderOptions, postcssLoaderOptions, cssModules } = nextConfig
+      let { rules = {} } = nextConfig
       // Support the user providing their own instance of ExtractTextPlugin.
       // If extractCSSPlugin is not defined we pass the same instance of ExtractTextPlugin to all css related modules
       // So that they compile to the same file in production
@@ -38,10 +39,14 @@ module.exports = (nextConfig = {}) => {
         isServer
       })
 
-      config.module.rules.push({
-        test: /\.css$/,
+      if (rules instanceof Function) {
+        rules = rules({ dev, isServer })
+      }
+
+      rules = Object.assign({ test: /\.css$/ }, rules, {
         use: options.defaultLoaders.css
       })
+      config.module.rules.push(rules)
 
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)
