@@ -23,13 +23,16 @@ module.exports = (
 
   const cssLoader = {
     loader: isServer ? 'css-loader/locals' : 'css-loader',
-    options: {
-      modules: cssModules,
-      minimize: !dev,
-      sourceMap: dev,
-      importLoaders: loaders.length + (postcssLoader ? 1 : 0),
-      ...cssLoaderOptions
-    }
+    options: Object.assign(
+      {},
+      {
+        modules: cssModules,
+        minimize: !dev,
+        sourceMap: dev,
+        importLoaders: loaders.length + (postcssLoader ? 1 : 0)
+      },
+      cssLoaderOptions
+    )
   }
 
   // When not using css modules we don't transpile on the server
