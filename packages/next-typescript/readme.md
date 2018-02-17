@@ -2,6 +2,8 @@
 
 Use [Typescript](https://www.typescriptlang.org/) with [Next.js](https://github.com/zeit/next.js)
 
+> This plugin uses `ts-loader`. If you want to load your files through `awesome-typescript-loader`, e.g. for performance reasons, you can use [`next-awesome-typescript` plugin](https://github.com/saitonakamura/next-awesome-typescript)
+
 ## Installation
 
 ```
