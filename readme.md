@@ -7,10 +7,12 @@
 - [@zeit/next-less](./packages/next-less)
 - [@zeit/next-preact](./packages/next-preact)
 - [@zeit/next-typescript](./packages/next-typescript)
+- [@zeit/next-bundle-analyzer](./packages/next-bundle-analyzer)
 
 ## Community made plugins
 
 - [next-offline](https://github.com/hanford/next-offline)
+- [next-plugin-graphql](https://github.com/lfades/next-plugin-graphql)
 
 ## Adding a plugin
 
