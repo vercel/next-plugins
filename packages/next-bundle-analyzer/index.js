@@ -7,11 +7,11 @@ module.exports = (nextConfig = {}) => {
         )
       }
 
-      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
       const { analyzeServer, analyzeBrowser } = nextConfig
       const { isServer } = options
 
       if ((isServer && analyzeServer) || (!isServer && analyzeBrowser)) {
+        const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
         config.plugins.push(
           new BundleAnalyzerPlugin({
             analyzerMode: 'server',
