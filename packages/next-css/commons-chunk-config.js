@@ -3,7 +3,7 @@ module.exports = (config, test = /\.css$/) => {
   config.plugins = config.plugins.map(plugin => {
     if (
       plugin.constructor.name === 'CommonsChunkPlugin' &&
-      plugin.filenameTemplate === 'commons.js'
+      (plugin.filenameTemplate === 'commons.js' || plugin.filenameTemplate === 'main.js')
     ) {
       const defaultMinChunks = plugin.minChunks
       plugin.minChunks = (module, count) => {
