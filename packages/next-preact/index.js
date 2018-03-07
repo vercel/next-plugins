@@ -12,6 +12,8 @@ module.exports = (nextConfig = {}) => {
       }
 
       config.resolve.alias = Object.assign({}, config.resolve.alias, {
+        'react/cjs/react.production.min.js': 'preact-compat/dist/preact-compat.min.js',
+        'react-dom/cjs/react-dom.production.min.js': 'preact-compat/dist/preact-compat.min.js',
         react: 'preact-compat',
         'react-dom': 'preact-compat'
       })
