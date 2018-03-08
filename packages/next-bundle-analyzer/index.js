@@ -8,16 +8,25 @@ module.exports = (nextConfig = {}) => {
       }
 
       const { analyzeServer, analyzeBrowser } = nextConfig
+      const {
+        bundleAnalyzerConfig: { browser = {}, server = {} } = {}
+      } = nextConfig
       const { isServer } = options
 
       if ((isServer && analyzeServer) || (!isServer && analyzeBrowser)) {
         const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
         config.plugins.push(
-          new BundleAnalyzerPlugin({
-            analyzerMode: 'server',
-            analyzerPort: isServer ? 8888 : 8889,
-            openAnalyzer: true
-          })
+          new BundleAnalyzerPlugin(
+            Object.assign(
+              {},
+              {
+                analyzerMode: 'server',
+                analyzerPort: isServer ? 8888 : 8889,
+                openAnalyzer: true
+              },
+              isServer ? server : browser
+            )
+          )
         )
       }
 
