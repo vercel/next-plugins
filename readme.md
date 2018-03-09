@@ -14,6 +14,7 @@
 - [next-offline](https://github.com/hanford/next-offline)
 - [next-plugin-graphql](https://github.com/lfades/next-plugin-graphql)
 - [next-awesome-typescript](https://github.com/saitonakamura/next-awesome-typescript)
+- [next-pino](https://github.com/khaeransori/next-pino)
 
 ## Adding a plugin
 
