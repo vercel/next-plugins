@@ -12,9 +12,9 @@ module.exports = (nextConfig = {}) => {
       if (!dev) {
         config.devtool = 'source-map';
 
-        for (const options of config.plugins) {
-          if (options['constructor']['name'] === 'UglifyJsPlugin') {
-            options.options.sourceMap = true;
+        for (const plugin of config.plugins) {
+          if (plugin['constructor']['name'] === 'UglifyJsPlugin') {
+            plugin.options.sourceMap = true;
             break;
           }
         }
