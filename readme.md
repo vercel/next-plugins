@@ -8,6 +8,7 @@
 - [@zeit/next-preact](./packages/next-preact)
 - [@zeit/next-typescript](./packages/next-typescript)
 - [@zeit/next-bundle-analyzer](./packages/next-bundle-analyzer)
+- [@zeit/next-source-maps](./packages/next-source-maps)
 
 ## Community made plugins
 
