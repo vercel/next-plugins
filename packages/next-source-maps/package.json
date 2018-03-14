@@ -1,0 +1,9 @@
+{
+  "name": "@zeit/next-source-maps",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "zeit/next-plugins",
+  "dependencies": {
+  }
+}
