@@ -5,10 +5,10 @@
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
+    "find-up": "^2.1.0",
     "ts-loader": "^3.3.1"
   },
   "peerDependencies": {
-    "find-up": "^2.1.0",
     "typescript": "^2.6.2"
   }
 }
