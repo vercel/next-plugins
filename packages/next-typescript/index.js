@@ -14,6 +14,7 @@ module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
       const path = require('path')
+      const findUp = require('find-up')
       if (!options.defaultLoaders) {
         throw new Error(
           'This plugin is not compatible with Next.js versions below 5.0.0 https://err.sh/next-plugins/upgrade'
@@ -23,6 +24,19 @@ module.exports = (nextConfig = {}) => {
       const { dir, defaultLoaders, dev, isServer } = options
 
       config.resolve.extensions.push('.ts', '.tsx')
+
+      // find tsconfig.json and extract baseUrl setting
+      const tsconfigPath = findUp.sync('tsconfig.json')
+      if (tsconfigPath !== null) {
+        const tsconfig = require(tsconfigPath)
+
+        // if baseUrl is set, push it to webpacks module resolver so babel also knows about it
+        if (tsconfig && tsconfig.compilerOptions && tsconfig.compilerOptions.baseUrl) {
+          const prefix = path.dirname(tsconfigPath)
+          const baseUrl = path.resolve(`${prefix}/${tsconfig.compilerOptions.baseUrl}`)
+          config.resolve.modules.push(baseUrl)
+        }
+      }
 
       if (dev && !isServer) {
         config.module.rules.push({
