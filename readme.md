@@ -17,6 +17,7 @@
 - [next-awesome-typescript](https://github.com/saitonakamura/next-awesome-typescript)
 - [next-pino](https://github.com/khaeransori/next-pino)
 - [next-images](https://github.com/arefaslani/next-images)
+- [next-optimized-images](https://github.com/cyrilwanner/next-optimized-images)
 
 ## Adding a plugin
 
