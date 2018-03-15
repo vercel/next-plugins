@@ -30,7 +30,7 @@ module.exports = (nextConfig = {}) => {
         config.plugins.push(extractCSSPlugin)
         options.extractCSSPlugin = extractCSSPlugin
         if (!isServer) {
-          config = commonsChunkConfig(config, /\.(scss|sass)$/)
+          config = commonsChunkConfig(config, /\.styl$/)
         }
       }
 

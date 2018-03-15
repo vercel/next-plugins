@@ -99,8 +99,8 @@ For instance, [to enable locally scoped CSS modules](https://github.com/css-modu
 
 ```js
 // next.config.js
-const withSass = require('@zeit/next-sass')
-module.exports = withSass({
+const withStylus = require('@zeit/next-stylus')
+module.exports = withStylus({
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
