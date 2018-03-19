@@ -16,6 +16,7 @@
 - [next-images](https://github.com/arefaslani/next-images)
 - [next-inferno](https://github.com/queses/next-inferno)
 - [next-offline](https://github.com/hanford/next-offline)
+- [next-optimized-images](https://github.com/cyrilwanner/next-optimized-images)
 - [next-pino](https://github.com/khaeransori/next-pino)
 - [next-plugin-graphql](https://github.com/lfades/next-plugin-graphql)
 
