@@ -1,6 +1,6 @@
 {
   "name": "@zeit/next-typescript",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
