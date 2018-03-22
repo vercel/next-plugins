@@ -16,7 +16,7 @@ yarn add @zeit/next-source-maps
 
 ### Usage with environment variables
 
-Create a next.config.js (and make sure you have next-css set up)
+Create a next.config.js
 
 ```js
 // next.config.js
@@ -28,7 +28,7 @@ module.exports = withSourceMaps({
 })
 ```
 
-Then you can run a regular build command:
+Then you can run a regular build command and source maps will be outputted for the bundles
 
 ```bash
 npm run build
