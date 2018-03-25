@@ -45,12 +45,8 @@ Create a `tsconfig.json` in your project
     "sourceMap": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
     "lib": [
       "dom",
-      "es2015",
       "es2016"
     ]
   }
@@ -79,7 +75,7 @@ If your IDE or code editor don't provide satisfying TypeScript support, or you w
 ```js
 // next.config.js
 const withTypescript = require("@zeit/next-typescript")
-var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = withTypescript({
   webpack(config, options) {
