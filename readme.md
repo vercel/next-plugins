@@ -13,6 +13,7 @@
 ## Community made plugins
 
 - [next-awesome-typescript](https://github.com/saitonakamura/next-awesome-typescript)
+- [next-compose-plugins](https://github.com/cyrilwanner/next-compose-plugins)
 - [next-images](https://github.com/arefaslani/next-images)
 - [next-inferno](https://github.com/queses/next-inferno)
 - [next-offline](https://github.com/hanford/next-offline)
