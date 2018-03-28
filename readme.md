@@ -20,6 +20,7 @@
 - [next-optimized-images](https://github.com/cyrilwanner/next-optimized-images)
 - [next-pino](https://github.com/khaeransori/next-pino)
 - [next-plugin-graphql](https://github.com/lfades/next-plugin-graphql)
+- [next-testcafe-build](https://github.com/formatlos/next-testcafe-build)
 
 ## Adding a plugin
 
