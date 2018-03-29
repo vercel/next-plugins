@@ -5,6 +5,7 @@
 - [@zeit/next-css](./packages/next-css)
 - [@zeit/next-sass](./packages/next-sass)
 - [@zeit/next-less](./packages/next-less)
+- [@zeit/next-stylus](./packages/next-stylus)
 - [@zeit/next-preact](./packages/next-preact)
 - [@zeit/next-typescript](./packages/next-typescript)
 - [@zeit/next-bundle-analyzer](./packages/next-bundle-analyzer)

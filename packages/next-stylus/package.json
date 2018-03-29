@@ -1,0 +1,18 @@
+{
+  "name": "@zeit/next-stylus",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "zeit/next-plugins",
+  "dependencies": {
+    "@zeit/next-css": "^0.1.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "stylus-loader": "^3.0.2"
+  },
+  "devDependencies": {
+    "stylus": "^0.54.5"
+  },
+  "peerDependencies": {
+    "stylus": "^0.54.5"
+  }
+}
