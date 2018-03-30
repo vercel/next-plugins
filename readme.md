@@ -22,6 +22,7 @@
 - [next-pino](https://github.com/khaeransori/next-pino)
 - [next-plugin-graphql](https://github.com/lfades/next-plugin-graphql)
 - [next-testcafe-build](https://github.com/formatlos/next-testcafe-build)
+- [next-runtime-dotenv](https://github.com/tusbar/next-runtime-dotenv)
 
 ## Adding a plugin
 
