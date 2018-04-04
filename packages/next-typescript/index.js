@@ -26,14 +26,17 @@ module.exports = (nextConfig = {}) => {
 
       if (dev && !isServer) {
         config.module.rules.push({
-          test: /\.(ts|tsx)(\?[^?]*)?$/,
+          test: /\.(ts|tsx)$/,
           loader: 'hot-self-accept-loader',
-          include: [path.join(dir, 'pages')]
+          include: [path.join(dir, 'pages')],
+          options: {
+            extensions: /\.(ts|tsx)$/
+          }
         })
       }
 
       config.module.rules.push({
-        test: /\.+(ts|tsx)$/,
+        test: /\.(ts|tsx)$/,
         include: [dir],
         exclude: /node_modules/,
         use: [

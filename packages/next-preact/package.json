@@ -1,6 +1,6 @@
 {
   "name": "@zeit/next-preact",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
@@ -9,6 +9,6 @@
     "preact-compat": "^3.17.0"
   },
   "dependencies": {
-    "module-alias": "^2.0.3"
+    "module-alias": "2.0.6"
   }
 }
