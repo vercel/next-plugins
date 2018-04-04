@@ -175,18 +175,8 @@ export default class MyDocument extends Document {
 
 ### PostCSS plugins
 
+
 For PostCSS support install [`PostStylus`](https://github.com/seaneking/poststylus) in your project.
-
-Create a `postcss.config.js`
-
-```js
-module.exports = {
-  plugins: {
-    // Illustrational
-    'postcss-css-variables': {}
-  }
-}
-```
 
 Create a `next.config.js` in your project.
 
@@ -194,30 +184,37 @@ Pass the plugin and the options to Stylus via `stylusLoaderOptions`.
 
 ```js
 // next.config.js
+const nib = require('nib')
+const rupture = require('rupture')
 const withStylus = require('@zeit/next-stylus')
 const poststylus = require('poststylus')
-const postCssPlugins = require('./postcss.config').plugins
+const autoprefixer = require('autoprefixer')
+
 module.exports = withStylus({
   stylusLoaderOptions: {
-    use: [poststylus(Object.entries(postCssPlugins).map(([key, val]) => require(key(val)))]
+    use: [
+      nib(),
+      rupture(),
+      poststylus([
+        autoprefixer({ flexbox: 'no-2009' }),
+        require('postcss-css-variables'),
+      ]),
   }
 })
 ```
 
-Create a CSS file `styles.css` the CSS here is using the css-variables postcss plugin.
+Create a Stylus file `styles.styl` the Stylus here is using the css-variables postcss plugin.
 
 ```css
-:root {
-  --some-color: red;
-}
+:root 
+  --some-color red
 
-.example {
+
+.example 
   /* red */
-  color: var(--some-color);
-}
-```
+  color var(--some-color)
 
-When `postcss.config.js` is not found `postcss-loader` will not be added and will not cause overhead.
+```
 
 ### Configuring Next.js
 
