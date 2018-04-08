@@ -10,6 +10,7 @@
 - [@zeit/next-typescript](./packages/next-typescript)
 - [@zeit/next-bundle-analyzer](./packages/next-bundle-analyzer)
 - [@zeit/next-source-maps](./packages/next-source-maps)
+- [@zeit/next-mdxc](./packages/next-mdxc)
 
 ## Community made plugins
 
