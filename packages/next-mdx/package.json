@@ -1,0 +1,13 @@
+{
+  "name": "@zeit/next-mdx",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "zeit/next-plugins",
+  "dependencies": {
+    "@mdx-js/loader": "^0.7.0"
+  },
+  "peerDependencies": {
+    "@mdx-js/mdx": ">=0.7.1"
+  }
+}

@@ -2,6 +2,7 @@
 
 ## Official Next.js plugins
 
+- [@zeit/next-mdx](./packages/next-mdx)
 - [@zeit/next-css](./packages/next-css)
 - [@zeit/next-sass](./packages/next-sass)
 - [@zeit/next-less](./packages/next-less)
