@@ -158,6 +158,17 @@ export default class MyDocument extends Document {
 }
 ```
 
+### Without CSS pre-processing
+
+Sometimes you don't want any css pre-processing at all, such as perhaps global styling or vendored assets. You can skip any pre-processing, css modules, etc. at all, by appending `?raw` to any css import. These assets will still be extracted into `_next/static/styles.css`.
+
+CSS imported from npm modules in `/node_modules/` automatically skip any pre-processing.
+
+Create a page file `pages/index.js`
+
+```js
+import "./global.css?raw"
+```
 
 ### PostCSS plugins
 

@@ -3,14 +3,14 @@ const findUp = require('find-up')
 module.exports = (
   config,
   extractPlugin,
-  { cssModules = false, cssLoaderOptions = {}, dev, isServer, loaders = [] }
+  { cssModules = false, cssLoaderOptions = {}, dev, isServer, loaders = [], usePostcss = false }
 ) => {
   const postcssConfig = findUp.sync('postcss.config.js', {
     cwd: config.context
   })
   let postcssLoader
 
-  if (postcssConfig) {
+  if (usePostcss && postcssConfig) {
     postcssLoader = {
       loader: 'postcss-loader',
       options: {
@@ -29,7 +29,7 @@ module.exports = (
         modules: cssModules,
         minimize: !dev,
         sourceMap: dev,
-        importLoaders: loaders.length + (postcssLoader ? 1 : 0)
+        importLoaders: usePostcss && (loaders.length + (postcssLoader ? 1 : 0))
       },
       cssLoaderOptions
     )

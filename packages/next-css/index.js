@@ -30,16 +30,36 @@ module.exports = (nextConfig = {}) => {
         }
       }
 
-      options.defaultLoaders.css = cssLoaderConfig(config, extractCSSPlugin, {
-        cssModules,
+      options.defaultLoaders.rawCss = cssLoaderConfig(config, extractCSSPlugin, {
+        cssModules: false,
         cssLoaderOptions,
         dev,
         isServer
       })
 
+      options.defaultLoaders.css = cssLoaderConfig(config, extractCSSPlugin, {
+        cssModules,
+        cssLoaderOptions,
+        dev,
+        isServer,
+        usePostcss: true
+      })
+
       config.module.rules.push({
         test: /\.css$/,
-        use: options.defaultLoaders.css
+        oneOf: [
+          {
+            include: /node_modules/,
+            use: options.defaultLoaders.rawCss
+          },
+          {
+            resourceQuery: /raw/,
+            use: options.defaultLoaders.rawCss
+          },
+          {
+            use: options.defaultLoaders.css
+          }
+        ]
       })
 
       if (typeof nextConfig.webpack === 'function') {
