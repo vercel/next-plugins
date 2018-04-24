@@ -24,6 +24,7 @@
 - [next-plugin-graphql](https://github.com/lfades/next-plugin-graphql)
 - [next-testcafe-build](https://github.com/formatlos/next-testcafe-build)
 - [next-runtime-dotenv](https://github.com/tusbar/next-runtime-dotenv)
+- [next-progressbar](https://github.com/lucleray/next-progressbar)
 
 ## Adding a plugin
 
