@@ -41,7 +41,7 @@ export default class MyDocument extends Document {
 
 ### Without CSS modules
 
-Create a `next.config.js` in your project
+Create a `next.config.js` in the root of your project (next to pages/ and package.json)
 
 ```js
 // next.config.js
