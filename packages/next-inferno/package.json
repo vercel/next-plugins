@@ -5,9 +5,9 @@
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "peerDependencies": {
-    "inferno": "^1.4.0",
-    "inferno-compat": "^1.4.0",
-    "inferno-server": "^1.4.0"
+    "inferno": "^5.0.4",
+    "inferno-compat": "^5.0.4",
+    "inferno-server": "^5.0.4"
   },
   "dependencies": {
     "module-alias": "2.0.6"

@@ -5,17 +5,13 @@ Use [inferno](https://infernojs.org/) with [Next.js](https://github.com/zeit/nex
 ## Installation
 
 ```
-npm install --save @zeit/next-inferno inferno inferno-compat inferno-server 
-# If you need all of inferno's features
-npm install --save inferno-clone-vnode inferno-create-class inferno-create-element
+npm install --save @zeit/next-inferno inferno inferno-compat inferno-server inferno-clone-vnode inferno-create-class inferno-create-element
 ```
 
 or
 
 ```
-yarn add @zeit/next-inferno inferno inferno-compat inferno-serve
-# If you need all of inferno's features
-yarn add inferno-clone-vnode inferno-create-class inferno-create-element
+yarn add @zeit/next-inferno inferno inferno-compat inferno-server inferno-clone-vnode inferno-create-class inferno-create-element
 ```
 
 ## Usage
