@@ -45,3 +45,23 @@
 3. Add a `index.js` file with the plugin code
 4. Add a `readme.md` explaining what the plugin does, how to install, and how to configure it
 5. Submit a pull request
+
+### How to compose multiple plugins
+Probably you are going to use multiple plugins for your project such as Typescript with CSS. In this example using official next-typescript with next-css. 
+ :warning: some official and community plugins may not compose such as this example. some plugins have different input arguments and structure. so If It is not working like this example, please check each repos source code.
+
+```
+// At next.config.js file
+const withTypescript = require("@zeit/next-typescript");
+const withCSS = require('@zeit/next-css')
+
+module.exports = withTypescript(withCSS({
+  cssModules: true,
+  cssLoaderOptions: {
+    importLoaders: 1,
+  },
+  typescriptLoaderOptions: {
+    transpileOnly: false
+  }
+}));
+```
