@@ -3,7 +3,7 @@ module.exports = (config, test = /\.css$/) => {
   config.plugins = config.plugins.map(plugin => {
     if (
       plugin.constructor.name === 'CommonsChunkPlugin' &&
-      (plugin.filenameTemplate === 'commons.js' || plugin.filenameTemplate === 'main.js')
+      typeof plugin.minChunks !== 'undefined'
     ) {
       const defaultMinChunks = plugin.minChunks
       plugin.minChunks = (module, count) => {
@@ -11,8 +11,10 @@ module.exports = (config, test = /\.css$/) => {
         if (module.resource && module.resource.match(test)) {
           return true
         }
-        // Use default minChunks function for non-style modules
-        return defaultMinChunks(module, count)
+        // Use default minChunks for non-style modules
+        return typeof defaultMinChunks === 'function'
+          ? defaultMinChunks(module, count)
+          : count >= defaultMinChunks
       }
     }
     return plugin
