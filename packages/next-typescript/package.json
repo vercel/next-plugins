@@ -5,9 +5,10 @@
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "ts-loader": "3.3.1"
+    "@babel/preset-typescript": "^7.0.0-beta.46"
   },
   "peerDependencies": {
-    "typescript": "^2.6.2"
+    "typescript": "^2.6.2",
+    "next": ">= 6"
   }
 }
