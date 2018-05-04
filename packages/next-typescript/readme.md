@@ -65,6 +65,19 @@ module.exports = withTypescript({
 })
 ```
 
+### Note when using a custom `.babelrc`
+
+If you're using a custom `.babelrc` file, you need to add `@babel/preset-typescript` to it
+
+```json
+{
+  "presets": [
+    "@babel/preset-typescript",
+    "next/babel"
+  ]
+}
+```
+
 ### Type checking
 
 If your IDE or code editor don't provide satisfying TypeScript support, or you want to see error list in console output, you can use [`fork-ts-checker-webpack-plugin`](https://github.com/Realytics/fork-ts-checker-webpack-plugin). It will not increase compile time because it forks type checking in a separate process
