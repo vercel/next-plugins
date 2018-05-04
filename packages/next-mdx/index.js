@@ -8,7 +8,7 @@ module.exports = (pluginOptions = {}) => (nextConfig = {}) => {
       }
 
       config.module.rules.push({
-        test: /\.mdx$/,
+        test: /\.(md|mdx)$/,
         use: [
           options.defaultLoaders.babel,
           {
