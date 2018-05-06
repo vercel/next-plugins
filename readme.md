@@ -8,6 +8,7 @@
 - [@zeit/next-less](./packages/next-less)
 - [@zeit/next-stylus](./packages/next-stylus)
 - [@zeit/next-preact](./packages/next-preact)
+- [@zeit/next-inferno](./packages/next-inferno)
 - [@zeit/next-typescript](./packages/next-typescript)
 - [@zeit/next-bundle-analyzer](./packages/next-bundle-analyzer)
 - [@zeit/next-source-maps](./packages/next-source-maps)

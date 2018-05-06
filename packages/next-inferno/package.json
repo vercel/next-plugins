@@ -1,0 +1,15 @@
+{
+  "name": "@zeit/next-inferno",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "zeit/next-plugins",
+  "peerDependencies": {
+    "inferno": "^5.0.4",
+    "inferno-compat": "^5.0.4",
+    "inferno-server": "^5.0.4"
+  },
+  "dependencies": {
+    "module-alias": "2.0.6"
+  }
+}
