@@ -61,11 +61,21 @@ const withTypescript = require('@zeit/next-typescript')
 module.exports = withTypescript({
   webpack(config, options) {
     return config
-  },
-  typescriptLoaderOptions: {
-    transpileOnly: false
   }
 })
+```
+
+### Note when using a custom `.babelrc`
+
+If you're using a custom `.babelrc` file, you need to add `@babel/preset-typescript` to it
+
+```json
+{
+  "presets": [
+    "@babel/preset-typescript",
+    "next/babel"
+  ]
+}
 ```
 
 ### Type checking
