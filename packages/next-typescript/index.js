@@ -39,19 +39,7 @@ module.exports = (nextConfig = {}) => {
         test: /\.(ts|tsx)$/,
         include: [dir],
         exclude: /node_modules/,
-        use: [
-          defaultLoaders.babel,
-          {
-            loader: 'ts-loader',
-            options: Object.assign(
-              {},
-              {
-                transpileOnly: true
-              },
-              nextConfig.typescriptLoaderOptions
-            )
-          }
-        ]
+        use: defaultLoaders.babel
       })
 
       if (typeof nextConfig.webpack === 'function') {
