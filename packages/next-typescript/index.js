@@ -11,6 +11,12 @@ module.exports = (nextConfig = {}) => {
     nextConfig.pageExtensions.unshift('tsx')
   }
 
+  if (nextConfig.typescriptLoaderOptions) {
+    throw new Error(
+      '`typescriptLoaderOptions` in next.config.js is no longer supported. https://err.sh/next-plugins/typescript-loader-options'
+    )
+  }
+
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
       const path = require('path')
