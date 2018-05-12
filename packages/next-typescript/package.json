@@ -6,8 +6,5 @@
   "repository": "zeit/next-plugins",
   "dependencies": {
     "@babel/preset-typescript": "^7.0.0-beta.46"
-  },
-  "peerDependencies": {
-    "typescript": "^2.6.2"
   }
 }
