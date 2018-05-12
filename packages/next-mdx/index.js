@@ -1,4 +1,12 @@
 module.exports = (pluginOptions = {}) => (nextConfig = {}) => {
+  if (!nextConfig.pageExtensions) {
+    nextConfig.pageExtensions = ['jsx', 'js']
+  }
+
+  if (nextConfig.pageExtensions.indexOf('mdx') === -1) {
+    nextConfig.pageExtensions.unshift('mdx')
+  }
+
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
       if (!options.defaultLoaders) {
