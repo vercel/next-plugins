@@ -2,18 +2,18 @@
 
 Use [Typescript](https://www.typescriptlang.org/) with [Next.js](https://github.com/zeit/next.js)
 
-> This plugin uses `ts-loader`. If you want to load your files through `awesome-typescript-loader`, e.g. for performance reasons, you can use [`next-awesome-typescript` plugin](https://github.com/saitonakamura/next-awesome-typescript)
+This plugin implements [@babel/preset-typescript](https://github.com/babel/babel/tree/master/packages/babel-preset-typescript) with Next.js.
 
 ## Installation
 
 ```
-npm install --save @zeit/next-typescript typescript
+npm install --save @zeit/next-typescript
 ```
 
 or
 
 ```
-yarn add @zeit/next-typescript typescript
+yarn add @zeit/next-typescript
 ```
 
 ## Usage
@@ -24,6 +24,17 @@ Create a `next.config.js` in your project
 // next.config.js
 const withTypescript = require('@zeit/next-typescript')
 module.exports = withTypescript()
+```
+
+Create a `.babelrc` in your project
+
+```js
+{
+  "presets": [
+    "next/babel",
+    "@zeit/next-typescript/babel"
+  ]
+}
 ```
 
 Create a `tsconfig.json` in your project
@@ -61,9 +72,6 @@ const withTypescript = require('@zeit/next-typescript')
 module.exports = withTypescript({
   webpack(config, options) {
     return config
-  },
-  typescriptLoaderOptions: {
-    transpileOnly: false
   }
 })
 ```
