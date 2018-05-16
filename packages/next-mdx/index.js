@@ -1,4 +1,6 @@
 module.exports = (pluginOptions = {}) => (nextConfig = {}) => {
+  const extension = pluginOptions.extension || /\.mdx$/
+
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
       if (!options.defaultLoaders) {
@@ -8,7 +10,7 @@ module.exports = (pluginOptions = {}) => (nextConfig = {}) => {
       }
 
       config.module.rules.push({
-        test: /\.mdx$/,
+        test: extension,
         use: [
           options.defaultLoaders.babel,
           {
