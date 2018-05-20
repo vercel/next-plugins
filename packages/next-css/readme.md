@@ -195,6 +195,35 @@ Create a CSS file `style.css` the CSS here is using the css-variables postcss pl
 
 When `postcss.config.js` is not found `postcss-loader` will not be added and will not cause overhead.
 
+### Leverage long-term browser caching of style.css in production
+
+For production builds, the hashed filename is available in `this.props.buildManifest.css`, so the `_document.js` could be changed to:
+
+```js
+// ./pages/_document.js
+import Document, { Head, Main, NextScript } from 'next/document'
+
+export default class MyDocument extends Document {
+  render() {
+    const { buildManifest } = this.props;
+    return (
+      <html>
+        <Head>
+          {buildManifest.css.map(assetPath => (
+            // this will work in both development and production
+            <link key={assetPath} rel="stylesheet" href={`/_next/${assetPath}`} />
+          ))}
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>
+    )
+  }
+}
+```
+
 ### Configuring Next.js
 
 Optionally you can add your custom Next.js configuration as parameter
