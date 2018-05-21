@@ -15,6 +15,7 @@ module.exports = (nextConfig = {}) => {
       const {
         cssModules,
         cssLoaderOptions,
+        extractedFilename = 'static/style.css',
         sassLoaderOptions = {}
       } = nextConfig
       // Support the user providing their own instance of ExtractTextPlugin.
@@ -25,7 +26,7 @@ module.exports = (nextConfig = {}) => {
 
       if (!extractCSSPlugin) {
         extractCSSPlugin = new ExtractTextPlugin({
-          filename: 'static/style.css'
+          filename: extractedFilename
         })
         config.plugins.push(extractCSSPlugin)
         options.extractCSSPlugin = extractCSSPlugin
