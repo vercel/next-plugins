@@ -197,7 +197,7 @@ When `postcss.config.js` is not found `postcss-loader` will not be added and wil
 
 ### Leverage long-term browser caching of style.css in production
 
-For production builds, the hashed filename is available in `this.props.buildManifest.css`, so the `_document.js` could be changed to:
+The `Document` component has access to assets manifest via its `this.props.buildManifest`. In order to leverage long-term caching (filename with content hash) for the compiled stylesheet, you can include it in `_document.js`.
 
 ```js
 // ./pages/_document.js
@@ -210,7 +210,6 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           {buildManifest.css.map(assetPath => (
-            // this will work in both development and production
             <link key={assetPath} rel="stylesheet" href={`/_next/${assetPath}`} />
           ))}
         </Head>
