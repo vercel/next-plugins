@@ -65,6 +65,51 @@ import "../style.css"
 export default () => <div className="example">Hello World!</div>
 ```
 
+### Separate CSS Files
+
+Set `shouldMergeChunks` option to `false` in `next/config.js`.
+
+```js
+// next.config.js
+const withCSS = require('@zeit/next-css')
+module.exports = withCSS({ shouldMergeChunks: false })
+```
+
+The plugin will compile the stylesheets into:
+
+* **development**
+  * `.next/static/bundles/pages/[name].css`: All stylesheets is extracted for each pages because common chunks is disabled
+* **production**
+  * `.next/static/_app-[contenthash].css`: All stylesheets loaded in `_app.js` is extracted to this file
+  * `.next/static/main-[contenthash].css`: Each pages common stylesheets is extracted to this file, excluding one which is imported dynamically
+  * `.next/static/bundles/pages/[name]-[contenthash].css`: The rest stylesheets will go to this file
+
+You have to include the stylesheets into the page using a custom [`_document.js`](https://github.com/zeit/next.js#custom-document).
+
+```js
+// ./pages/_document.js
+import Document, { Head, Main, NextScript } from 'next/document'
+
+export default class MyDocument extends Document {
+  render() {
+    const { css } = this.props.buildManifest;
+    return (
+      <html>
+        <Head>
+          {css.map(href => (
+            <link key={href} rel="stylesheet" href={`/_next/${href}`} />
+          ))}
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>
+    )
+  }
+}
+```
+
 ### With CSS modules
 
 ```js
@@ -157,7 +202,6 @@ export default class MyDocument extends Document {
   }
 }
 ```
-
 
 ### PostCSS plugins
 

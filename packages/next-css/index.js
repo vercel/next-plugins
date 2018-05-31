@@ -11,8 +11,12 @@ module.exports = (nextConfig = {}) => {
         )
       }
 
-      const { dev, isServer } = options
-      const { cssModules, cssLoaderOptions } = nextConfig
+      const { dev, isServer, totalPages } = options
+      const {
+        cssModules,
+        cssLoaderOptions,
+        shouldMergeChunks = true
+      } = nextConfig
       // Support the user providing their own instance of ExtractTextPlugin.
       // If extractCSSPlugin is not defined we pass the same instance of ExtractTextPlugin to all css related modules
       // So that they compile to the same file in production
@@ -21,12 +25,22 @@ module.exports = (nextConfig = {}) => {
 
       if (!extractCSSPlugin) {
         extractCSSPlugin = new ExtractTextPlugin({
-          filename: 'static/style.css'
+          allChunks: !shouldMergeChunks,
+          filename: shouldMergeChunks
+            ? 'static/style.css'
+            : getPath =>
+                getPath(
+                  `static/${dev ? '[name]' : '[name]-[contenthash]'}.css`
+                ).replace('.js', '')
         })
         config.plugins.push(extractCSSPlugin)
         options.extractCSSPlugin = extractCSSPlugin
         if (!isServer) {
-          config = commonsChunkConfig(config)
+          config = commonsChunkConfig(config, /\.css$/, {
+            dev,
+            shouldMergeChunks,
+            totalPages
+          })
         }
       }
 
