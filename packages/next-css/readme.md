@@ -77,35 +77,47 @@ module.exports = withCSS({ shouldMergeChunks: false })
 
 The plugin will compile the stylesheets into:
 
-* **development**
-  * `.next/static/bundles/pages/[name].css`: All stylesheets is extracted for each pages because common chunks is disabled
-* **production**
-  * `.next/static/_app-[contenthash].css`: All stylesheets loaded in `_app.js` is extracted to this file
-  * `.next/static/main-[contenthash].css`: Each pages common stylesheets is extracted to this file, excluding one which is imported dynamically
-  * `.next/static/bundles/pages/[name]-[contenthash].css`: The rest stylesheets will go to this file
+  * `.next/static/main.css`: contains common stylesheets
+  * `.next/static/bundles/pages/_app.css`: contains `_app.js` stylesheets
+  * `.next/static/bundles/pages/[name].css`: contains `pages/*.js` stylesheets
 
-You have to include the stylesheets into the page using a custom [`_document.js`](https://github.com/zeit/next.js#custom-document).
+You have to include the stylesheets into the page using a custom [`_app.js`](https://github.com/zeit/next.js#custom-app).
 
 ```js
-// ./pages/_document.js
-import Document, { Head, Main, NextScript } from 'next/document'
+import App, {Container} from 'next/app'
+import React from 'react'
+import Head from 'next/head'
 
-export default class MyDocument extends Document {
-  render() {
-    const { css } = this.props.buildManifest;
-    return (
-      <html>
-        <Head>
-          {css.map(href => (
-            <link key={href} rel="stylesheet" href={`/_next/${href}`} />
-          ))}
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    )
+function getCSSFilename(pathname) {
+  return `${pathname === '/' ? '/index' : pathname}.css`;
+}
+
+export default class MyApp extends App {
+  static async getInitialProps ({ Component, router, ctx }) {
+    let pageProps = {}
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
+
+    return {pageProps}
+  }
+
+  render () {
+    const {Component, pageProps} = this.props
+    return <React.Fragment>
+      <Head>
+        <link rel='stylesheet' href='/_next/static/main.css' />
+        <link rel='stylesheet' href='/_next/static/bundles/pages/_app.css' />
+        <link
+          rel='stylesheet'
+          href={`/_next/static/bundles/pages${getCSSFilename(router.pathname)}`}
+        />
+      </Head>
+      <Container>
+        <Component {...pageProps} />
+      </Container>
+    </React.Fragment>
   }
 }
 ```

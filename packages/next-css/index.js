@@ -28,10 +28,7 @@ module.exports = (nextConfig = {}) => {
           allChunks: !shouldMergeChunks,
           filename: shouldMergeChunks
             ? 'static/style.css'
-            : getPath =>
-                getPath(
-                  `static/${dev ? '[name]' : '[name]-[contenthash]'}.css`
-                ).replace('.js', '')
+            : getPath => getPath(`static/[name].css`).replace('.js', '')
         })
         config.plugins.push(extractCSSPlugin)
         options.extractCSSPlugin = extractCSSPlugin
