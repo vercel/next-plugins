@@ -1,3 +1,4 @@
+const { join } = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const cssLoaderConfig = require('./css-loader-config')
 const commonsChunkConfig = require('./commons-chunk-config')
@@ -11,7 +12,7 @@ module.exports = (nextConfig = {}) => {
         )
       }
 
-      const { dev, isServer, totalPages } = options
+      const { buildId, dev, isServer, totalPages } = options
       const {
         cssModules,
         cssLoaderOptions,
@@ -28,7 +29,10 @@ module.exports = (nextConfig = {}) => {
           allChunks: !shouldMergeChunks,
           filename: shouldMergeChunks
             ? 'static/style.css'
-            : getPath => getPath(`static/[name].css`).replace('.js', '')
+            : getPath =>
+                getPath(
+                  join('static', dev ? '' : `commons/${buildId}`, '[name].css')
+                ).replace('.js', '')
         })
         config.plugins.push(extractCSSPlugin)
         options.extractCSSPlugin = extractCSSPlugin

@@ -77,9 +77,9 @@ module.exports = withCSS({ shouldMergeChunks: false })
 
 The plugin will compile the stylesheets into:
 
-  * `.next/static/main.css`: contains common stylesheets
-  * `.next/static/bundles/pages/_app.css`: contains `_app.js` stylesheets
-  * `.next/static/bundles/pages/[name].css`: contains `pages/*.js` stylesheets
+  * `.next/static/commons/{buildId}/main.css`: contains common stylesheets
+  * `.next/static/commons/{buildId}/bundles/pages/_app.css`: contains `_app.js` stylesheets
+  * `.next/static/commons/{buildId}/bundles/pages/[name].css`: contains `pages/*.js` stylesheets
 
 You have to include the stylesheets into the page using a custom [`_app.js`](https://github.com/zeit/next.js#custom-app).
 
@@ -87,6 +87,7 @@ You have to include the stylesheets into the page using a custom [`_app.js`](htt
 import App, {Container} from 'next/app'
 import React from 'react'
 import Head from 'next/head'
+import {join} from 'path'
 
 function getCSSFilename(pathname) {
   return `${pathname === '/' ? '/index' : pathname}.css`;
@@ -104,14 +105,19 @@ export default class MyApp extends App {
   }
 
   render () {
-    const {Component, pageProps} = this.props
+    const {Component, buildId = '', pageProps, router} = this.props
     return <React.Fragment>
       <Head>
-        <link rel='stylesheet' href='/_next/static/main.css' />
-        <link rel='stylesheet' href='/_next/static/bundles/pages/_app.css' />
+        <link rel='stylesheet' href={join('/_next/static/commons', buildId, 'main.css')} />
+        <link rel='stylesheet' href={join('/_next/static/commons', buildId, 'bundles/pages/_app.css')} />
         <link
           rel='stylesheet'
-          href={`/_next/static/bundles/pages${getCSSFilename(router.pathname)}`}
+          href={join(
+            '/_next/static/commons',
+            buildId,
+            'bundles/pages',
+            getCSSFilename(router.pathname)
+          )}
         />
       </Head>
       <Container>
