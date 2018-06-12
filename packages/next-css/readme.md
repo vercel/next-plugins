@@ -105,11 +105,12 @@ export default class MyApp extends App {
   }
 
   render () {
-    const {Component, buildId = '', pageProps, router} = this.props
+    const {Component, buildId, pageProps, router} = this.props
+    const dev = buildId === '-';
     return <React.Fragment>
       <Head>
-        <link rel='stylesheet' href={join('/_next/static/commons', buildId, 'main.css')} />
-        <link rel='stylesheet' href={join('/_next/static/commons', buildId, 'bundles/pages/_app.css')} />
+        {!dev && <link rel='stylesheet' href={join('/_next/static/commons', buildId, 'main.css')} />}
+        {!dev && <link rel='stylesheet' href={join('/_next/static/commons', buildId, 'bundles/pages/_app.css')} />}
         <link
           rel='stylesheet'
           href={join(

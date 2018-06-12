@@ -12,7 +12,7 @@ module.exports = (nextConfig = {}) => {
         )
       }
 
-      const { buildId, dev, isServer, totalPages } = options
+      const { buildId = '-', dev, isServer, totalPages } = options
       const {
         cssModules,
         cssLoaderOptions,
@@ -30,9 +30,10 @@ module.exports = (nextConfig = {}) => {
           filename: shouldMergeChunks
             ? 'static/style.css'
             : getPath =>
-                getPath(
-                  join('static', dev ? '' : `commons/${buildId}`, '[name].css')
-                ).replace('.js', '')
+                getPath(join('static/commons', buildId, '[name].css')).replace(
+                  '.js',
+                  ''
+                )
         })
         config.plugins.push(extractCSSPlugin)
         options.extractCSSPlugin = extractCSSPlugin
