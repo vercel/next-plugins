@@ -9,6 +9,7 @@
     "preact-compat": "^3.17.0"
   },
   "dependencies": {
-    "module-alias": "2.0.6"
+    "module-alias": "2.0.6",
+    "webpack": "^3.10.0"
   }
 }
