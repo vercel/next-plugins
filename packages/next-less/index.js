@@ -15,6 +15,7 @@ module.exports = (nextConfig = {}) => {
       const {
         cssModules,
         cssLoaderOptions,
+        postcssLoaderOptions,
         lessLoaderOptions = {}
       } = nextConfig
       // Support the user providing their own instance of ExtractTextPlugin.
@@ -37,6 +38,7 @@ module.exports = (nextConfig = {}) => {
       options.defaultLoaders.less = cssLoaderConfig(config, extractCSSPlugin, {
         cssModules,
         cssLoaderOptions,
+        postcssLoaderOptions,
         dev,
         isServer,
         loaders: [
