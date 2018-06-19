@@ -16,7 +16,7 @@ yarn add @zeit/next-sass node-sass
 
 ## Usage
 
-The stylesheet is compiled to `.next/static/style.css`. You have to include it into the page using a custom [`_document.js`](https://github.com/zeit/next.js#custom-document). The file will be served from `/_next/static/style.css`
+The stylesheet is by default compiled to `.next/static/style.css`. You have to include it into the page using a custom [`_document.js`](https://github.com/zeit/next.js#custom-document). The file will be served from `/_next/static/style.css`
 
 ```js
 // ./pages/_document.js
@@ -94,6 +94,16 @@ export default () => <div className={css.example}>Hello World!</div>
 ```
 
 ### With CSS modules and options
+The name of the resulting css file can be altered by setting `extractedFilename` on the options object:
+
+```js
+// next.config.js
+const withSass = require('@zeit/next-sass');
+module.exports = withSass({
+  extractedFilename = 'static/css-style.css'
+});
+```
+Filenames are placed relative to the `.next` folder.
 
 You can also pass a list of options to the `css-loader` by passing an object called `cssLoaderOptions`.
 
