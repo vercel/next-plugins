@@ -20,7 +20,6 @@ Create a next.config.js (and make sure you have next-css set up)
 
 ```js
 const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = withBundleAnalyzer({
   analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
