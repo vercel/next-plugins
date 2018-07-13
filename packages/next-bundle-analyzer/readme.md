@@ -49,7 +49,7 @@ BUNDLE_ANALYZE=browser yarn build
 # Build and analyze both server and browser
 BUNDLE_ANALYZE=both yarn build
 
-# Build and and analyze neither server nor browser
+# Build and analyze neither server nor browser
 yarn build
 ```
 
