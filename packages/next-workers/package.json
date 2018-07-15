@@ -1,0 +1,10 @@
+{
+  "name": "@zeit/next-workers",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "zeit/next-plugins",
+  "peerDependencies": {
+    "worker-loader": "^2.0.0"
+  }
+}
