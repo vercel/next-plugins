@@ -10,7 +10,8 @@
     "extracted-loader": "1.0.4",
     "find-up": "2.1.0",
     "ignore-loader": "0.1.2",
-    "postcss-loader": "2.0.10"
+    "postcss-loader": "2.0.10",
+    "typings-for-css-modules-loader": "^1.7.0"
   },
   "devDependencies": {
     "webpack": "^3.10.0"

@@ -28,8 +28,18 @@ module.exports = (
     }
   }
 
+  const tsconfig = findUp.sync('tsconfig.json', {
+    cwd: config.context
+  })
+  let loaderName;
+  if (tsconfig) {
+    loaderName = isServer ? 'css-loader/locals' : 'typings-for-css-modules-loader';
+  } else {
+    loaderName = isServer ? 'css-loader/locals' : 'css-loader';
+  }
+
   const cssLoader = {
-    loader: isServer ? 'css-loader/locals' : 'css-loader',
+    loader: loaderName,
     options: Object.assign(
       {},
       {
