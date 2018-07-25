@@ -18,6 +18,40 @@ module.exports = (nextConfig = {}) => {
         'react-dom': 'preact-compat'
       })
 
+      config.plugins.map(pluginInstance => {
+        if (!pluginInstance.chunkNames) {
+          return pluginInstance
+        }
+        if (pluginInstance.chunkNames.indexOf('main.js') !== -1) {
+          if (!pluginInstance.minChunks) {
+            return pluginInstance
+          }
+          const { sep } = require('path')
+          const originalMinChunks = pluginInstance.minChunks
+          pluginInstance.minChunks = (module, count) => {
+            if (
+              module.resource &&
+              module.resource.includes(`${sep}preact${sep}`) &&
+              count >= 0
+            ) {
+              return true
+            }
+
+            if (
+              module.resource &&
+              module.resource.includes(`${sep}preact-compat${sep}`) &&
+              count >= 0
+            ) {
+              return true
+            }
+
+            return originalMinChunks(module, count)
+          }
+          return pluginInstance
+        }
+        return pluginInstance
+      })
+
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)
       }
