@@ -2,7 +2,7 @@ const findUp = require('find-up')
 
 module.exports = (
   config,
-  extractPlugin,
+  MiniCssExtractPlugin,
   { cssModules = false, cssLoaderOptions = {}, dev, isServer, loaders = [] }
 ) => {
   const postcssConfig = findUp.sync('postcss.config.js', {
@@ -47,8 +47,9 @@ module.exports = (
 
   return [
     dev && 'extracted-loader',
-    ...extractPlugin.extract({
-      use: [cssLoader, postcssLoader, ...loaders].filter(Boolean)
-    })
+    MiniCssExtractPlugin.loader,
+    cssLoader,
+    postcssLoader,
+    ...loaders
   ].filter(Boolean)
 }

@@ -1,6 +1,5 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const cssLoaderConfig = require('./css-loader-config')
-const commonsChunkConfig = require('./commons-chunk-config')
 
 module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
@@ -13,29 +12,41 @@ module.exports = (nextConfig = {}) => {
 
       const { dev, isServer } = options
       const { cssModules, cssLoaderOptions } = nextConfig
-      // Support the user providing their own instance of ExtractTextPlugin.
-      // If extractCSSPlugin is not defined we pass the same instance of ExtractTextPlugin to all css related modules
-      // So that they compile to the same file in production
-      let extractCSSPlugin =
-        nextConfig.extractCSSPlugin || options.extractCSSPlugin
+      if (!config.__EXTRACT_CSS_INITIALIZED) {
+        config.plugins.push(
+          new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: dev
+              ? 'static/css/[name].css'
+              : 'static/css/[name].[contenthash:8].css',
+            chunkFilename: dev
+              ? 'static/css/[name].chunk.css'
+              : 'static/css/[name].[contenthash:8].chunk.css'
+          })
+        )
+        options.__EXTRACT_CSS_INITIALIZED = true
+      }
 
-      if (!extractCSSPlugin) {
-        extractCSSPlugin = new ExtractTextPlugin({
-          filename: 'static/style.css'
-        })
-        config.plugins.push(extractCSSPlugin)
-        options.extractCSSPlugin = extractCSSPlugin
-        if (!isServer) {
-          config = commonsChunkConfig(config)
+      if (!isServer) {
+        config.optimization.splitChunks.cacheGroups.styles = {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true
         }
       }
 
-      options.defaultLoaders.css = cssLoaderConfig(config, extractCSSPlugin, {
-        cssModules,
-        cssLoaderOptions,
-        dev,
-        isServer
-      })
+      options.defaultLoaders.css = cssLoaderConfig(
+        config,
+        MiniCssExtractPlugin,
+        {
+          cssModules,
+          cssLoaderOptions,
+          dev,
+          isServer
+        }
+      )
 
       config.module.rules.push({
         test: /\.css$/,
