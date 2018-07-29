@@ -30,7 +30,7 @@ module.exports = (
     }
   }
 
-  if (!extractCssInitialized) {
+  if (!isServer && !extractCssInitialized) {
     config.plugins.push(
       new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output
@@ -92,8 +92,8 @@ module.exports = (
   }
 
   return [
-    dev && 'extracted-loader',
-    MiniCssExtractPlugin.loader,
+    !isServer && dev && 'extracted-loader',
+    !isServer && MiniCssExtractPlugin.loader,
     cssLoader,
     postcssLoader,
     ...loaders
