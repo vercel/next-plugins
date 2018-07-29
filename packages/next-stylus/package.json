@@ -6,7 +6,6 @@
   "repository": "zeit/next-plugins",
   "dependencies": {
     "@zeit/next-css": "0.2.0",
-    "extract-text-webpack-plugin": "^3.0.2",
     "stylus-loader": "^3.0.2"
   },
   "devDependencies": {
