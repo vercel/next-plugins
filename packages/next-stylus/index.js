@@ -1,6 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const cssLoaderConfig = require('@zeit/next-css/css-loader-config')
-const commonsChunkConfig = require('@zeit/next-css/commons-chunk-config')
+// Const commonsChunkConfig = require('@zeit/next-css/commons-chunk-config')
 
 module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
@@ -15,6 +15,7 @@ module.exports = (nextConfig = {}) => {
       const {
         cssModules,
         cssLoaderOptions,
+        postcssLoaderOptions,
         stylusLoaderOptions = {}
       } = nextConfig
       // Support the user providing their own instance of ExtractTextPlugin.
@@ -30,29 +31,32 @@ module.exports = (nextConfig = {}) => {
         config.plugins.push(extractCSSPlugin)
         options.extractCSSPlugin = extractCSSPlugin
         if (!isServer) {
-          config = commonsChunkConfig(config, /\.styl$/)
+          // Config = commonsChunkConfig(config, /\.styl$/)
         }
       }
 
-      options.defaultLoaders.stylus = cssLoaderConfig(config, extractCSSPlugin, {
-        cssModules,
-        cssLoaderOptions,
-        dev,
-        isServer,
-        loaders: [
-          {
-            loader: 'stylus-loader',
-            options: stylusLoaderOptions
-          }
-        ]
-      })
-
-      config.module.rules.push(
+      options.defaultLoaders.stylus = cssLoaderConfig(
+        config,
+        extractCSSPlugin,
         {
-          test: /\.styl$/,
-          use: options.defaultLoaders.stylus
+          cssModules,
+          cssLoaderOptions,
+          postcssLoaderOptions,
+          dev,
+          isServer,
+          loaders: [
+            {
+              loader: 'stylus-loader',
+              options: stylusLoaderOptions
+            }
+          ]
         }
       )
+
+      config.module.rules.push({
+        test: /\.styl$/,
+        use: options.defaultLoaders.stylus
+      })
 
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)

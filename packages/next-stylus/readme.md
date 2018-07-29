@@ -215,6 +215,25 @@ Create a Stylus file `styles.styl` the Stylus here is using the css-variables po
   color var(--some-color)
 
 ```
+You can also pass a list of options to the `postcss-loader` by passing an object called `postcssLoaderOptions`.
+
+For example, to pass theme env variables to postcss-loader, you can write:
+
+```js
+// next.config.js
+const withStylus = require('@zeit/next-stylus')
+module.exports = withStylus({
+  postcssLoaderOptions: {
+    parser: true,
+    config: {
+      ctx: {
+        theme: JSON.stringify(process.env.REACT_APP_THEME)
+      }
+    }
+  }
+})
+```
+
 
 ### Configuring Next.js
 

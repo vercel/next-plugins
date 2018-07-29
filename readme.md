@@ -25,6 +25,7 @@
 - [next-testcafe-build](https://github.com/formatlos/next-testcafe-build)
 - [next-runtime-dotenv](https://github.com/tusbar/next-runtime-dotenv)
 - [next-progressbar](https://github.com/lucleray/next-progressbar)
+- [next-purgecss](https://github.com/lucleray/next-purgecss)
 
 ## Adding a plugin
 

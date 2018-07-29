@@ -11,7 +11,7 @@ module.exports = (nextConfig = {}) => {
       }
 
       const { dev, isServer } = options
-      const { cssModules, cssLoaderOptions } = nextConfig
+      const { cssModules, cssLoaderOptions, postcssLoaderOptions } = nextConfig
       if (!config.__EXTRACT_CSS_INITIALIZED) {
         config.plugins.push(
           new MiniCssExtractPlugin({
@@ -43,6 +43,7 @@ module.exports = (nextConfig = {}) => {
         {
           cssModules,
           cssLoaderOptions,
+          postcssLoaderOptions,
           dev,
           isServer
         }
