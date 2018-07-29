@@ -1,9 +1,13 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const findUp = require('find-up')
+
+const fileExtensions = new Set()
+let extractCssInitialized = false
 
 module.exports = (
   config,
-  MiniCssExtractPlugin,
   {
+    extensions = [],
     cssModules = false,
     cssLoaderOptions = {},
     dev,
@@ -12,6 +16,36 @@ module.exports = (
     loaders = []
   }
 ) => {
+  // We have to keep a list of extensions for the splitchunk config
+  for (const extension of extensions) {
+    fileExtensions.add(extension)
+  }
+
+  if (!isServer) {
+    config.optimization.splitChunks.cacheGroups.styles = {
+      name: 'styles',
+      test: new RegExp(`\\.+(${[...fileExtensions].join('|')})$`),
+      chunks: 'all',
+      enforce: true
+    }
+  }
+
+  if (!extractCssInitialized) {
+    config.plugins.push(
+      new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: dev
+          ? 'static/css/[name].css'
+          : 'static/css/[name].[contenthash:8].css',
+        chunkFilename: dev
+          ? 'static/css/[name].chunk.css'
+          : 'static/css/[name].[contenthash:8].chunk.css'
+      })
+    )
+    extractCssInitialized = true
+  }
+
   const postcssConfig = findUp.sync('postcss.config.js', {
     cwd: config.context
   })

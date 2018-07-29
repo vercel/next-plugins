@@ -1,6 +1,4 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const cssLoaderConfig = require('@zeit/next-css/css-loader-config')
-// Const commonsChunkConfig = require('@zeit/next-css/commons-chunk-config')
 
 module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
@@ -18,24 +16,9 @@ module.exports = (nextConfig = {}) => {
         postcssLoaderOptions,
         sassLoaderOptions = {}
       } = nextConfig
-      // Support the user providing their own instance of ExtractTextPlugin.
-      // If extractCSSPlugin is not defined we pass the same instance of ExtractTextPlugin to all css related modules
-      // So that they compile to the same file in production
-      let extractCSSPlugin =
-        nextConfig.extractCSSPlugin || options.extractCSSPlugin
 
-      if (!extractCSSPlugin) {
-        extractCSSPlugin = new ExtractTextPlugin({
-          filename: 'static/style.css'
-        })
-        config.plugins.push(extractCSSPlugin)
-        options.extractCSSPlugin = extractCSSPlugin
-        if (!isServer) {
-          // Config = commonsChunkConfig(config, /\.(scss|sass)$/)
-        }
-      }
-
-      options.defaultLoaders.sass = cssLoaderConfig(config, extractCSSPlugin, {
+      options.defaultLoaders.sass = cssLoaderConfig(config, {
+        extensions: ['scss', 'sass'],
         cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
