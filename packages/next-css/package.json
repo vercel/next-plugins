@@ -13,6 +13,6 @@
     "postcss-loader": "2.0.10"
   },
   "devDependencies": {
-    "webpack": "^3.10.0"
+    "webpack": "^4.16.3"
   }
 }
