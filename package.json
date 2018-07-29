@@ -11,6 +11,8 @@
     "xo": "^0.18.2"
   },
   "scripts": {
+    "lerna": "lerna",
+    "lerna-publish": "lerna --independent",
     "precommit": "lint-staged",
     "lint": "xo",
     "test": "npm run lint && NODE_ENV=test nyc ava"
@@ -24,5 +26,9 @@
       "prettier --single-quote --no-semi --write",
       "git add"
     ]
-  }
+  },
+  "dependencies": {
+    "lerna": "^3.0.0-rc.0"
+  },
+  "name": "next-plugins"
 }
