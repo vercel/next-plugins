@@ -12,6 +12,7 @@
   },
   "scripts": {
     "lerna": "lerna",
+    "release-stable": "lerna publish",
     "release-canary": "lerna publish --cd-version=prerelease --preid=canary --npm-tag=canary",
     "precommit": "lint-staged",
     "lint": "xo",

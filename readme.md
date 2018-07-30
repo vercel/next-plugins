@@ -46,3 +46,19 @@
 3. Add a `index.js` file with the plugin code
 4. Add a `readme.md` explaining what the plugin does, how to install, and how to configure it
 5. Submit a pull request
+
+## Publishing
+
+Note: this is for maintainers only and won't work if you're not a maintainer.
+
+### Publishing Canary
+
+```
+yarn release-stable
+```
+
+### Publishing Stable
+
+```
+yarn release-stable
+```
