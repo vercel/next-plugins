@@ -1,8 +1,7 @@
 {
   "name": "@zeit/next-source-maps",
-  "version": "0.0.2",
+  "version": "0.0.3-canary.0",
   "main": "index.js",
   "license": "MIT",
-  "repository": "zeit/next-plugins",
-  "dependencies": {}
+  "repository": "zeit/next-plugins"
 }
