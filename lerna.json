@@ -1,9 +1,13 @@
 {
+  "create": {
+    "license": "MIT"
+  },
   "packages": [
     "packages/*"
   ],
   "command": {
     "publish": {
+      "exact": true,
       "ignoreChanges": [
         "*.md"
       ]
@@ -12,5 +16,5 @@
       "npmClientArgs": ["--no-package-lock"]      
     }
   },
-  "version": "0.0.0"
+  "version": "independent"
 }
