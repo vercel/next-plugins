@@ -12,7 +12,7 @@
   },
   "scripts": {
     "lerna": "lerna",
-    "lerna-publish": "lerna --independent",
+    "release-canary": "lerna publish --cd-version=prerelease --preid=canary --npm-tag=canary",
     "precommit": "lint-staged",
     "lint": "xo",
     "test": "npm run lint && NODE_ENV=test nyc ava"
