@@ -12,7 +12,7 @@ module.exports = (
     cssLoaderOptions = {},
     dev,
     isServer,
-    postcssLoaderOptions,
+    postcssLoaderOptions = {},
     loaders = []
   }
 ) => {
