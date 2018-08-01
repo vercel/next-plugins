@@ -21,7 +21,7 @@ module.exports = (nextConfig = {}) => {
 
       if (!extractCSSPlugin) {
         extractCSSPlugin = new ExtractTextPlugin({
-          filename: 'static/style.css'
+          filename: 'static/' + (cssLoaderOptions.fileName ? cssLoaderOptions.fileName : 'style.css')
         })
         config.plugins.push(extractCSSPlugin)
         options.extractCSSPlugin = extractCSSPlugin
