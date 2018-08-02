@@ -62,3 +62,17 @@ const withMDX = require('@zeit/next-mdx')({
 })
 module.exports = withMDX()
 ```
+
+## Top level .mdx pages
+
+Define the `pagesExtensions` option to have Next.js handle `.mdx` files in the `pages` directory as pages:
+
+```js
+// next.config.js
+const withMDX = require('@zeit/next-mdx')({
+  extension: /\.mdx?$/
+})
+module.exports = withMDX({
+  pageExtensions: ['js', 'jsx', 'mdx']
+})
+```

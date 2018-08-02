@@ -30,15 +30,20 @@ module.exports = (nextConfig = {}) => {
 
       config.resolve.extensions.push('.ts', '.tsx')
 
-      if (dev && !isServer) {
-        config.module.rules.push({
-          test: /\.(ts|tsx)$/,
-          loader: 'hot-self-accept-loader',
-          include: [path.join(dir, 'pages')],
-          options: {
-            extensions: /\.(ts|tsx)$/
-          }
-        })
+      // Backwards compatibility with older versions of Next.js.
+      // Next.js will automatically apply hot-self-accept-loader for all extensions in `pageExtensions`
+      // Which next-typescript adds itself to
+      if (!defaultLoaders.hotSelfAccept) {
+        if (dev && !isServer) {
+          config.module.rules.push({
+            test: /\.(ts|tsx)$/,
+            loader: 'hot-self-accept-loader',
+            include: [path.join(dir, 'pages')],
+            options: {
+              extensions: /\.(ts|tsx)$/
+            }
+          })
+        }
       }
 
       config.module.rules.push({

@@ -258,6 +258,27 @@ Create a CSS file `style.css` the CSS here is using the css-variables postcss pl
 
 When `postcss.config.js` is not found `postcss-loader` will not be added and will not cause overhead.
 
+You can also pass a list of options to the `postcss-loader` by passing an object called `postcssLoaderOptions`.
+
+For example, to pass theme env variables to postcss-loader, you can write:
+
+```js
+// next.config.js
+const withCSS = require('@zeit/next-css')
+module.exports = withCSS({
+  postcssLoaderOptions: {
+    parser: true,
+    config: {
+      ctx: {
+        theme: JSON.stringify(process.env.REACT_APP_THEME)
+      }
+    }
+  }
+})
+```
+
+
+
 ### Configuring Next.js
 
 Optionally you can add your custom Next.js configuration as parameter

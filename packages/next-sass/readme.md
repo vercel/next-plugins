@@ -111,7 +111,7 @@ module.exports = withSass({
 })
 ```
 
-Create a CSS file `styles.css`
+Create a SCSS file `style.scss`
 
 ```css
 .example {
@@ -122,7 +122,7 @@ Create a CSS file `styles.css`
 Create a page file `pages/index.js` that imports your stylesheet and uses the hashed class name from the stylesheet
 
 ```js
-import css from "../style.css"
+import css from "../style.scss"
 
 const Component = props => {
   return (
@@ -209,6 +209,26 @@ Create a CSS file `styles.scss` the CSS here is using the css-variables postcss 
 ```
 
 When `postcss.config.js` is not found `postcss-loader` will not be added and will not cause overhead.
+
+You can also pass a list of options to the `postcss-loader` by passing an object called `postcssLoaderOptions`.
+
+For example, to pass theme env variables to postcss-loader, you can write:
+
+```js
+// next.config.js
+const withSass = require('@zeit/next-sass')
+module.exports = withSass({
+  postcssLoaderOptions: {
+    parser: true,
+    config: {
+      ctx: {
+        theme: JSON.stringify(process.env.REACT_APP_THEME)
+      }
+    }
+  }
+})
+```
+
 
 ### Configuring Next.js
 
