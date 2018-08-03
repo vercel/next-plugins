@@ -117,28 +117,6 @@ Your exported HTML will then reflect locally scoped CSS class names.
 
 For a list of supported options, [refer to the webpack `css-loader` README](https://github.com/webpack-contrib/css-loader#options).
 
-```js
-// ./pages/_document.js
-import Document, { Head, Main, NextScript } from 'next/document'
-
-export default class MyDocument extends Document {
-  render() {
-    return (
-      <html>
-        <Head>
-          <link rel="stylesheet" href="/_next/static/style.css" />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    )
-  }
-}
-```
-
-
 ### PostCSS plugins
 
 Create a `next.config.js` in your project
