@@ -1,0 +1,20 @@
+{
+  "create": {
+    "license": "MIT"
+  },
+  "packages": [
+    "packages/*"
+  ],
+  "command": {
+    "publish": {
+      "exact": true,
+      "ignoreChanges": [
+        "*.md"
+      ]
+    },
+    "bootstrap": {
+      "npmClientArgs": ["--no-package-lock"]      
+    }
+  },
+  "version": "independent"
+}
