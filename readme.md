@@ -11,11 +11,13 @@
 - [@zeit/next-typescript](./packages/next-typescript)
 - [@zeit/next-bundle-analyzer](./packages/next-bundle-analyzer)
 - [@zeit/next-source-maps](./packages/next-source-maps)
+- [@zeit/next-workers](./packages/next-workers)
 
 ## Community made plugins
 
 - [next-awesome-typescript](https://github.com/saitonakamura/next-awesome-typescript)
 - [next-compose-plugins](https://github.com/cyrilwanner/next-compose-plugins)
+- [next-env](https://github.com/formatlos/next-env)
 - [next-images](https://github.com/arefaslani/next-images)
 - [next-inferno](https://github.com/queses/next-inferno)
 - [next-offline](https://github.com/hanford/next-offline)
