@@ -28,6 +28,7 @@
 - [next-runtime-dotenv](https://github.com/tusbar/next-runtime-dotenv)
 - [next-progressbar](https://github.com/lucleray/next-progressbar)
 - [next-purgecss](https://github.com/lucleray/next-purgecss)
+- [next-plugin-transpile-modules](https://github.com/KeitIG/next-plugin-transpile-modules)
 
 ## Adding a plugin
 
