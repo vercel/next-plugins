@@ -29,6 +29,7 @@
 - [next-progressbar](https://github.com/lucleray/next-progressbar)
 - [next-purgecss](https://github.com/lucleray/next-purgecss)
 - [next-plugin-transpile-modules](https://github.com/KeitIG/next-plugin-transpile-modules)
+- [next-seo](https://github.com/garmeeh/next-seo)
 
 ## Adding a plugin
 
