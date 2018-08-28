@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "@babel/preset-typescript": "7.0.0-rc.1"
+    "@babel/preset-typescript": "^7.0.0"
   },
   "gitHead": "31e8978d07e5468f760a222a72d1e8f3f457e6ff"
 }
