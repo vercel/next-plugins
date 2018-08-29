@@ -1,4 +1,6 @@
-module.exports = (nextConfig = {}) => {
+module.exports = (nextConfig = {}, options = {}) => {
+  const { devtool } = options;
+
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
       if (!options.defaultLoaders) {
@@ -10,7 +12,7 @@ module.exports = (nextConfig = {}) => {
       const { dev } = options
 
       if (!dev) {
-        config.devtool = 'source-map';
+        config.devtool = devtool || 'source-map';
 
         for (const plugin of config.plugins) {
           if (plugin['constructor']['name'] === 'UglifyJsPlugin') {
