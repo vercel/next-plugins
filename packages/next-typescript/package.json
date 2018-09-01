@@ -1,11 +1,11 @@
 {
   "name": "@zeit/next-typescript",
-  "version": "1.1.1-canary.1",
+  "version": "1.1.1-canary.3",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "@babel/preset-typescript": "7.0.0-beta.42"
+    "@babel/preset-typescript": "^7.0.0"
   },
   "gitHead": "31e8978d07e5468f760a222a72d1e8f3f457e6ff"
 }
