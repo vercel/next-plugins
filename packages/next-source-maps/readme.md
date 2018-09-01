@@ -20,7 +20,7 @@ Create a next.config.js
 
 ```js
 // next.config.js
-const withSourceMaps = require('@zeit/next-source-maps')
+const withSourceMaps = require('@zeit/next-source-maps')()
 module.exports = withSourceMaps({
   webpack(config, options) {
     return config
@@ -39,15 +39,15 @@ By default devtool is `source-map`. If you want use different devtool type, you 
 
 ```js
 // next.config.js
-const withSourceMaps = require('@zeit/next-source-maps')
+const withSourceMaps = require('@zeit/next-source-maps')({
+  devtool: 'hidden-source-map'
+})
+
 module.exports = withSourceMaps(
   {
     webpack(config, options) {
       return config
     }
-  },
-  {
-    devtool: 'hidden-source-map'
   }
 )
 ```
