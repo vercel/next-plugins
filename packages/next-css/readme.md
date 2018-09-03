@@ -65,6 +65,8 @@ import "../style.css"
 export default () => <div className="example">Hello World!</div>
 ```
 
+__Note: CSS files can _not_ be imported into your [`_document.js`](https://github.com/zeit/next.js#custom-document). You can use the [`_app.js`](https://github.com/zeit/next.js#custom-app) instead or any other page.__
+
 ### With CSS modules
 
 ```js
