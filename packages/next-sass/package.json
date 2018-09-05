@@ -1,18 +1,18 @@
 {
   "name": "@zeit/next-sass",
-  "version": "0.2.1-canary.2",
+  "version": "0.2.1-canary.3",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "@zeit/next-css": "0.2.1-canary.2",
-    "sass-loader": "6.0.6"
+    "@zeit/next-css": "0.2.1-canary.3",
+    "sass-loader": "^7.1.0"
   },
   "devDependencies": {
-    "node-sass": "^4.7.2"
+    "node-sass": "^4.9.3"
   },
   "peerDependencies": {
-    "node-sass": "^4.7.2"
+    "node-sass": "^4.9.3"
   },
   "gitHead": "31e8978d07e5468f760a222a72d1e8f3f457e6ff"
 }

@@ -5,15 +5,15 @@
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "css-loader": "0.28.9",
-    "extracted-loader": "1.0.4",
-    "find-up": "2.1.0",
+    "css-loader": "1.0.0",
+    "extracted-loader": "1.0.7",
+    "find-up": "3.0.0",
     "ignore-loader": "0.1.2",
-    "mini-css-extract-plugin": "^0.4.1",
-    "postcss-loader": "2.0.10"
+    "mini-css-extract-plugin": "0.4.1",
+    "postcss-loader": "3.0.0"
   },
   "devDependencies": {
-    "webpack": "^4.16.3"
+    "webpack": "^4.17.2"
   },
   "gitHead": "31e8978d07e5468f760a222a72d1e8f3f457e6ff"
 }
