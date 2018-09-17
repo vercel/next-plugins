@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const findUp = require('find-up')
+const NextCSSPlugin = require('./plugin')
 
 const fileExtensions = new Set()
 let extractCssInitialized = false
@@ -22,11 +23,13 @@ module.exports = (
   }
 
   if (!isServer) {
+    const { commons } = config.optimization.splitChunks.cacheGroups
     config.optimization.splitChunks.cacheGroups.styles = {
       name: 'styles',
       test: new RegExp(`\\.+(${[...fileExtensions].join('|')})$`),
       chunks: 'all',
-      enforce: true
+      enforce: true,
+      minChunks: commons && commons.minChunks
     }
   }
 
@@ -37,12 +40,13 @@ module.exports = (
         // both options are optional
         filename: dev
           ? 'static/css/[name].css'
-          : 'static/css/[name].[contenthash:8].css',
+          : 'static/css/[contenthash:8].css',
         chunkFilename: dev
           ? 'static/css/[name].chunk.css'
-          : 'static/css/[name].[contenthash:8].chunk.css'
+          : 'static/css/[contenthash:8].chunk.css'
       })
     )
+    config.plugins.push(new NextCSSPlugin())
     extractCssInitialized = true
   }
 
