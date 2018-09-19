@@ -1,6 +1,6 @@
 {
   "name": "@zeit/next-preact",
-  "version": "0.0.8-canary.1",
+  "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",

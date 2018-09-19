@@ -1,6 +1,6 @@
 {
   "name": "@zeit/next-workers",
-  "version": "0.0.2-canary.0",
+  "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
