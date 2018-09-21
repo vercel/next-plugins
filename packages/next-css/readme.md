@@ -106,7 +106,7 @@ import css from "../style.css"
 
 const Component = props => {
   return (
-    <div className={css.backdrop}>
+    <div className={css.example}>
       ...
     </div>
   )
