@@ -41,25 +41,22 @@ Create a `tsconfig.json` in your project
 
 ```json
 {
-  "compileOnSave": false,
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
     "jsx": "preserve",
-    "allowJs": true,
+    "lib": ["dom", "es2017"],
+    "baseUrl": ".",
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": false,
     "preserveConstEnums": true,
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "lib": [
-      "dom",
-      "es2016"
-    ]
+    "sourceMap": true
   }
 }
 ```
