@@ -41,7 +41,6 @@ Create a `tsconfig.json` in your project
 
 ```json
 {
-  "compileOnSave": false,
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
