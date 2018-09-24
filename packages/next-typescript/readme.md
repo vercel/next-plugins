@@ -50,7 +50,7 @@ Create a `tsconfig.json` in your project
     "moduleResolution": "node",
     "allowJs": true,
     "noEmit": true,
-    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
