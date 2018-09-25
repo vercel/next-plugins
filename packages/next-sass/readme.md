@@ -209,6 +209,19 @@ module.exports = withSass({
 })
 ```
 
+### Extra stylesheet loaders
+
+Create a `next.config.js` in your project
+
+```js
+// next.config.js
+const withSass = require('@zeit/next-sass')
+module.exports = withSass({
+  loaders: [
+    { loader: 'import-glob-loader' }
+  ]
+})
+```
 
 ### Configuring Next.js
 

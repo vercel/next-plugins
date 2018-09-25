@@ -14,7 +14,8 @@ module.exports = (nextConfig = {}) => {
         cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
-        sassLoaderOptions = {}
+        sassLoaderOptions = {},
+        loaders = []
       } = nextConfig
 
       options.defaultLoaders.sass = cssLoaderConfig(config, {
@@ -28,7 +29,8 @@ module.exports = (nextConfig = {}) => {
           {
             loader: 'sass-loader',
             options: sassLoaderOptions
-          }
+          },
+          ...loaders
         ]
       })
 
