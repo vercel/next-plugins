@@ -1,18 +1,19 @@
 {
   "name": "@zeit/next-css",
-  "version": "0.2.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "css-loader": "0.28.9",
-    "extract-text-webpack-plugin": "3.0.2",
+    "css-loader": "1.0.0",
     "extracted-loader": "1.0.4",
     "find-up": "2.1.0",
     "ignore-loader": "0.1.2",
-    "postcss-loader": "2.0.10"
+    "mini-css-extract-plugin": "0.4.3",
+    "postcss-loader": "3.0.0"
   },
   "devDependencies": {
-    "webpack": "^3.10.0"
-  }
+    "webpack": "^4.16.3"
+  },
+  "gitHead": "31e8978d07e5468f760a222a72d1e8f3f457e6ff"
 }

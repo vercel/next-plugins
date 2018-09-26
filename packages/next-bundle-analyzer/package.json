@@ -1,10 +1,11 @@
 {
   "name": "@zeit/next-bundle-analyzer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "webpack-bundle-analyzer": "2.11.1"
-  }
+    "webpack-bundle-analyzer": "2.13.1"
+  },
+  "gitHead": "1d48c25311c037ec2718b3fc9511e2e2a882eed1"
 }
