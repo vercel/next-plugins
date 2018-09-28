@@ -5,7 +5,7 @@ Use `webpack-bundle-analyzer` in your Next.js project
 ## Installation
 
 ```
-npm install --save @zeit/next-bundle-analyzer
+npm install --save-dev @zeit/next-bundle-analyzer
 ```
 
 or
