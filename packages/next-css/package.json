@@ -1,16 +1,16 @@
 {
   "name": "@zeit/next-css",
-  "version": "0.2.1-canary.2",
+  "version": "0.2.1-canary.3",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "css-loader": "0.28.9",
+    "css-loader": "1.0.0",
     "extracted-loader": "1.0.4",
     "find-up": "2.1.0",
     "ignore-loader": "0.1.2",
-    "mini-css-extract-plugin": "^0.4.1",
-    "postcss-loader": "2.0.10",
+    "mini-css-extract-plugin": "0.4.3",
+    "postcss-loader": "3.0.0",
     "webpack-sources": "^1.2.0"
   },
   "devDependencies": {
