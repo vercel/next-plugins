@@ -1,5 +1,5 @@
-module.exports = (options = {}) => {
-  const configurator = (nextConfig = {}) => {
+module.exports = (pluginOptions = {}) => {
+  return (nextConfig = {}) => {
     return Object.assign({}, nextConfig, {
       webpack(config, options) {
         if (!options.defaultLoaders) {
@@ -11,12 +11,21 @@ module.exports = (options = {}) => {
         const { dev } = options
 
         if (!dev) {
-          config.devtool = options.devtool || 'source-map';
+          config.devtool = pluginOptions.devtool || 'source-map';
 
           for (const plugin of config.plugins) {
             if (plugin.constructor.name === 'UglifyJsPlugin') {
               plugin.options.sourceMap = true;
               break;
+            }
+          }
+          
+          if (config.optimization && config.optimization.minimizer) {
+            for (const plugin of config.optimization.minimizer) {
+              if (plugin.constructor.name === 'TerserPlugin') {
+                plugin.options.sourceMap = true;
+                break;
+              }
             }
           }
         }
@@ -28,12 +37,4 @@ module.exports = (options = {}) => {
       }
     })
   }
-
-  if (options.devtool) {
-    return configurator
-  }
-
-  console.warn('Use next-source-maps plugin without configuration is deprecated. You should pass configuration object as argument and get function for use for compatibility with newer versions.')
-
-  return configurator(options)
 }
