@@ -56,6 +56,7 @@ Create a `tsconfig.json` in your project
     "removeComments": false,
     "skipLibCheck": true,
     "sourceMap": true,
+    "strict": true,
     "target": "esnext"
   }
 }
