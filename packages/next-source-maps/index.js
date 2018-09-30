@@ -19,6 +19,14 @@ module.exports = (options = {}) => {
               break;
             }
           }
+          
+          if (config.optimization && config.optimization.minimizer) {
+            config.optimization.minimizer.forEach(plugin => {
+              if (plugin.constructor.name === 'TerserPlugin') {
+                plugin.options.sourceMap = true
+              }
+            })
+          }
         }
 
         if (typeof nextConfig.webpack === 'function') {
