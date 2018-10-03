@@ -61,9 +61,15 @@ module.exports = (
 
     postcssLoader = {
       loader: 'postcss-loader',
-      options: Object.assign({}, postcssLoaderOptions, {
-        config: postcssOptionsConfig
-      })
+      options: Object.assign(
+        {
+          sourceMap: dev
+        },
+        postcssLoaderOptions,
+        {
+          config: postcssOptionsConfig
+        }
+      )
     }
   }
 

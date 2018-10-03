@@ -27,7 +27,12 @@ module.exports = (nextConfig = {}) => {
         loaders: [
           {
             loader: 'sass-loader',
-            options: sassLoaderOptions
+            options: Object.assign(
+              {
+                sourceMap: dev
+              },
+              sassLoaderOptions
+            )
           }
         ]
       })
