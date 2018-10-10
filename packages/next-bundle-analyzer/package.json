@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "webpack-bundle-analyzer": "2.13.1"
+    "webpack-bundle-analyzer": "3.0.2"
   },
   "gitHead": "1d48c25311c037ec2718b3fc9511e2e2a882eed1"
 }
