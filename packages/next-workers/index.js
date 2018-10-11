@@ -7,7 +7,7 @@ module.exports = (nextConfig = {}) => {
         )
       }
 
-      config.module.rules.push({
+      config.module.rules.push(
         test: /\.worker\.js$/,
         loader: 'worker-loader',
         options: nextConfig.workerLoaderOptions || {
@@ -15,6 +15,9 @@ module.exports = (nextConfig = {}) => {
           publicPath: '/_next/'
         }
       })
+
+      // Overcome webpack referencing `window` in chunks
+      config.output.globalObject = `(typeof self !== 'undefined' ? self : this)`
 
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)
