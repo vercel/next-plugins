@@ -7,7 +7,7 @@ module.exports = (nextConfig = {}) => {
         )
       }
 
-      config.module.rules.push(
+      config.module.rules.push({
         test: /\.worker\.js$/,
         loader: 'worker-loader',
         options: nextConfig.workerLoaderOptions || {
