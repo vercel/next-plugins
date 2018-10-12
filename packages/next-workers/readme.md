@@ -29,7 +29,7 @@ Optionally you can add your custom Next.js configuration as parameter
 ```js
 // next.config.js
 const withWorkers = require('@zeit/next-workers')
-module.exports = withWorkers(
+module.exports = withWorkers({
   webpack(config, options) {
     return config
   }
