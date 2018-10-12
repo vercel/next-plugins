@@ -16,6 +16,9 @@ module.exports = (nextConfig = {}) => {
         }
       })
 
+      // Overcome webpack referencing `window` in chunks
+      config.output.globalObject = `(typeof self !== 'undefined' ? self : this)`
+
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)
       }
