@@ -81,16 +81,6 @@ module.exports = (
     )
   }
 
-  // // When not using css modules we don't transpile on the server
-  // if (isServer && !cssLoader.options.modules) {
-  //   return ['ignore-loader']
-  // }
-
-  // // When on the server and using css modules we transpile the css
-  // if (isServer && cssLoader.options.modules) {
-  //   return [cssLoader, postcssLoader, ...loaders].filter(Boolean)
-  // }
-
   return [
     !isServer && dev && 'extracted-loader',
     !isServer && MiniCssExtractPlugin.loader,
