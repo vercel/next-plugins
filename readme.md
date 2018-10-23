@@ -30,6 +30,7 @@
 - [next-purgecss](https://github.com/lucleray/next-purgecss)
 - [next-plugin-transpile-modules](https://github.com/KeitIG/next-plugin-transpile-modules)
 - [next-seo](https://github.com/garmeeh/next-seo)
+- [next-mdx-blog](https://github.com/hipstersmoothie/next-mdx-blog)
 
 ## Adding a plugin
 
