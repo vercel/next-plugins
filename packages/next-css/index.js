@@ -12,18 +12,35 @@ module.exports = (nextConfig = {}) => {
       const { dev, isServer } = options
       const { cssModules, cssLoaderOptions, postcssLoaderOptions } = nextConfig
 
-      options.defaultLoaders.css = cssLoaderConfig(config, {
-        extensions: ['css'],
+      const crateStyleConfig = (cssModules, disablePostcss) => cssLoaderConfig(config, {
         cssModules,
         cssLoaderOptions,
-        postcssLoaderOptions,
         dev,
-        isServer
-      })
+        isServer,
+        disablePostcss
+      });
+
+      options.defaultLoaders.css = crateStyleConfig(cssModules);
 
       config.module.rules.push({
         test: /\.css$/,
-        use: options.defaultLoaders.css
+        oneOf: [
+          {
+            resourceQuery: /CSSModulesDisbale/,
+            use: crateStyleConfig(false, true)
+          },
+          {
+            resourceQuery: /postCSSDisable/,
+            use: crateStyleConfig(true, false)
+          },
+          {
+            resourceQuery: /postCSSAndCSSModulesDisable/,
+            use: crateStyleConfig(false, true)
+          },
+          {
+            use: options.defaultLoaders.css
+          }
+        ]
       })
 
       if (typeof nextConfig.webpack === 'function') {
