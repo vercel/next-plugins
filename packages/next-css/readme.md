@@ -119,6 +119,21 @@ Your exported HTML will then reflect locally scoped CSS class names.
 
 For a list of supported options, [refer to the webpack `css-loader` README](https://github.com/webpack-contrib/css-loader#options).
 
+
+### Import CSS files without CSS modules or post-css
+
+#### Without CSS modules
+
+```import 'antd/dist/antd.css?CSSModulesDisbale'```
+
+#### Without post-css
+
+```import 'antd/dist/antd.css?postCSSDisable'```
+
+#### Without CSS modules and post-css
+
+```import 'antd/dist/antd.css?postCSSAndCSSModulesDisable'```
+
 ### PostCSS plugins
 
 Create a `next.config.js` in your project
