@@ -1,4 +1,4 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const findUp = require('find-up')
 
 const fileExtensions = new Set()
@@ -14,7 +14,7 @@ module.exports = (
     isServer,
     postcssLoaderOptions = {},
     loaders = [],
-    disablePostcss = false,
+    disablePostcss = false
   }
 ) => {
   // We have to keep a list of extensions for the splitchunk config
@@ -33,7 +33,7 @@ module.exports = (
 
   if (!isServer && !extractCssInitialized) {
     config.plugins.push(
-      new MiniCssExtractPlugin({
+      new ExtractCssChunks({
         // Options similar to the same options in webpackOptions.output
         // both options are optional
         filename: dev
@@ -94,7 +94,7 @@ module.exports = (
 
   return [
     !isServer && dev && 'extracted-loader',
-    !isServer && MiniCssExtractPlugin.loader,
+    !isServer && ExtractCssChunks.loader,
     cssLoader,
     !disablePostcss && postcssLoader,
     ...loaders
