@@ -1,5 +1,15 @@
-module.exports = (pluginOptions = {}) => (nextConfig = {}) => {
-  const extension = pluginOptions.extension || /\.mdx$/
+module.exports = (nextConfig = {}) => {
+  if (!nextConfig.pageExtensions) {
+    nextConfig.pageExtensions = ['jsx', 'js']
+  }
+
+  if (nextConfig.pageExtensions.indexOf('mdx') === -1) {
+    nextConfig.pageExtensions.unshift('mdx')
+  }
+
+  if (nextConfig.pageExtensions.indexOf('md') === -1) {
+    nextConfig.pageExtensions.unshift('md')
+  }
 
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
@@ -9,13 +19,17 @@ module.exports = (pluginOptions = {}) => (nextConfig = {}) => {
         )
       }
 
+      const {mdxLoaderOptions = {}} = nextConfig
+
+      config.resolve.extensions.push('.md', '.mdx')
+
       config.module.rules.push({
-        test: extension,
+        test: /\.mdx?$/,
         use: [
           options.defaultLoaders.babel,
           {
             loader: '@mdx-js/loader',
-            options: pluginOptions.options
+            options: mdxLoaderOptions
           }
         ]
       })
