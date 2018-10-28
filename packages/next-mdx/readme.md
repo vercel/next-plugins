@@ -20,7 +20,7 @@ Create a `next.config.js` in your project
 
 ```js
 // next.config.js
-const withMDX = require('@zeit/next-mdx')()
+const withMDX = require('@zeit/next-mdx')
 module.exports = withMDX()
 ```
 
@@ -28,8 +28,10 @@ Optionally you can provide [MDX options](https://github.com/mdx-js/mdx#options):
 
 ```js
 // next.config.js
-const withMDX = require('@zeit/next-mdx')({
-  options: {
+const withMDX = require('@zeit/next-mdx')
+
+module.exports = withMDX({
+  mdxLoaderOptions: {
     mdPlugins: [
 
     ],
@@ -38,14 +40,13 @@ const withMDX = require('@zeit/next-mdx')({
     ]
   }
 })
-module.exports = withMDX()
 ```
 
 Optionally you can add your custom Next.js configuration as parameter
 
 ```js
 // next.config.js
-const withMDX = require('@zeit/next-mdx')()
+const withMDX = require('@zeit/next-mdx')
 module.exports = withMDX({
   webpack(config, options) {
     return config
@@ -53,26 +54,4 @@ module.exports = withMDX({
 })
 ```
 
-Optionally you can match other file extensions for MDX compilation, by default only `.mdx` is supported
-
-```js
-// next.config.js
-const withMDX = require('@zeit/next-mdx')({
-  extension: /\.mdx?$/
-})
-module.exports = withMDX()
-```
-
-## Top level .mdx pages
-
-Define the `pagesExtensions` option to have Next.js handle `.mdx` files in the `pages` directory as pages:
-
-```js
-// next.config.js
-const withMDX = require('@zeit/next-mdx')({
-  extension: /\.mdx?$/
-})
-module.exports = withMDX({
-  pageExtensions: ['js', 'jsx', 'mdx']
-})
-```
+The supported file extensions are `.mdx` and `.md`.
