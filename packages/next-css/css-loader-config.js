@@ -49,7 +49,7 @@ module.exports = (
     extractCssInitialized = true
   }
 
-  if (config.mode === 'production') {
+  if (!dev) {
     if (!Array.isArray(config.optimization.minimizer)) {
       config.optimization.minimizer = []
     }
