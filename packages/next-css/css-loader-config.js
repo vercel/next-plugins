@@ -1,5 +1,4 @@
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const findUp = require('find-up')
 
 const fileExtensions = new Set()
@@ -53,7 +52,7 @@ module.exports = (
     if (!Array.isArray(config.optimization.minimizer)) {
       config.optimization.minimizer = []
     }
-    config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}))
+    config.optimization.minimizer.push(new require('optimize-css-assets-webpack-plugin')({}))
   }
 
   const postcssConfig = findUp.sync('postcss.config.js', {
