@@ -50,11 +50,10 @@ module.exports = (
   }
 
   if (config.mode === 'production') {
-    if (Array.isArray(config.optimization.minimizer)) {
-      config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}))
-    } else {
-      config.optimization.minimizer = [new OptimizeCSSAssetsPlugin({})]
+    if (!Array.isArray(config.optimization.minimizer)) {
+      config.optimization.minimizer = []
     }
+    config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}))
   }
 
   const postcssConfig = findUp.sync('postcss.config.js', {
