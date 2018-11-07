@@ -16,7 +16,7 @@ yarn add @zeit/next-bundle-analyzer
 
 ### Usage with environment variables
 
-Create a next.config.js (and make sure you have next-css set up)
+Create a next.config.js (and make sure you have next-bundle-analyzer set up)
 
 ```js
 const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
@@ -27,7 +27,7 @@ module.exports = withBundleAnalyzer({
   bundleAnalyzerConfig: {
     server: {
       analyzerMode: 'static',
-      reportFilename: '../../bundles/server.html'
+      reportFilename: '../bundles/server.html'
     },
     browser: {
       analyzerMode: 'static',
