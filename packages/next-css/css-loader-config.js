@@ -48,6 +48,13 @@ module.exports = (
     extractCssInitialized = true
   }
 
+  if (!dev) {
+    if (!Array.isArray(config.optimization.minimizer)) {
+      config.optimization.minimizer = []
+    }
+    config.optimization.minimizer.push(new require('optimize-css-assets-webpack-plugin')({}))
+  }
+
   const postcssConfig = findUp.sync('postcss.config.js', {
     cwd: config.context
   })
