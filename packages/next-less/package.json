@@ -1,11 +1,11 @@
 {
   "name": "@zeit/next-less",
-  "version": "1.0.2-canary.0",
+  "version": "1.0.2-canary.1",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "@zeit/next-css": "1.0.2-canary.0",
+    "@zeit/next-css": "1.0.2-canary.1",
     "less-loader": "4.1.0"
   },
   "devDependencies": {
