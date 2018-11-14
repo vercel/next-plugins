@@ -36,11 +36,11 @@ module.exports = (
         // Options similar to the same options in webpackOptions.output
         // both options are optional
         filename: dev
-          ? 'static/css/[name].css'
-          : 'static/css/[name].[contenthash:8].css',
+          ? 'static/chunks/[name].css'
+          : 'static/chunks/[name].[contenthash:8].css',
         chunkFilename: dev
-          ? 'static/css/[name].chunk.css'
-          : 'static/css/[name].[contenthash:8].chunk.css',
+          ? 'static/chunks/[name].chunk.css'
+          : 'static/chunks/[name].[contenthash:8].chunk.css',
         orderWarning: false,
         reloadAll: true
       })
@@ -52,7 +52,8 @@ module.exports = (
     if (!Array.isArray(config.optimization.minimizer)) {
       config.optimization.minimizer = []
     }
-    config.optimization.minimizer.push(new require('optimize-css-assets-webpack-plugin')({}))
+    const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+    config.optimization.minimizer.push(new OptimizeCssAssetsWebpackPlugin({}))
   }
 
   const postcssConfig = findUp.sync('postcss.config.js', {
