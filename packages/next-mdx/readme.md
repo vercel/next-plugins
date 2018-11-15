@@ -5,13 +5,13 @@ Use [MDX](https://github.com/mdx-js/mdx) with [Next.js](https://github.com/zeit/
 ## Installation
 
 ```
-npm install --save @zeit/next-mdx @mdx-js/mdx
+npm install --save @zeit/next-mdx @mdx-js/loader @mdx-js/mdx
 ```
 
 or
 
 ```
-yarn add @zeit/next-mdx @mdx-js/mdx
+yarn add @zeit/next-mdx @mdx-js/loader @mdx-js/mdx
 ```
 
 ## Usage
