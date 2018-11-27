@@ -58,7 +58,7 @@ Optionally you can match other file extensions for MDX compilation, by default o
 ```js
 // next.config.js
 const withMDX = require('@zeit/next-mdx')({
-  extension: /\.(md|mdx)?$/
+  extension: /\.(md|mdx)$/
 })
 module.exports = withMDX()
 ```
