@@ -31,6 +31,7 @@
 - [next-plugin-transpile-modules](https://github.com/KeitIG/next-plugin-transpile-modules)
 - [next-seo](https://github.com/garmeeh/next-seo)
 - [next-mdx-blog](https://github.com/hipstersmoothie/next-mdx-blog)
+- [next-css-unpluggable](https://github.com/Uncleseneca/next-css-unpluggable)
 
 ## Adding a plugin
 
