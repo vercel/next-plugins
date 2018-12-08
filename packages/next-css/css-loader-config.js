@@ -1,4 +1,4 @@
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const findUp = require('find-up')
 
 const fileExtensions = new Set()
@@ -32,7 +32,7 @@ module.exports = (
 
   if (!isServer && !extractCssInitialized) {
     config.plugins.push(
-      new ExtractCssChunks({
+      new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output
         // both options are optional
         filename: dev
@@ -41,8 +41,6 @@ module.exports = (
         chunkFilename: dev
           ? 'static/chunks/[name].chunk.css'
           : 'static/chunks/[name].[contenthash:8].chunk.css',
-        orderWarning: false,
-        reloadAll: true
       })
     )
     extractCssInitialized = true
@@ -52,8 +50,14 @@ module.exports = (
     if (!Array.isArray(config.optimization.minimizer)) {
       config.optimization.minimizer = []
     }
-    const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
-    config.optimization.minimizer.push(new OptimizeCssAssetsWebpackPlugin({}))
+    const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+    config.optimization.minimizer.push(
+      new OptimizeCssAssetsWebpackPlugin({
+        cssProcessorOptions: {
+          discardComments: { removeAll: true }
+        }
+      })
+    )
   }
 
   const postcssConfig = findUp.sync('postcss.config.js', {
@@ -78,13 +82,14 @@ module.exports = (
   }
 
   const cssLoader = {
-    loader: isServer ? 'css-loader/locals' : 'css-loader',
+    loader: 'css-loader',
     options: Object.assign(
       {},
       {
         modules: cssModules,
         sourceMap: dev,
-        importLoaders: loaders.length + (postcssLoader ? 1 : 0)
+        importLoaders: loaders.length + (postcssLoader ? 1 : 0),
+        exportOnlyLocals: isServer
       },
       cssLoaderOptions
     )
@@ -102,7 +107,7 @@ module.exports = (
 
   return [
     !isServer && dev && 'extracted-loader',
-    !isServer && ExtractCssChunks.loader,
+    !isServer && MiniCssExtractPlugin.loader,
     cssLoader,
     postcssLoader,
     ...loaders
