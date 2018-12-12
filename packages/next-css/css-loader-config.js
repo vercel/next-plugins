@@ -26,6 +26,7 @@ module.exports = (
       name: 'styles',
       test: new RegExp(`\\.+(${[...fileExtensions].join('|')})$`),
       chunks: 'all',
+      priority: 1,
       enforce: true
     }
   }
