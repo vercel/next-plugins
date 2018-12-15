@@ -44,7 +44,6 @@ Create a `tsconfig.json` in your project
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
     "jsx": "preserve",
     "lib": ["dom", "es2017"],
     "module": "esnext",
