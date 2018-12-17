@@ -1,4 +1,4 @@
-const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const findUp = require('find-up')
 
 const fileExtensions = new Set()
