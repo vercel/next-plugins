@@ -1,5 +1,6 @@
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const findUp = require('find-up')
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 
 const fileExtensions = new Set()
 let extractCssInitialized = false
@@ -51,7 +52,7 @@ module.exports = (
     if (!Array.isArray(config.optimization.minimizer)) {
       config.optimization.minimizer = []
     }
-    const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+
     config.optimization.minimizer.push(
       new OptimizeCssAssetsWebpackPlugin({
         cssProcessorOptions: {
@@ -61,17 +62,17 @@ module.exports = (
     )
   }
 
-  const postcssConfig = findUp.sync('postcss.config.js', {
+  const postcssConfigPath = findUp.sync('postcss.config.js', {
     cwd: config.context
   })
   let postcssLoader
 
-  if (postcssConfig) {
+  if (postcssConfigPath) {
     // Copy the postcss-loader config options first.
     const postcssOptionsConfig = Object.assign(
       {},
       postcssLoaderOptions.config,
-      { path: postcssConfig }
+      { path: postcssConfigPath }
     )
 
     postcssLoader = {
