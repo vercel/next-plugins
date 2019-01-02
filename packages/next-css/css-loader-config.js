@@ -56,9 +56,9 @@ module.exports = (
     config.optimization.minimizer.push(new OptimizeCssAssetsWebpackPlugin({}))
   }
 
-  const postcssConfig = findUp.sync('postcss.config.js', {
-    cwd: config.context
-  })
+  const postcssConfig = 
+    findUp.sync('postcss.config.js', { cwd: config.context }) || 
+    findUp.sync('package.json', { cwd: config.context })
   let postcssLoader
 
   if (postcssConfig) {
