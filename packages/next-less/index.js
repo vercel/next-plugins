@@ -1,5 +1,8 @@
 const cssLoaderConfig = require('@zeit/next-css/css-loader-config')
 
+const lessRegex = /\.less$/;
+const lessModuleRegex = /\.module\.less$/;
+
 module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
@@ -11,7 +14,6 @@ module.exports = (nextConfig = {}) => {
 
       const { dev, isServer } = options
       const {
-        cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
         lessLoaderOptions = {}
@@ -19,7 +21,7 @@ module.exports = (nextConfig = {}) => {
 
       options.defaultLoaders.less = cssLoaderConfig(config, {
         extensions: ['less'],
-        cssModules,
+        cssModules: false,
         cssLoaderOptions,
         postcssLoaderOptions,
         dev,
@@ -32,10 +34,32 @@ module.exports = (nextConfig = {}) => {
         ]
       })
 
-      config.module.rules.push({
-        test: /\.less$/,
-        use: options.defaultLoaders.less
+      options.defaultLoaders.lessModule = cssLoaderConfig(config, {
+        extensions: ['less'],
+        cssModules: true,
+        cssLoaderOptions,
+        postcssLoaderOptions,
+        dev,
+        isServer,
+        loaders: [
+          {
+            loader: 'less-loader',
+            options: lessLoaderOptions
+          }
+        ]
       })
+
+      config.module.rules.push(
+        {
+          test: lessRegex,
+          exclude: lessModuleRegex,
+          use: options.defaultLoaders.less
+        },
+        {
+          test: lessModuleRegex,
+          use: options.defaultLoaders.lessModule
+        }
+      )
 
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)

@@ -52,12 +52,10 @@ __Note: CSS files can _not_ be imported into your [`_document.js`](https://githu
 ```js
 // next.config.js
 const withCSS = require('@zeit/next-css')
-module.exports = withCSS({
-  cssModules: true
-})
+module.exports = withCSS()
 ```
 
-Create a CSS file `style.css`
+Create a CSS file `style.module.css`
 
 ```css
 .example {
@@ -68,7 +66,7 @@ Create a CSS file `style.css`
 Create a page file `pages/index.js`
 
 ```js
-import css from "../style.css"
+import css from "../style.module.css"
 
 export default () => <div className={css.example}>Hello World!</div>
 ```
@@ -83,7 +81,6 @@ For instance, [to enable locally scoped CSS modules](https://github.com/css-modu
 // next.config.js
 const withCSS = require('@zeit/next-css')
 module.exports = withCSS({
-  cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
     localIdentName: "[local]___[hash:base64:5]",
@@ -91,7 +88,7 @@ module.exports = withCSS({
 })
 ```
 
-Create a CSS file `styles.css`
+Create a CSS file `styles.module.css`
 
 ```css
 .example {
@@ -102,7 +99,7 @@ Create a CSS file `styles.css`
 Create a page file `pages/index.js` that imports your stylesheet and uses the hashed class name from the stylesheet
 
 ```js
-import css from "../style.css"
+import css from "../styles.module.css"
 
 const Component = props => {
   return (

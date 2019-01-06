@@ -51,12 +51,10 @@ export default () => <div className="example">Hello World!</div>
 ```js
 // next.config.js
 const withLess = require('@zeit/next-less')
-module.exports = withLess({
-  cssModules: true
-})
+module.exports = withLess()
 ```
 
-Create a Less file `styles.less`
+Create a Less file `styles.module.less`
 
 ```less
 @font-size: 50px;
@@ -68,7 +66,7 @@ Create a Less file `styles.less`
 Create a page file `pages/index.js`
 
 ```js
-import css from "../styles.less"
+import css from "../styles.module.less"
 
 export default () => <div className={css.example}>Hello World!</div>
 ```
@@ -83,7 +81,6 @@ For instance, [to enable locally scoped CSS modules](https://github.com/css-modu
 // next.config.js
 const withLess = require('@zeit/next-less')
 module.exports = withLess({
-  cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
     localIdentName: "[local]___[hash:base64:5]",
@@ -91,9 +88,9 @@ module.exports = withLess({
 })
 ```
 
-Create a CSS file `styles.css`
+Create a LESS file `styles.module.less`
 
-```css
+```less
 .example {
   font-size: 50px;
 }
@@ -102,11 +99,11 @@ Create a CSS file `styles.css`
 Create a page file `pages/index.js` that imports your stylesheet and uses the hashed class name from the stylesheet
 
 ```js
-import css from "../style.css"
+import css from "../styles.module.less"
 
 const Component = props => {
   return (
-    <div className={css.backdrop}>
+    <div className={css.example}>
       ...
     </div>
   )

@@ -51,12 +51,10 @@ export default () => <div className="example">Hello World!</div>
 ```js
 // next.config.js
 const withSass = require('@zeit/next-sass')
-module.exports = withSass({
-  cssModules: true
-})
+module.exports = withSass()
 ```
 
-Create a Sass file  `styles.scss`
+Create a Sass file  `styles.module.scss`
 
 ```scss
 $font-size: 50px;
@@ -68,7 +66,7 @@ $font-size: 50px;
 Create a page file `pages/index.js`
 
 ```js
-import css from "../styles.scss"
+import css from "../styles.module.scss"
 
 export default () => <div className={css.example}>Hello World!</div>
 ```
@@ -83,7 +81,6 @@ For instance, [to enable locally scoped CSS modules](https://github.com/css-modu
 // next.config.js
 const withSass = require('@zeit/next-sass')
 module.exports = withSass({
-  cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
     localIdentName: "[local]___[hash:base64:5]",
@@ -91,7 +88,7 @@ module.exports = withSass({
 })
 ```
 
-Create a SCSS file `style.scss`
+Create a SCSS file `style.module.scss`
 
 ```css
 .example {
@@ -102,7 +99,7 @@ Create a SCSS file `style.scss`
 Create a page file `pages/index.js` that imports your stylesheet and uses the hashed class name from the stylesheet
 
 ```js
-import css from "../style.scss"
+import css from "../style.module.scss"
 
 const Component = props => {
   return (

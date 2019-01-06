@@ -1,5 +1,8 @@
 const cssLoaderConfig = require('@zeit/next-css/css-loader-config')
 
+const sassRegex = /\.(scss|sass)$/;
+const sassModuleRegex = /\.module\.(scss|sass)$/;
+
 module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
@@ -11,7 +14,6 @@ module.exports = (nextConfig = {}) => {
 
       const { dev, isServer } = options
       const {
-        cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
         sassLoaderOptions = {}
@@ -19,7 +21,21 @@ module.exports = (nextConfig = {}) => {
 
       options.defaultLoaders.sass = cssLoaderConfig(config, {
         extensions: ['scss', 'sass'],
-        cssModules,
+        cssModules: false,
+        cssLoaderOptions,
+        postcssLoaderOptions,
+        dev,
+        isServer,
+        loaders: [
+          {
+            loader: 'sass-loader',
+            options: sassLoaderOptions
+          }
+        ]
+      })
+      options.defaultLoaders.sassModule = cssLoaderConfig(config, {
+        extensions: ['scss', 'sass'],
+        cssModules: true,
         cssLoaderOptions,
         postcssLoaderOptions,
         dev,
@@ -34,12 +50,13 @@ module.exports = (nextConfig = {}) => {
 
       config.module.rules.push(
         {
-          test: /\.scss$/,
+          test: sassRegex,
+					exclude: sassModuleRegex,
           use: options.defaultLoaders.sass
         },
         {
-          test: /\.sass$/,
-          use: options.defaultLoaders.sass
+          test: sassModuleRegex,
+          use: options.defaultLoaders.sassModule
         }
       )
 
