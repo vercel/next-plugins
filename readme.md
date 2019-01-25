@@ -32,6 +32,7 @@
 - [next-seo](https://github.com/garmeeh/next-seo)
 - [next-mdx-blog](https://github.com/hipstersmoothie/next-mdx-blog)
 - [next-fonts](https://github.com/rohanray/next-fonts)
+- [next-size](https://github.com/lucleray/next-size)
 
 ## Adding a plugin
 
