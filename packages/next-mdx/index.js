@@ -1,5 +1,6 @@
 module.exports = (pluginOptions = {}) => (nextConfig = {}) => {
   const extension = pluginOptions.extension || /\.mdx$/
+  const additionalLoaders = pluginOptions.additionalLoaders || []
 
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
@@ -17,7 +18,7 @@ module.exports = (pluginOptions = {}) => (nextConfig = {}) => {
             loader: '@mdx-js/loader',
             options: pluginOptions.options
           }
-        ]
+        ].concat(additionalLoaders)
       })
 
       if (typeof nextConfig.webpack === 'function') {
