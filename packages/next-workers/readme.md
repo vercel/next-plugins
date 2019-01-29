@@ -5,13 +5,13 @@ Use [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_A
 ## Installation
 
 ```
-npm install --save @zeit/next-workers worker-loader
+npm install --save @zeit/next-workers@canary worker-loader
 ```
 
 or
 
 ```
-yarn add @zeit/next-workers worker-loader
+yarn add @zeit/next-workers@canary worker-loader
 ```
 
 ## Usage
