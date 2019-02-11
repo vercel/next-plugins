@@ -61,7 +61,7 @@ module.exports = (
   })
   let postcssLoader
 
-  if (postcssConfig) {
+  if (postcssConfig || postcssLoaderOptions) {
     // Copy the postcss-loader config options first.
     const postcssOptionsConfig = Object.assign(
       {},
