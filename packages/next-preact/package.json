@@ -9,7 +9,8 @@
     "preact-compat": "^3.17.0"
   },
   "dependencies": {
-    "module-alias": "2.0.6"
+    "module-alias": "2.0.6",
+    "preact-context": "^1.1.3"
   },
   "gitHead": "31e8978d07e5468f760a222a72d1e8f3f457e6ff"
 }

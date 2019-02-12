@@ -12,9 +12,9 @@ module.exports = (nextConfig = {}) => {
       }
 
       config.resolve.alias = Object.assign({}, config.resolve.alias, {
-        react$: 'preact-compat',
+        react$: path.resolve(__dirname, './preact-compat'),
         'react-dom$': 'preact-compat',
-        react: 'preact-compat',
+        react: path.resolve(__dirname, './preact-compat'),
         'react-dom': 'preact-compat'
       })
 
