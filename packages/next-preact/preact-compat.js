@@ -1,39 +1,6 @@
-const {
-  version,
-  DOM,
-  PropTypes,
-  Children,
-  render,
-  createClass,
-  createFactory,
-  createElement,
-  cloneElement,
-  isValidElement,
-  findDOMNode,
-  unmountComponentAtNode,
-  Component,
-  PureComponent,
-  unstable_renderSubtreeIntoContainer,
-  __spread,
-} = require('preact-compat');
-const { createContext } = require('preact-context');
+const reactCompat = require('preact-compat');
+const createContext = require('preact-context');
 
-module.exports = {
-  version,
-  DOM,
-  PropTypes,
-  Children,
-  render,
-  createClass,
-  createFactory,
-  createElement,
-  cloneElement,
-  isValidElement,
-  findDOMNode,
-  unmountComponentAtNode,
-  Component,
-  PureComponent,
-  unstable_renderSubtreeIntoContainer,
-  __spread,
-  createContext,
-};
+reactCompat.createContext = createContext.createContext;
+
+module.exports = reactCompat;
