@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
@@ -14,9 +14,9 @@ module.exports = (nextConfig = {}) => {
       }
 
       config.resolve.alias = Object.assign({}, config.resolve.alias, {
-        react$: path.resolve(__dirname, './preact-compat'),
+        react$: path.resolve(__dirname, './preact-compat.js'),
         'react-dom$': 'preact-compat',
-        react: path.resolve(__dirname, './preact-compat'),
+        react: path.resolve(__dirname, './preact-compat.js'),
         'react-dom': 'preact-compat'
       })
 
