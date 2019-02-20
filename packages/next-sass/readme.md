@@ -16,28 +16,8 @@ yarn add @zeit/next-sass node-sass
 
 ## Usage
 
-The stylesheet is compiled to `.next/static/style.css`. You have to include it into the page using a custom [`_document.js`](https://github.com/zeit/next.js#custom-document). The file will be served from `/_next/static/style.css`
-
-```js
-// ./pages/_document.js
-import Document, { Head, Main, NextScript } from 'next/document'
-
-export default class MyDocument extends Document {
-  render() {
-    return (
-      <html>
-        <Head>
-          <link rel="stylesheet" href="/_next/static/style.css" />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    )
-  }
-}
-```
+The stylesheet is compiled to `.next/static/css`. Next.js will automatically add the css file to the HTML. 
+In production a chunk hash is added so that styles are updated when a new version of the stylesheet is deployed.
 
 ### Without CSS modules
 
@@ -126,7 +106,7 @@ import css from "../style.scss"
 
 const Component = props => {
   return (
-    <div className={css.backdrop}>
+    <div className={css.example}>
       ...
     </div>
   )
@@ -151,27 +131,6 @@ module.exports = withSass({
     includePaths: ["absolute/path/a", "absolute/path/b"]
   }
 })
-```
-
-```js
-// ./pages/_document.js
-import Document, { Head, Main, NextScript } from 'next/document'
-
-export default class MyDocument extends Document {
-  render() {
-    return (
-      <html>
-        <Head>
-          <link rel="stylesheet" href="/_next/static/style.css" />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    )
-  }
-}
 ```
 
 ### PostCSS plugins

@@ -1,6 +1,4 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const cssLoaderConfig = require('./css-loader-config')
-const commonsChunkConfig = require('./commons-chunk-config')
 
 module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
@@ -13,24 +11,9 @@ module.exports = (nextConfig = {}) => {
 
       const { dev, isServer } = options
       const { cssModules, cssLoaderOptions, postcssLoaderOptions } = nextConfig
-      // Support the user providing their own instance of ExtractTextPlugin.
-      // If extractCSSPlugin is not defined we pass the same instance of ExtractTextPlugin to all css related modules
-      // So that they compile to the same file in production
-      let extractCSSPlugin =
-        nextConfig.extractCSSPlugin || options.extractCSSPlugin
 
-      if (!extractCSSPlugin) {
-        extractCSSPlugin = new ExtractTextPlugin({
-          filename: 'static/style.css'
-        })
-        config.plugins.push(extractCSSPlugin)
-        options.extractCSSPlugin = extractCSSPlugin
-        if (!isServer) {
-          config = commonsChunkConfig(config)
-        }
-      }
-
-      options.defaultLoaders.css = cssLoaderConfig(config, extractCSSPlugin, {
+      options.defaultLoaders.css = cssLoaderConfig(config, {
+        extensions: ['css'],
         cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
@@ -40,6 +23,14 @@ module.exports = (nextConfig = {}) => {
 
       config.module.rules.push({
         test: /\.css$/,
+        issuer(issuer) {
+          if (issuer.match(/pages[\\/]_document\.js$/)) {
+            throw new Error(
+              'You can not import CSS files in pages/_document.js, use pages/_app.js instead.'
+            )
+          }
+          return true
+        },
         use: options.defaultLoaders.css
       })
 

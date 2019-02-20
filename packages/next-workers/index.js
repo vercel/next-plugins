@@ -1,5 +1,3 @@
-const path = require('path')
-
 module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
@@ -9,16 +7,17 @@ module.exports = (nextConfig = {}) => {
         )
       }
 
-      if (options.isServer) {
-        config.externals = ['react', 'react-dom', ...config.externals]
-      }
-
-      config.resolve.alias = Object.assign({}, config.resolve.alias, {
-        react$: path.join(__dirname, './preact-compat.js'),
-        'react-dom$': 'preact-compat',
-        react: path.join(__dirname, './preact-compat.js'),
-        'react-dom': 'preact-compat'
+      config.module.rules.push({
+        test: /\.worker\.js$/,
+        loader: 'worker-loader',
+        options: nextConfig.workerLoaderOptions || {
+          name: 'static/[hash].worker.js',
+          publicPath: '/_next/'
+        }
       })
+
+      // Overcome webpack referencing `window` in chunks
+      config.output.globalObject = `(typeof self !== 'undefined' ? self : this)`
 
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)

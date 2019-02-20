@@ -16,28 +16,8 @@ yarn add @zeit/next-css
 
 ## Usage
 
-The stylesheet is compiled to `.next/static/style.css`. You have to include it into the page using a custom [`_document.js`](https://github.com/zeit/next.js#custom-document). The file will be served from `/_next/static/style.css`
-
-```js
-// ./pages/_document.js
-import Document, { Head, Main, NextScript } from 'next/document'
-
-export default class MyDocument extends Document {
-  render() {
-    return (
-      <html>
-        <Head>
-          <link rel="stylesheet" href="/_next/static/style.css" />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    )
-  }
-}
-```
+The stylesheet is compiled to `.next/static/css`. Next.js will automatically add the css file to the HTML. 
+In production a chunk hash is added so that styles are updated when a new version of the stylesheet is deployed.
 
 ### Without CSS modules
 
@@ -64,6 +44,8 @@ import "../style.css"
 
 export default () => <div className="example">Hello World!</div>
 ```
+
+__Note: CSS files can _not_ be imported into your [`_document.js`](https://github.com/zeit/next.js#custom-document). You can use the [`_app.js`](https://github.com/zeit/next.js#custom-app) instead or any other page.__
 
 ### With CSS modules
 
@@ -124,7 +106,7 @@ import css from "../style.css"
 
 const Component = props => {
   return (
-    <div className={css.backdrop}>
+    <div className={css.example}>
       ...
     </div>
   )
@@ -136,28 +118,6 @@ export default Component
 Your exported HTML will then reflect locally scoped CSS class names.
 
 For a list of supported options, [refer to the webpack `css-loader` README](https://github.com/webpack-contrib/css-loader#options).
-
-```js
-// ./pages/_document.js
-import Document, { Head, Main, NextScript } from 'next/document'
-
-export default class MyDocument extends Document {
-  render() {
-    return (
-      <html>
-        <Head>
-          <link rel="stylesheet" href="/_next/static/style.css" />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    )
-  }
-}
-```
-
 
 ### PostCSS plugins
 

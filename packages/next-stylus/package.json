@@ -1,12 +1,11 @@
 {
   "name": "@zeit/next-stylus",
-  "version": "0.1.0",
+  "version": "1.0.2-canary.2",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "@zeit/next-css": "0.2.0",
-    "extract-text-webpack-plugin": "^3.0.2",
+    "@zeit/next-css": "1.0.2-canary.2",
     "stylus-loader": "^3.0.2"
   },
   "devDependencies": {
@@ -14,5 +13,6 @@
   },
   "peerDependencies": {
     "stylus": "^0.54.5"
-  }
+  },
+  "gitHead": "31e8978d07e5468f760a222a72d1e8f3f457e6ff"
 }
