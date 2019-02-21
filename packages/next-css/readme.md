@@ -155,6 +155,17 @@ Create a CSS file `style.css` the CSS here is using the css-variables postcss pl
 
 When `postcss.config.js` is not found `postcss-loader` will not be added and will not cause overhead.
 
+You can disable automatic addition of the `postcss-loader` (depending on presence of `postcss.config.js`) by passing the `autoAddPostcss: false`:
+
+```js
+// next.config.js
+const withCSS = require('@zeit/next-css')
+module.exports = withCSS({
+  autoAddPostcss: false,
+})
+```
+
+
 You can also pass a list of options to the `postcss-loader` by passing an object called `postcssLoaderOptions`.
 
 For example, to pass theme env variables to postcss-loader, you can write:
