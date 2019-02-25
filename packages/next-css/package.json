@@ -13,7 +13,7 @@
     "postcss-loader": "^3.0.0"
   },
   "devDependencies": {
-    "webpack": "^4.28.3"
+    "webpack": "^4.29.5"
   },
   "gitHead": "31e8978d07e5468f760a222a72d1e8f3f457e6ff"
 }
