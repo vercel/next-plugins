@@ -9,7 +9,7 @@
 - [@zeit/next-stylus](./packages/next-stylus)
 - [@zeit/next-preact](./packages/next-preact)
 - [@zeit/next-typescript](./packages/next-typescript)
-- [@zeit/next-bundle-analyzer](./packages/next-bundle-analyzer)
+- [@next/mdx](https://github.com/zeit/next.js/tree/canary/packages/next-bundle-analyzer)
 - [@zeit/next-source-maps](./packages/next-source-maps)
 - [@zeit/next-workers](./packages/next-workers)
 
