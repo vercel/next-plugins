@@ -1,14 +1,11 @@
 {
   "name": "@zeit/next-mdx",
-  "version": "1.2.1-canary.0",
+  "version": "1.1.1-canary.3",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
-  "dependencies": {
-    "@mdx-js/loader": "^0.15.0"
-  },
   "peerDependencies": {
-    "@mdx-js/mdx": "^0.15.0"
+    "@mdx-js/loader": ">=0.15.0"
   },
-  "gitHead": "31e8978d07e5468f760a222a72d1e8f3f457e6ff"
+  "gitHead": "f6b452d22a289060c1e8bde91c64ca3e99108695"
 }

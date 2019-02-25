@@ -1,11 +1,11 @@
 {
   "name": "@zeit/next-stylus",
-  "version": "1.0.2-canary.2",
+  "version": "0.1.1-canary.3",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "@zeit/next-css": "1.0.2-canary.2",
+    "@zeit/next-css": "0.2.1-canary.3",
     "stylus-loader": "^3.0.2"
   },
   "devDependencies": {
