@@ -1,4 +1,4 @@
-# Next.js + preact
+# Next.js + MDX
 
 `next-mdx` has moved to the [Next.js](https://github.com/zeit/next.js/tree/canary/packages/next-mdx) repository
 
