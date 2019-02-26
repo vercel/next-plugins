@@ -1,5 +1,6 @@
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const findUp = require('find-up')
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 
 const fileExtensions = new Set()
 let extractCssInitialized = false
@@ -41,8 +42,7 @@ module.exports = (
         chunkFilename: dev
           ? 'static/chunks/[name].chunk.css'
           : 'static/chunks/[name].[contenthash:8].chunk.css',
-        orderWarning: false,
-        reloadAll: true
+        hot: dev
       })
     )
     extractCssInitialized = true
@@ -52,21 +52,27 @@ module.exports = (
     if (!Array.isArray(config.optimization.minimizer)) {
       config.optimization.minimizer = []
     }
-    const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
-    config.optimization.minimizer.push(new OptimizeCssAssetsWebpackPlugin({}))
+
+    config.optimization.minimizer.push(
+      new OptimizeCssAssetsWebpackPlugin({
+        cssProcessorOptions: {
+          discardComments: { removeAll: true }
+        }
+      })
+    )
   }
 
-  const postcssConfig = findUp.sync('postcss.config.js', {
+  const postcssConfigPath = findUp.sync('postcss.config.js', {
     cwd: config.context
   })
   let postcssLoader
 
-  if (postcssConfig || postcssLoaderOptions) {
+  if (postcssConfigPath || postcssLoaderOptions) {
     // Copy the postcss-loader config options first.
     const postcssOptionsConfig = Object.assign(
       {},
       postcssLoaderOptions.config,
-      postcssConfig ? { path: postcssConfig } : {}
+      postcssConfigPath ? { path: postcssConfigPath } : {}
     )
 
     postcssLoader = {
@@ -78,13 +84,14 @@ module.exports = (
   }
 
   const cssLoader = {
-    loader: isServer ? 'css-loader/locals' : 'css-loader',
+    loader: 'css-loader',
     options: Object.assign(
       {},
       {
         modules: cssModules,
         sourceMap: dev,
-        importLoaders: loaders.length + (postcssLoader ? 1 : 0)
+        importLoaders: loaders.length + (postcssLoader ? 1 : 0),
+        exportOnlyLocals: isServer
       },
       cssLoaderOptions
     )
@@ -101,7 +108,6 @@ module.exports = (
   }
 
   return [
-    !isServer && dev && 'extracted-loader',
     !isServer && ExtractCssChunks.loader,
     cssLoader,
     postcssLoader,
