@@ -26,7 +26,7 @@ module.exports = (nextConfig = {}) => {
         isServer,
         loaders: [
           {
-            loader: 'sass-loader',
+            loader: require.resolve('sass-loader'),
             options: sassLoaderOptions
           }
         ]

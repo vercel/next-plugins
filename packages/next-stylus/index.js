@@ -26,7 +26,7 @@ module.exports = (nextConfig = {}) => {
         isServer,
         loaders: [
           {
-            loader: 'stylus-loader',
+            loader: require.resolve('stylus-loader'),
             options: stylusLoaderOptions
           }
         ]

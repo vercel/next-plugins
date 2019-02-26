@@ -26,7 +26,7 @@ module.exports = (nextConfig = {}) => {
         isServer,
         loaders: [
           {
-            loader: 'less-loader',
+            loader: require.resolve('less-loader'),
             options: lessLoaderOptions
           }
         ]

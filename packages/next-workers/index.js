@@ -9,7 +9,7 @@ module.exports = (nextConfig = {}) => {
 
       config.module.rules.push({
         test: /\.worker\.js$/,
-        loader: 'worker-loader',
+        loader: require.resolve('worker-loader'),
         options: nextConfig.workerLoaderOptions || {
           name: 'static/[hash].worker.js',
           publicPath: '/_next/'
