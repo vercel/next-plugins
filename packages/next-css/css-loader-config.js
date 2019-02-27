@@ -62,7 +62,7 @@ module.exports = (
     )
   }
 
-  const postcssConfigPath = findUp.sync('postcss.config.js', {
+  const postcssConfigPath = (postcssLoaderOptions.config || {})['path'] || findUp.sync('postcss.config.js', {
     cwd: config.context
   })
   let postcssLoader
