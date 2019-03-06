@@ -33,6 +33,7 @@
 - [next-mdx-blog](https://github.com/hipstersmoothie/next-mdx-blog)
 - [next-fonts](https://github.com/rohanray/next-fonts)
 - [next-size](https://github.com/lucleray/next-size)
+- [next-react-svg](https://github.com/jeremybarbet/next-react-svg)
 
 ## Adding a plugin
 
