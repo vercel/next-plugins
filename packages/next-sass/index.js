@@ -34,11 +34,15 @@ module.exports = (nextConfig = {}) => {
 
       config.module.rules.push(
         {
-          test: /\.scss$/,
-          use: options.defaultLoaders.sass
-        },
-        {
-          test: /\.sass$/,
+          test: /\.s[ac]ss$/,
+          issuer(issuer) {
+            if (issuer.match(/pages[\\/]_document\.js$/)) {
+              throw new Error(
+                'You can not import scss files in pages/_document.js, use pages/_app.js instead.'
+              )
+            }
+            return true
+          },
           use: options.defaultLoaders.sass
         }
       )
