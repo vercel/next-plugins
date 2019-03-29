@@ -6,7 +6,7 @@
   "repository": "zeit/next-plugins",
   "dependencies": {
     "@zeit/next-css": "0.2.1-canary.4",
-    "sass-loader": "6.0.6"
+    "sass-loader": "^7.1.0"
   },
   "devDependencies": {
     "node-sass": "^4.7.2"
