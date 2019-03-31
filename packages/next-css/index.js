@@ -13,7 +13,7 @@ module.exports = (nextConfig = {}) => {
       const { cssModules, cssLoaderOptions, postcssLoaderOptions } = nextConfig
 
       options.defaultLoaders.css = cssLoaderConfig(config, {
-        extensions: ['css'],
+        extensions: ['css', 'sss'],
         cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
@@ -22,7 +22,7 @@ module.exports = (nextConfig = {}) => {
       })
 
       config.module.rules.push({
-        test: /\.css$/,
+        test: /\.(c|s)ss$/,
         issuer(issuer) {
           if (issuer.match(/pages[\\/]_document\.js$/)) {
             throw new Error(
