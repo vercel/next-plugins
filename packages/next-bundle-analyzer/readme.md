@@ -31,7 +31,7 @@ module.exports = withBundleAnalyzer({
     },
     browser: {
       analyzerMode: 'static',
-      reportFilename: '../bundles/client.html'
+      reportFilename: 'bundles/client.html'
     }
   }
 });
