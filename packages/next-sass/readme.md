@@ -5,13 +5,15 @@ Import `.sass` or `.scss` files in your Next.js project
 ## Installation
 
 ```
-npm install --save @zeit/next-sass node-sass
+npm install @zeit/next-sass --save
+npm install node-sass --save-dev
 ```
 
 or
 
 ```
-yarn add @zeit/next-sass node-sass
+yarn add @zeit/next-sass
+yarn add node-sass --dev
 ```
 
 ## Usage
