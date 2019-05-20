@@ -12,7 +12,7 @@ module.exports = (nextConfig = {}) => {
       const { dev, isServer } = options
       const { cssModules, cssLoaderOptions, postcssLoaderOptions } = nextConfig
 
-      options.defaultLoaders.css = cssLoaderConfig(config, {
+      const crateStyleConfig = cssModules => cssLoaderConfig(config, {
         extensions: ['css'],
         cssModules,
         cssLoaderOptions,
@@ -21,17 +21,23 @@ module.exports = (nextConfig = {}) => {
         isServer
       })
 
+      options.defaultLoaders.css = crateStyleConfig(cssModules);
+
       config.module.rules.push({
         test: /\.css$/,
-        issuer(issuer) {
-          if (issuer.match(/pages[\\/]_document\.js$/)) {
-            throw new Error(
-              'You can not import CSS files in pages/_document.js, use pages/_app.js instead.'
-            )
+        oneOf: [
+          {
+            resourceQuery: /cssModulesEnable/,
+            use: crateStyleConfig(true)
+          },
+          {
+            resourceQuery: /cssModulesDisbale/,
+            use: crateStyleConfig(false)
+          },
+          {
+            use: options.defaultLoaders.css
           }
-          return true
-        },
-        use: options.defaultLoaders.css
+        ]
       })
 
       if (typeof nextConfig.webpack === 'function') {
