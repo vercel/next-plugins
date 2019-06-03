@@ -26,7 +26,9 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withSass = require('@zeit/next-sass')
-module.exports = withSass()
+module.exports = withSass({
+  /* config options here */
+})
 ```
 
 Create a Sass file `styles.scss`
@@ -140,7 +142,9 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withSass = require('@zeit/next-sass')
-module.exports = withSass()
+module.exports = withSass({
+  /* config options here */
+})
 ```
 
 Create a `postcss.config.js`
