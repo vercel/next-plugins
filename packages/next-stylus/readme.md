@@ -26,7 +26,9 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withStylus = require('@zeit/next-stylus')
-module.exports = withStylus()
+module.exports = withStylus({
+  /* config options here */
+})
 ```
 
 Create a Stylus file `styles.styl`

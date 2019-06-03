@@ -23,7 +23,9 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withTypescript = require('@zeit/next-typescript')
-module.exports = withTypescript()
+module.exports = withTypescript({
+  /* config options here */
+})
 ```
 
 Create a `.babelrc` in your project

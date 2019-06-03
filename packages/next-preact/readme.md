@@ -21,7 +21,9 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withPreact = require('@zeit/next-preact')
-module.exports = withPreact()
+module.exports = withPreact({
+  /* config options here */
+})
 ```
 
 Then create a `server.js`

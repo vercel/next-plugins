@@ -21,7 +21,9 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withWorkers = require('@zeit/next-workers')
-module.exports = withWorkers()
+module.exports = withWorkers({
+  /* config options here */
+})
 ```
 
 Optionally you can add your custom Next.js configuration as parameter

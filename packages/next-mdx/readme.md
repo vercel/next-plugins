@@ -23,7 +23,9 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withMDX = require('@zeit/next-mdx')()
-module.exports = withMDX()
+module.exports = withMDX({
+  /* config options here */
+})
 ```
 
 Optionally you can provide [MDX options](https://github.com/mdx-js/mdx#options):
@@ -40,7 +42,9 @@ const withMDX = require('@zeit/next-mdx')({
     ]
   }
 })
-module.exports = withMDX()
+module.exports = withMDX({
+  /* config options here */
+})
 ```
 
 Optionally you can add your custom Next.js configuration as parameter
@@ -62,7 +66,9 @@ Optionally you can match other file extensions for MDX compilation, by default o
 const withMDX = require('@zeit/next-mdx')({
   extension: /\.(md|mdx)$/
 })
-module.exports = withMDX()
+module.exports = withMDX({
+  /* config options here */
+})
 ```
 
 ## Top level .mdx pages
