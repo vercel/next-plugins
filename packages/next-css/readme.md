@@ -26,7 +26,9 @@ Create a `next.config.js` in the root of your project (next to pages/ and packag
 ```js
 // next.config.js
 const withCSS = require('@zeit/next-css')
-module.exports = withCSS()
+module.exports = withCSS({
+  /* config options here */
+})
 ```
 
 Create a CSS file `style.css`
@@ -126,7 +128,9 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withCSS = require('@zeit/next-css')
-module.exports = withCSS()
+module.exports = withCSS({
+  /* config options here */
+})
 ```
 
 Create a `postcss.config.js`
