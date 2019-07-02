@@ -2,16 +2,18 @@
 
 Use [MDX](https://github.com/mdx-js/mdx) with [Next.js](https://github.com/zeit/next.js)
 
+📢 **This repo is now deprecated and has been moved to [@next/mdx](https://github.com/zeit/next.js/tree/canary/packages/next-mdx)**
+
 ## Installation
 
 ```
-npm install --save @zeit/next-mdx @mdx-js/mdx
+npm install --save @zeit/next-mdx @mdx-js/loader
 ```
 
 or
 
 ```
-yarn add @zeit/next-mdx @mdx-js/mdx
+yarn add @zeit/next-mdx @mdx-js/loader
 ```
 
 ## Usage
@@ -21,7 +23,9 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withMDX = require('@zeit/next-mdx')()
-module.exports = withMDX()
+module.exports = withMDX({
+  /* config options here */
+})
 ```
 
 Optionally you can provide [MDX options](https://github.com/mdx-js/mdx#options):
@@ -38,7 +42,9 @@ const withMDX = require('@zeit/next-mdx')({
     ]
   }
 })
-module.exports = withMDX()
+module.exports = withMDX({
+  /* config options here */
+})
 ```
 
 Optionally you can add your custom Next.js configuration as parameter
@@ -60,7 +66,9 @@ Optionally you can match other file extensions for MDX compilation, by default o
 const withMDX = require('@zeit/next-mdx')({
   extension: /\.(md|mdx)$/
 })
-module.exports = withMDX()
+module.exports = withMDX({
+  /* config options here */
+})
 ```
 
 ## Top level .mdx pages

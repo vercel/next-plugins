@@ -2,6 +2,8 @@
 
 Use `webpack-bundle-analyzer` in your Next.js project
 
+📢 **This repo is now deprecated and has been moved to [@next/bundle-analyzer](https://github.com/zeit/next.js/tree/canary/packages/next-bundle-analyzer)**
+
 ## Installation
 
 ```

@@ -26,7 +26,9 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withLess = require('@zeit/next-less')
-module.exports = withLess()
+module.exports = withLess({
+  /* config options here */
+})
 ```
 
 Create a Less file `styles.less`
@@ -126,7 +128,9 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withLess = require('@zeit/next-less')
-module.exports = withLess()
+module.exports = withLess({
+  /* config options here */
+})
 ```
 
 Create a `postcss.config.js`
