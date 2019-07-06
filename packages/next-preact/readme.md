@@ -5,13 +5,13 @@ Use [preact](https://preactjs.com/) with [Next.js](https://github.com/zeit/next.
 ## Installation
 
 ```
-npm install --save @zeit/next-preact preact preact-compat preact-context
+npm install --save @zeit/next-preact preact
 ```
 
 or
 
 ```
-yarn add @zeit/next-preact preact preact-compat preact-context
+yarn add @zeit/next-preact preact
 ```
 
 ## Usage
@@ -34,15 +34,12 @@ require('@zeit/next-preact/alias')()
 const { createServer } = require('http')
 const next = require('next')
 
-
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const port = process.env.PORT || 3000
 const handle = app.getRequestHandler()
 
-app.prepare()
-.then(() => {
-  createServer(handle)
-  .listen(port, () => {
+app.prepare().then(() => {
+  createServer(handle).listen(port, () => {
     console.log(`> Ready on http://localhost:${port}`)
   })
 })

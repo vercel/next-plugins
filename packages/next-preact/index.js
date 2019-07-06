@@ -1,5 +1,3 @@
-const path = require('path')
-
 module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
     webpack(config, options) {
@@ -14,10 +12,10 @@ module.exports = (nextConfig = {}) => {
       }
 
       config.resolve.alias = Object.assign({}, config.resolve.alias, {
-        react$: path.join(__dirname, './preact-compat.js'),
-        'react-dom$': 'preact-compat',
-        react: path.join(__dirname, './preact-compat.js'),
-        'react-dom': 'preact-compat'
+        react$: 'preact/compat',
+        'react-dom$': 'preact/compat',
+        react: 'preact/compat',
+        'react-dom': 'preact/compat'
       })
 
       if (typeof nextConfig.webpack === 'function') {
