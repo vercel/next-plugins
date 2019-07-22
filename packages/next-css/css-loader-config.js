@@ -14,7 +14,8 @@ module.exports = (
     dev,
     isServer,
     postcssLoaderOptions = {},
-    loaders = []
+    loaders = [],
+    extractCssOptions = {}
   }
 ) => {
   // We have to keep a list of extensions for the splitchunk config
@@ -33,7 +34,7 @@ module.exports = (
 
   if (!isServer && !extractCssInitialized) {
     config.plugins.push(
-      new ExtractCssChunks({
+      new ExtractCssChunks(Object.assign({}, {
         // Options similar to the same options in webpackOptions.output
         // both options are optional
         filename: dev
@@ -43,7 +44,8 @@ module.exports = (
           ? 'static/chunks/[name].chunk.css'
           : 'static/chunks/[name].[contenthash:8].chunk.css',
         hot: dev
-      })
+      },
+      extractCssOptions))
     )
     extractCssInitialized = true
   }
