@@ -192,6 +192,21 @@ module.exports = withSass({
 })
 ```
 
+### With ExtractCssChunks options
+
+You can also pass a list of options to the `extract-css-chunks-webpack-plugin` by passing an object called `extractCssOptions`.
+
+For example, to ignore warning about CSS order, you can write :
+
+```js
+// next.config.js
+const withCSS = require('@zeit/next-css')
+module.exports = withCSS({
+  extractCssOptions: {
+    orderWarning: false
+  }
+})
+```
 
 ### Configuring Next.js
 
