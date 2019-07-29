@@ -15,7 +15,6 @@
 
 ## Community made plugins
 
-- [next-awesome-typescript](https://github.com/saitonakamura/next-awesome-typescript)
 - [next-compose-plugins](https://github.com/cyrilwanner/next-compose-plugins)
 - [next-env](https://github.com/formatlos/next-env)
 - [next-images](https://github.com/arefaslani/next-images)
