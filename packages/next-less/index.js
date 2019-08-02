@@ -13,6 +13,7 @@ module.exports = (nextConfig = {}) => {
       const {
         cssModules,
         cssLoaderOptions,
+        extractCssChunksOptions,
         postcssLoaderOptions,
         lessLoaderOptions = {}
       } = nextConfig
@@ -21,6 +22,7 @@ module.exports = (nextConfig = {}) => {
         extensions: ['less'],
         cssModules,
         cssLoaderOptions,
+        extractCssChunksOptions,
         postcssLoaderOptions,
         dev,
         isServer,
