@@ -11,6 +11,7 @@ module.exports = (
     extensions = [],
     cssModules = false,
     cssLoaderOptions = {},
+    extractCssChunksOptions = {},
     dev,
     isServer,
     postcssLoaderOptions = {},
@@ -32,8 +33,10 @@ module.exports = (
   }
 
   if (!isServer && !extractCssInitialized) {
-    config.plugins.push(
-      new ExtractCssChunks({
+    const extractCssChunksOptionsConfig = Object.assign(
+      {},
+      extractCssChunksOptions.config,
+      {
         // Options similar to the same options in webpackOptions.output
         // both options are optional
         filename: dev
@@ -43,7 +46,11 @@ module.exports = (
           ? 'static/chunks/[name].chunk.css'
           : 'static/chunks/[name].[contenthash:8].chunk.css',
         hot: dev
-      })
+      }
+    );
+    
+    config.plugins.push(
+      new ExtractCssChunks(extractCssChunksOptionsConfig)
     )
     extractCssInitialized = true
   }
