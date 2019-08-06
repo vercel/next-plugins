@@ -188,7 +188,7 @@ Optionally you can add your custom Next.js configuration as parameter
 // next.config.js
 const withCSS = require('@zeit/next-css')
 module.exports = withCSS({
-  webpack(config, options) {
+  webpack: (config, options) => {
     return config
   }
 })
