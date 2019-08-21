@@ -26,6 +26,9 @@ module.exports = (nextConfig = {}) => {
         isServer,
         loaders: [
           {
+            loader: 'resolve-url-loader'
+          },
+          {
             loader: 'less-loader',
             options: lessLoaderOptions
           }

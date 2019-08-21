@@ -6,7 +6,8 @@
   "repository": "zeit/next-plugins",
   "dependencies": {
     "@zeit/next-css": "0.2.1-canary.4",
-    "less-loader": "4.1.0"
+    "less-loader": "4.1.0",
+    "resolve-url-loader": "^3.1.0"
   },
   "devDependencies": {
     "less": "^2.7.3"
