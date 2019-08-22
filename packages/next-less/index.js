@@ -17,6 +17,20 @@ module.exports = (nextConfig = {}) => {
         lessLoaderOptions = {}
       } = nextConfig
 
+      const loaders = cssModules ? [
+        {
+          loader: 'resolve-url-loader',
+        },
+        {
+          loader: 'less-loader',
+          options: lessLoaderOptions
+        }
+      ] : [
+        {
+          loader: 'less-loader',
+          options: lessLoaderOptions
+        }
+      ]
       options.defaultLoaders.less = cssLoaderConfig(config, {
         extensions: ['less'],
         cssModules,
@@ -24,15 +38,7 @@ module.exports = (nextConfig = {}) => {
         postcssLoaderOptions,
         dev,
         isServer,
-        loaders: [
-          {
-            loader: 'resolve-url-loader'
-          },
-          {
-            loader: 'less-loader',
-            options: lessLoaderOptions
-          }
-        ]
+        loaders
       })
 
       config.module.rules.push({
