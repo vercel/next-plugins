@@ -3,7 +3,6 @@ const findUp = require('find-up')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 
 const fileExtensions = new Set()
-let extractCssInitialized = false
 
 module.exports = (
   config,
@@ -31,7 +30,7 @@ module.exports = (
     }
   }
 
-  if (!isServer && !extractCssInitialized) {
+  if (!isServer) {
     config.plugins.push(
       new ExtractCssChunks({
         // Options similar to the same options in webpackOptions.output
@@ -45,7 +44,6 @@ module.exports = (
         hot: dev
       })
     )
-    extractCssInitialized = true
   }
 
   if (!dev) {
