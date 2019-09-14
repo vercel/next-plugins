@@ -33,6 +33,7 @@
 - [next-fonts](https://github.com/rohanray/next-fonts)
 - [next-size](https://github.com/lucleray/next-size)
 - [next-react-svg](https://github.com/jeremybarbet/next-react-svg)
+- [next-plugin-yaml](https://github.com/tomasz-sodzawiczny/next-plugin-yaml)
 
 ## Adding a plugin
 
