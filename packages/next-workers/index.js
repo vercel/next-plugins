@@ -8,7 +8,7 @@ module.exports = (nextConfig = {}) => {
       }
 
       config.module.rules.push({
-        test: /\.worker\.js$/,
+        test: /\.worker\.(js|ts)$/,
         loader: 'worker-loader',
         options: nextConfig.workerLoaderOptions || {
           name: 'static/[hash].worker.js',
