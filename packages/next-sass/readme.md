@@ -206,3 +206,41 @@ module.exports = withSass({
   }
 })
 ```
+
+
+### TypeScript
+
+You can also use `Sass` with Typescript. 
+
+```ts
+// next.config.js
+const withTypeScript = require('@zeit/next-typescript')
+const withSass = require('@zeit/next-sass')
+
+module.exports = withTypeScript(withSass({
+webpack(config, options) {
+return config
+}
+}))
+
+```
+
+
+Make `typings` folder in the root directory where `pages` belongs to.
+
+```
+root
+--pages
+----yourReact.tsx
+--typings
+----declarations.d.ts
+```
+
+```ts
+// declarations.d.ts
+
+declare module "*.scss" {
+  const content: { [className: string]: string };
+  export = content;
+}
+```
