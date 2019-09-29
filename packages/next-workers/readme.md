@@ -48,7 +48,7 @@ module.exports = withWorkers({
 })
 ```
 
-Web Worker files are identified by the `.worker.js` extension
+Web Worker files are identified by the `.worker.js` or `.worker.ts` extension
 
 Because Workers are transpiled with `worker-loader` you can `import` dependencies just like other project files. See the [worker-loader documentation for examples](https://github.com/webpack-contrib/worker-loader#examples)
 
