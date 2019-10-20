@@ -5,13 +5,13 @@ Use [preact](https://preactjs.com/) with [Next.js](https://github.com/zeit/next.
 ## Installation
 
 ```
-npm install --save @zeit/next-preact preact preact-compat preact-context
+npm install --save @zeit/next-preact preact preact-ssr-prepass
 ```
 
 or
 
 ```
-yarn add @zeit/next-preact preact preact-compat preact-context
+yarn add @zeit/next-preact preact preact-ssr-prepass
 ```
 
 ## Usage
