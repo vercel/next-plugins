@@ -34,6 +34,7 @@
 - [next-size](https://github.com/lucleray/next-size)
 - [next-react-svg](https://github.com/jeremybarbet/next-react-svg)
 - [next-plugin-yaml](https://github.com/tomasz-sodzawiczny/next-plugin-yaml)
+- [next-koa](https://github.com/xinpianchang/next-koa)
 
 ## Publishing
 
