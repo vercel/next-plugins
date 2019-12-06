@@ -25,13 +25,11 @@
 - [next-plugin-graphql](https://github.com/lfades/next-plugin-graphql)
 - [next-testcafe-build](https://github.com/formatlos/next-testcafe-build)
 - [next-runtime-dotenv](https://github.com/tusbar/next-runtime-dotenv)
-- [next-progressbar](https://github.com/lucleray/next-progressbar)
 - [next-purgecss](https://github.com/lucleray/next-purgecss)
 - [next-plugin-transpile-modules](https://github.com/KeitIG/next-plugin-transpile-modules)
 - [next-seo](https://github.com/garmeeh/next-seo)
 - [next-mdx-blog](https://github.com/hipstersmoothie/next-mdx-blog)
 - [next-fonts](https://github.com/rohanray/next-fonts)
-- [next-size](https://github.com/lucleray/next-size)
 - [next-react-svg](https://github.com/jeremybarbet/next-react-svg)
 - [next-plugin-yaml](https://github.com/tomasz-sodzawiczny/next-plugin-yaml)
 
