@@ -42,7 +42,8 @@ module.exports = (
         chunkFilename: dev
           ? 'static/chunks/[name].chunk.css'
           : 'static/chunks/[name].[contenthash:8].chunk.css',
-        hot: dev
+        hot: dev,
+        ignoreOrder: cssModules,
       })
     )
     extractCssInitialized = true
