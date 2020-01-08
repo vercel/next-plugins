@@ -16,6 +16,15 @@ module.exports = (nextConfig = {}) => {
         postcssLoaderOptions,
         sassLoaderOptions = {}
       } = nextConfig
+      
+      try {
+        require.resolve('node-sass2')
+      } catch (e) {
+        try {
+          require.resolve('sass')
+          sassLoaderOptions.implementation = require('sass')
+        } catch (e) {}
+      }
 
       options.defaultLoaders.sass = cssLoaderConfig(config, {
         extensions: ['scss', 'sass'],
