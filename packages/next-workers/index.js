@@ -7,7 +7,7 @@ module.exports = (nextConfig = {}) => {
         )
       }
 
-      config.module.rules.push({
+      config.module.rules.unshift({
         test: /\.worker\.(js|ts)$/,
         loader: 'worker-loader',
         options: nextConfig.workerLoaderOptions || {
