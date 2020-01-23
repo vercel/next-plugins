@@ -15,6 +15,7 @@
 
 ## Community made plugins
 
+- [next-app-shell](https://github.com/hozana/next-app-shell)
 - [next-compose-plugins](https://github.com/cyrilwanner/next-compose-plugins)
 - [next-env](https://github.com/formatlos/next-env)
 - [next-images](https://github.com/arefaslani/next-images)
