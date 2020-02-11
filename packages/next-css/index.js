@@ -21,8 +21,18 @@ module.exports = (nextConfig = {}) => {
         isServer
       })
 
+      options.defaultLoaders.cssModules = cssLoaderConfig(config, {
+        extensions: ['css'],
+        cssModules: true,
+        cssLoaderOptions,
+        postcssLoaderOptions,
+        dev,
+        isServer
+      })
+
       config.module.rules.push({
         test: /\.css$/,
+        exclude: /\.module\.css$/i,
         issuer(issuer) {
           if (issuer.match(/pages[\\/]_document\.js$/)) {
             throw new Error(
@@ -32,6 +42,11 @@ module.exports = (nextConfig = {}) => {
           return true
         },
         use: options.defaultLoaders.css
+      })
+
+      config.module.rules.push({
+        test: /\.module.css$/,
+        use: options.defaultLoaders.cssModules
       })
 
       if (typeof nextConfig.webpack === 'function') {
