@@ -14,11 +14,12 @@ module.exports = (nextConfig = {}) => {
         cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
+        extensions = ['scss', 'sass'],
         sassLoaderOptions = {}
       } = nextConfig
 
       options.defaultLoaders.sass = cssLoaderConfig(config, {
-        extensions: ['scss', 'sass'],
+        extensions,
         cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
@@ -32,16 +33,10 @@ module.exports = (nextConfig = {}) => {
         ]
       })
 
-      config.module.rules.push(
-        {
-          test: /\.scss$/,
-          use: options.defaultLoaders.sass
-        },
-        {
-          test: /\.sass$/,
-          use: options.defaultLoaders.sass
-        }
-      )
+      config.module.rules.push({
+        test: new RegExp(`\\.+(${[...extensions].join('|')})$`),
+        use: options.defaultLoaders.sass
+      })
 
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)

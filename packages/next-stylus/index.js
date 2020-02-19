@@ -14,11 +14,12 @@ module.exports = (nextConfig = {}) => {
         cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
+        extensions = ['styl'],
         stylusLoaderOptions = {}
       } = nextConfig
 
       options.defaultLoaders.stylus = cssLoaderConfig(config, {
-        extensions: ['styl'],
+        extensions,
         cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
@@ -33,7 +34,7 @@ module.exports = (nextConfig = {}) => {
       })
 
       config.module.rules.push({
-        test: /\.styl$/,
+        test: new RegExp(`\\.+(${[...extensions].join('|')})$`),
         use: options.defaultLoaders.stylus
       })
 

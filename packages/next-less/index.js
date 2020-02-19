@@ -14,11 +14,12 @@ module.exports = (nextConfig = {}) => {
         cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
+        extensions = ['less'],
         lessLoaderOptions = {}
       } = nextConfig
 
       options.defaultLoaders.less = cssLoaderConfig(config, {
-        extensions: ['less'],
+        extensions,
         cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
@@ -33,7 +34,7 @@ module.exports = (nextConfig = {}) => {
       })
 
       config.module.rules.push({
-        test: /\.less$/,
+        test: new RegExp(`\\.+(${[...extensions].join('|')})$`),
         use: options.defaultLoaders.less
       })
 
