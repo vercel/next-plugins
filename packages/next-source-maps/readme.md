@@ -39,15 +39,15 @@ By default devtool is `source-map`. If you want use different devtool type, you 
 
 ```js
 // next.config.js
-const withSourceMaps = require('@zeit/next-source-maps')({
-  devtool: 'hidden-source-map'
-})
+const withSourceMaps = require('@zeit/next-source-maps')
 
 module.exports = withSourceMaps(
   {
+    devtool: 'hidden-source-map', // set here your preferred source map mode
     webpack(config, options) {
       return config
-    }
+    },
+    // ...
   }
 )
 ```
