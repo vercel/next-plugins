@@ -76,7 +76,7 @@ module.exports = (
     )
 
     postcssLoader = {
-      loader: 'postcss-loader',
+      loader: require.resolve('postcss-loader'),
       options: Object.assign({}, postcssLoaderOptions, {
         config: postcssOptionsConfig
       })
@@ -84,7 +84,7 @@ module.exports = (
   }
 
   const cssLoader = {
-    loader: 'css-loader',
+    loader: require.resolve('css-loader'),
     options: Object.assign(
       {},
       {
@@ -99,7 +99,7 @@ module.exports = (
 
   // When not using css modules we don't transpile on the server
   if (isServer && !cssLoader.options.modules) {
-    return ['ignore-loader']
+    return [require.resolve('ignore-loader')]
   }
 
   // When on the server and using css modules we transpile the css
