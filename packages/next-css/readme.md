@@ -26,9 +26,7 @@ Create a `next.config.js` in the root of your project (next to pages/ and packag
 ```js
 // next.config.js
 const withCSS = require('@zeit/next-css')
-module.exports = withCSS({
-  /* config options here */
-})
+module.exports = withCSS()
 ```
 
 Create a CSS file `style.css`
@@ -108,7 +106,7 @@ import css from "../style.css"
 
 const Component = props => {
   return (
-    <div className={css.example}>
+    <div className={css.backdrop}>
       ...
     </div>
   )
@@ -128,9 +126,7 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withCSS = require('@zeit/next-css')
-module.exports = withCSS({
-  /* config options here */
-})
+module.exports = withCSS()
 ```
 
 Create a `postcss.config.js`

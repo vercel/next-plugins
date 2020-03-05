@@ -1,6 +1,5 @@
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const findUp = require('find-up')
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 
 const fileExtensions = new Set()
 let extractCssInitialized = false
@@ -33,46 +32,31 @@ module.exports = (
 
   if (!isServer && !extractCssInitialized) {
     config.plugins.push(
-      new ExtractCssChunks({
+      new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output
         // both options are optional
         filename: dev
-          ? 'static/chunks/[name].css'
-          : 'static/chunks/[name].[contenthash:8].css',
+          ? 'static/css/[name].css'
+          : 'static/css/[name].[contenthash:8].css',
         chunkFilename: dev
-          ? 'static/chunks/[name].chunk.css'
-          : 'static/chunks/[name].[contenthash:8].chunk.css',
-        hot: dev
+          ? 'static/css/[name].chunk.css'
+          : 'static/css/[name].[contenthash:8].chunk.css'
       })
     )
     extractCssInitialized = true
   }
 
-  if (!dev) {
-    if (!Array.isArray(config.optimization.minimizer)) {
-      config.optimization.minimizer = []
-    }
-
-    config.optimization.minimizer.push(
-      new OptimizeCssAssetsWebpackPlugin({
-        cssProcessorOptions: {
-          discardComments: { removeAll: true }
-        }
-      })
-    )
-  }
-
-  const postcssConfigPath = findUp.sync('postcss.config.js', {
+  const postcssConfig = findUp.sync('postcss.config.js', {
     cwd: config.context
   })
   let postcssLoader
 
-  if (postcssConfigPath) {
+  if (postcssConfig) {
     // Copy the postcss-loader config options first.
     const postcssOptionsConfig = Object.assign(
       {},
       postcssLoaderOptions.config,
-      { path: postcssConfigPath }
+      { path: postcssConfig }
     )
 
     postcssLoader = {
@@ -84,14 +68,14 @@ module.exports = (
   }
 
   const cssLoader = {
-    loader: 'css-loader',
+    loader: isServer ? 'css-loader/locals' : 'css-loader',
     options: Object.assign(
       {},
       {
         modules: cssModules,
+        minimize: !dev,
         sourceMap: dev,
-        importLoaders: loaders.length + (postcssLoader ? 1 : 0),
-        exportOnlyLocals: isServer
+        importLoaders: loaders.length + (postcssLoader ? 1 : 0)
       },
       cssLoaderOptions
     )
@@ -108,7 +92,8 @@ module.exports = (
   }
 
   return [
-    !isServer && ExtractCssChunks.loader,
+    !isServer && dev && 'extracted-loader',
+    !isServer && MiniCssExtractPlugin.loader,
     cssLoader,
     postcssLoader,
     ...loaders
