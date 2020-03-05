@@ -26,9 +26,7 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withSass = require('@zeit/next-sass')
-module.exports = withSass({
-  /* config options here */
-})
+module.exports = withSass()
 ```
 
 Create a Sass file `styles.scss`
@@ -135,6 +133,27 @@ module.exports = withSass({
 })
 ```
 
+```js
+// ./pages/_document.js
+import Document, { Head, Main, NextScript } from 'next/document'
+
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <html>
+        <Head>
+          <link rel="stylesheet" href="/_next/static/style.css" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>
+    )
+  }
+}
+```
+
 ### PostCSS plugins
 
 Create a `next.config.js` in your project
@@ -142,9 +161,7 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withSass = require('@zeit/next-sass')
-module.exports = withSass({
-  /* config options here */
-})
+module.exports = withSass()
 ```
 
 Create a `postcss.config.js`
