@@ -1,9 +1,9 @@
 {
-  "name": "@module-federation/next-css",
-  "version": "1.0.1-beta.1",
+  "name": "next-css",
+  "version": "1.0.2",
   "main": "index.js",
   "license": "MIT",
-  "repository": "module-federation/next-plugins",
+  "repository": "zeit/next-plugins",
   "dependencies": {
     "css-loader": "^3.4.2",
     "extracted-loader": "^1.0.7",

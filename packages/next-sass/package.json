@@ -1,11 +1,11 @@
 {
-  "name": "@module-federation/next-sass",
-  "version": "1.0.1-beta.2",
+  "name": "next-sass",
+  "version": "1.0.2",
   "main": "index.js",
   "license": "MIT",
-  "repository": "module-federation/next-plugins",
+  "repository": "zeit/next-plugins",
   "dependencies": {
-    "@module-federation/next-css": "^1.0.1-beta.1",
+    "next-css": "^1.0.2",
     "eslint-config-prettier": "^6.10.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",

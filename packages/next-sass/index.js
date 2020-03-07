@@ -1,4 +1,4 @@
-const cssLoaderConfig = require('@module-federation/next-css/css-loader-config')
+const cssLoaderConfig = require('next-css/css-loader-config')
 
 module.exports = (nextConfig = {}) => {
   return Object.assign({}, nextConfig, {
