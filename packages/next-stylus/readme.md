@@ -49,6 +49,10 @@ export default () => <div className="example">Hello World!</div>
 
 ### With CSS modules
 
+`next-stylus` supports [CSS Modules](https://github.com/css-modules/css-modules) using the [name].module.styl file naming convention.
+
+You can also set `cssModules` options to enabled for all `.styl` files
+
 ```js
 // next.config.js
 const withStylus = require('@zeit/next-stylus')
