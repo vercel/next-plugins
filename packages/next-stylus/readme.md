@@ -51,7 +51,22 @@ export default () => <div className="example">Hello World!</div>
 
 `next-stylus` supports [CSS Modules](https://github.com/css-modules/css-modules) using the `[name].module.styl` file naming convention.
 
-You can also set `cssModules` options to enabled for all `.styl` files
+You can also set `cssModules` options to rewrite [`modules`](https://github.com/webpack-contrib/css-loader#modules) config
+
+custom `modules` config
+
+```js
+// next.config.js
+const withStylus = require('@zeit/next-stylus')
+module.exports = withStylus({
+  cssModules: {
+    auto: true,
+    localIdentName: '[path][name]__[local]--[hash:base64:5]',
+  }
+})
+```
+
+enable css modules for all files
 
 ```js
 // next.config.js
