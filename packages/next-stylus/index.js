@@ -17,33 +17,28 @@ module.exports = (nextConfig = {}) => {
         stylusLoaderOptions = {}
       } = nextConfig
 
-      const getStylusConfig = isModule => {
-        return cssLoaderConfig(config, {
-          extensions: ['styl'],
-          cssLoaderOptions,
-          cssModules: isModule ? true : cssModules,
-          postcssLoaderOptions,
-          dev,
-          isServer,
-          loaders: [
-            {
-              loader: 'stylus-loader',
-              options: stylusLoaderOptions,
+      options.defaultLoaders.stylus = cssLoaderConfig(config, {
+        extensions: ['styl'],
+        cssLoaderOptions,
+        cssModules: cssModules
+          ? cssModules
+          : {
+              auto: true,
             },
-          ],
-        })
-      }
-
-      options.defaultLoaders.stylus = getStylusConfig()
-      options.defaultLoaders.stylus_module = getStylusConfig(true)
-
-      config.module.rules.push({
-        test: /(?<!\.module)\.styl$/,
-        use: options.defaultLoaders.stylus,
+        postcssLoaderOptions,
+        dev,
+        isServer,
+        loaders: [
+          {
+            loader: 'stylus-loader',
+            options: stylusLoaderOptions,
+          },
+        ],
       })
+
       config.module.rules.push({
-        test: /\.module\.styl$/,
-        use: options.defaultLoaders.stylus_module,
+        test: /\.styl$/,
+        use: options.defaultLoaders.stylus,
       })
 
       if (typeof nextConfig.webpack === 'function') {
