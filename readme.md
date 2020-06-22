@@ -32,6 +32,7 @@
 - [next-fonts](https://github.com/rohanray/next-fonts)
 - [next-react-svg](https://github.com/jeremybarbet/next-react-svg)
 - [next-plugin-yaml](https://github.com/tomasz-sodzawiczny/next-plugin-yaml)
+- [next-with-ssr-entry](https://github.com/xiaoxiaojx/with-ssr-entry)
 
 ## Publishing
 
