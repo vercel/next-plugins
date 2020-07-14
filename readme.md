@@ -15,6 +15,7 @@
 
 ## Community made plugins
 
+- [next-ant](https://github.com/mies-co/next-extensions/tree/master/packages/next-ant)
 - [next-compose-plugins](https://github.com/cyrilwanner/next-compose-plugins)
 - [next-env](https://github.com/formatlos/next-env)
 - [next-images](https://github.com/arefaslani/next-images)
