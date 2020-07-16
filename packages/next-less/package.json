@@ -6,13 +6,13 @@
   "repository": "zeit/next-plugins",
   "dependencies": {
     "@zeit/next-css": "0.2.1-canary.4",
-    "less-loader": "4.1.0"
+    "less-loader": "6.2.0"
   },
   "devDependencies": {
-    "less": "^2.7.3"
+    "less": "^3.12.0"
   },
   "peerDependencies": {
-    "less": "^2.7.3"
+    "less": "^3.12.0"
   },
   "gitHead": "31e8978d07e5468f760a222a72d1e8f3f457e6ff"
 }
