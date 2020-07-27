@@ -2,7 +2,7 @@
 
 Import `.less` files in your Next.js project.
 
-Can use both css modules and not css modules.
+And support CSS Modules with `.module.less` suffix.
 
 > Only `.module.less` files can use css modules.
 
