@@ -1,6 +1,10 @@
 # Next.js + Less
 
-Import `.less` files in your Next.js project
+Import `.less` files in your Next.js project.
+
+Can use both css modules and not css modules.
+
+> Only `.module.less` files can use css modules.
 
 ## Installation
 
@@ -52,13 +56,13 @@ export default () => <div className="example">Hello World!</div>
 
 ```js
 // next.config.js
-const withLess = require('@zeit/next-less')
+const withLess = require('@zeit/next-less-modules')
 module.exports = withLess({
   cssModules: true
 })
 ```
 
-Create a Less file `styles.less`
+Create a Less file `styles.module.less`
 
 ```less
 @font-size: 50px;
@@ -67,13 +71,31 @@ Create a Less file `styles.less`
 }
 ```
 
+Create a Less file `styles2.less`
+
+```less
+@font-color: red;
+.example {
+  color: @font-color;
+}
+```
+
 Create a page file `pages/index.js`
 
-```js
-import css from "../styles.less"
+```jsx
+import classnames from "classnames"
+import css from "../styles.module.less"
+import "../styles.less"
 
-export default () => <div className={css.example}>Hello World!</div>
+export default () => (
+  <div className={classnames(css.example, "example")}>Hello World!</div>
+)
 ```
+
+> Note: Only the `*.module.less` files support css modules.
+> It is because global opening of css modules invalidate the styles of third-party library using `less` -- like [Ant Design](https://github.com/ant-design/ant-design).
+
+> Only `*.module.(css|less|sass)` files can use css module is better, just like [create-react-app](https://github.com/facebook/create-react-app) did.
 
 ### With CSS modules and options
 
