@@ -9,10 +9,10 @@
     "less-loader": "4.1.0"
   },
   "devDependencies": {
-    "less": "^2.7.3"
+    "less": "^3.12.2"
   },
   "peerDependencies": {
-    "less": "^2.7.3"
+    "less": "^3.12.2"
   },
   "gitHead": "31e8978d07e5468f760a222a72d1e8f3f457e6ff"
 }
