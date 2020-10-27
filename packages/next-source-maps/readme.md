@@ -35,7 +35,9 @@ npm run build
 ```
 
 ### Configuring plugin
-By default devtool is `source-map`. If you want use different devtool type, you can pass it with options.
+By default devtool is `source-map`.  
+If you want use different devtool type, you can pass it with options.  
+You can check out the other options in [here](https://webpack.js.org/configuration/devtool/).
 
 ```js
 // next.config.js
