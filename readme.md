@@ -4,14 +4,14 @@
 
 - [@next/mdx](https://github.com/zeit/next.js/tree/canary/packages/next-mdx)
 - [@next/bundle-analyzer](https://github.com/zeit/next.js/tree/canary/packages/next-bundle-analyzer)
-- [@zeit/next-css](./packages/next-css)
-- [@zeit/next-sass](./packages/next-sass)
-- [@zeit/next-less](./packages/next-less)
-- [@zeit/next-stylus](./packages/next-stylus)
-- [@zeit/next-preact](./packages/next-preact)
-- [@zeit/next-typescript](./packages/next-typescript)
-- [@zeit/next-source-maps](./packages/next-source-maps)
-- [@zeit/next-workers](./packages/next-workers)
+- [@vercel/next-css](./packages/next-css)
+- [@vercel/next-sass](./packages/next-sass)
+- [@vercel/next-less](./packages/next-less)
+- [@vercel/next-stylus](./packages/next-stylus)
+- [@vercel/next-preact](./packages/next-preact)
+- [@vercel/next-typescript](./packages/next-typescript)
+- [@vercel/next-source-maps](./packages/next-source-maps)
+- [@vercel/next-workers](./packages/next-workers)
 
 ## Community made plugins
 
